@@ -87,21 +87,28 @@
       <div v-if="activeSkill" class="modal-overlay" @click.self="activeSkill = null">
         <div class="skill-modal" :style="{ '--c': '#00c8f0' }">
           <button class="modal-close" @click="activeSkill = null">✕</button>
-          <div class="skill-modal-name">{{ activeSkill.name }}</div>
-          <p class="skill-modal-desc">{{ activeSkill.desc }}</p>
-          <div class="skill-modal-section">
-            <div class="skill-modal-label">Companies</div>
-            <div class="skill-modal-chips">
-              <span v-for="c in activeSkill.companies" :key="c" class="skill-chip company">{{ c }}</span>
+          <button class="skill-nav-arrow skill-nav-prev" @click="skillPrev">‹</button>
+          <button class="skill-nav-arrow skill-nav-next" @click="skillNext">›</button>
+          <Transition :name="'slide-left'" mode="out-in">
+            <div :key="activeSkill.name" class="skill-modal-inner">
+              <div class="skill-modal-counter">{{ activeSkillIdx + 1 }} / {{ allSkills.length }}</div>
+              <div class="skill-modal-name">{{ activeSkill.name }}</div>
+              <p class="skill-modal-desc">{{ activeSkill.desc }}</p>
+              <div class="skill-modal-section">
+                <div class="skill-modal-label">Companies</div>
+                <div class="skill-modal-chips">
+                  <span v-for="c in activeSkill.companies" :key="c" class="skill-chip company">{{ c }}</span>
+                </div>
+              </div>
+              <div class="skill-modal-section">
+                <div class="skill-modal-label">Projects</div>
+                <div class="skill-modal-chips">
+                  <span v-for="p in activeSkill.projects" :key="p" class="skill-chip project">{{ p }}</span>
+                </div>
+              </div>
+              <a v-if="activeSkill.link" :href="activeSkill.link" target="_blank" rel="noopener" class="skill-modal-link">Learn more →</a>
             </div>
-          </div>
-          <div class="skill-modal-section">
-            <div class="skill-modal-label">Projects</div>
-            <div class="skill-modal-chips">
-              <span v-for="p in activeSkill.projects" :key="p" class="skill-chip project">{{ p }}</span>
-            </div>
-          </div>
-          <a v-if="activeSkill.link" :href="activeSkill.link" target="_blank" rel="noopener" class="skill-modal-link">Learn more →</a>
+          </Transition>
         </div>
       </div>
     </Transition>
@@ -489,7 +496,7 @@ const skillGroups = [
       { name: 'ElasticSearch', desc: "Distributed search and analytics engine providing real-time tactical data querying for the BACN situational awareness platform across large operational datasets.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://www.elastic.co/elasticsearch' },
       { name: 'Redis', desc: "In-memory data store used as the pub/sub message broker for GALT microservices architecture, enabling real-time status updates across airborne systems.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://redis.io' },
       { name: 'AWS', desc: "Amazon Web Services cloud platform. Jamie holds AWS DevOps Engineer Pro, CloudOps Engineer, and Cloud Practitioner certifications — all earned in early 2026.", companies: ['Certification / Current Focus'], projects: ['Post-GALT professional development'], link: 'https://aws.amazon.com' },
-      { name: 'JIRA', desc: "Agile project management and issue tracking used to manage sprints, backlogs, and program-level tracking across GALT and BACN development teams.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['DevSecOps Org Build', 'BIB'], link: 'https://www.atlassian.com/software/jira' },
+      { name: 'JIRA', desc: "Agile project management and issue tracking used to manage sprints, backlogs, and program-level tracking across all programs from Northrop Grumman forward.", companies: ['Northrop Grumman', 'GALT Aerospace'], projects: ['BIB', 'Joint Effects Model', 'GCCS-J / GCCS-M Integration', 'FINN Program', 'SkyTower II', 'DevSecOps Org Build'], link: 'https://www.atlassian.com/software/jira' },
       { name: 'Webpack', desc: "JavaScript module bundler used to build and optimize the BACN Information Broker frontend application for production deployment on RedHat Linux.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://webpack.js.org' },
     ]
   },
@@ -549,11 +556,28 @@ const credsAndEdu = ref([
 const activeCompany = ref(null)
 const activeProject = ref(null)
 const activeSkill = ref(null)
+const activeSkillIdx = ref(0)
 const carOpen = ref(false)
+
+// Flat ordered list of all skills across all groups
+const allSkills = skillGroups.flatMap(g => g.items)
 const carIdx = ref(0)
 const carDirection = ref('next')
 
-function openSkill(s) { activeSkill.value = s }
+function openSkill(s) {
+  activeSkill.value = s
+  activeSkillIdx.value = allSkills.findIndex(sk => sk.name === s.name)
+}
+function skillPrev() {
+  const idx = (activeSkillIdx.value - 1 + allSkills.length) % allSkills.length
+  activeSkillIdx.value = idx
+  activeSkill.value = allSkills[idx]
+}
+function skillNext() {
+  const idx = (activeSkillIdx.value + 1) % allSkills.length
+  activeSkillIdx.value = idx
+  activeSkill.value = allSkills[idx]
+}
 function openCompany(job) { activeCompany.value = job; activeProject.value = null }
 function closeCompany() { activeCompany.value = null; activeProject.value = null }
 function openProject(p) { activeProject.value = p }
@@ -561,11 +585,20 @@ function closeProject() { activeProject.value = null }
 
 // ESC key dismisses any open modal
 function handleEsc(e) {
-  if (e.key !== 'Escape') return
-  if (activeProject.value) { activeProject.value = null; return }
-  if (activeSkill.value) { activeSkill.value = null; return }
-  if (carOpen.value) { carOpen.value = false; return }
-  if (activeCompany.value) { activeCompany.value = null; return }
+  if (e.key === 'Escape') {
+    if (activeProject.value) { activeProject.value = null; return }
+    if (activeSkill.value) { activeSkill.value = null; return }
+    if (carOpen.value) { carOpen.value = false; return }
+    if (activeCompany.value) { activeCompany.value = null; return }
+  }
+  if (activeSkill.value) {
+    if (e.key === 'ArrowLeft') { skillPrev(); return }
+    if (e.key === 'ArrowRight') { skillNext(); return }
+  }
+  if (carOpen.value) {
+    if (e.key === 'ArrowLeft') { carPrev(); return }
+    if (e.key === 'ArrowRight') { carNext(); return }
+  }
 }
 
 import { onMounted, onUnmounted } from 'vue'
@@ -661,7 +694,7 @@ a.contact-item.clearance:hover { color: var(--accent); }
   border-top: 3px solid var(--accent);
   border-radius: 12px;
   width: 100%; max-width: 520px;
-  padding: 2rem 2rem 1.8rem;
+  padding: 2rem 3.5rem 1.8rem;
   position: relative;
   display: flex; flex-direction: column; gap: 1.2rem;
   box-shadow:
@@ -669,7 +702,22 @@ a.contact-item.clearance:hover { color: var(--accent); }
     0 2px 0 rgba(255,255,255,0.06) inset,
     0 40px 80px rgba(0,0,0,0.6),
     0 0 80px rgba(0,200,240,0.08);
+  overflow: hidden;
 }
+.skill-modal-inner { display: flex; flex-direction: column; gap: 1.2rem; }
+.skill-modal-counter { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); }
+.skill-nav-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--dim); font-size: 1.4rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; z-index: 2; line-height: 1;
+  backdrop-filter: blur(4px);
+}
+.skill-nav-arrow:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); box-shadow: 0 0 14px rgba(0,200,240,0.4); transform: translateY(-50%) scale(1.08); }
+.skill-nav-prev { left: 0.6rem; }
+.skill-nav-next { right: 0.6rem; }
 .skill-modal-name { font-family: var(--display); font-size: 2.4rem; line-height: 1; color: var(--text); padding-right: 2rem; }
 .skill-modal-desc { font-size: 0.84rem; color: var(--dim); line-height: 1.75; }
 .skill-modal-section { display: flex; flex-direction: column; gap: 0.5rem; }
