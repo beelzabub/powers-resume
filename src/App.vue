@@ -82,6 +82,30 @@
       </div>
     </Transition>
 
+    <!-- SKILL MODAL -->
+    <Transition name="modal">
+      <div v-if="activeSkill" class="modal-overlay" @click.self="activeSkill = null">
+        <div class="skill-modal" :style="{ '--c': '#00c8f0' }">
+          <button class="modal-close" @click="activeSkill = null">✕</button>
+          <div class="skill-modal-name">{{ activeSkill.name }}</div>
+          <p class="skill-modal-desc">{{ activeSkill.desc }}</p>
+          <div class="skill-modal-section">
+            <div class="skill-modal-label">Companies</div>
+            <div class="skill-modal-chips">
+              <span v-for="c in activeSkill.companies" :key="c" class="skill-chip company">{{ c }}</span>
+            </div>
+          </div>
+          <div class="skill-modal-section">
+            <div class="skill-modal-label">Projects</div>
+            <div class="skill-modal-chips">
+              <span v-for="p in activeSkill.projects" :key="p" class="skill-chip project">{{ p }}</span>
+            </div>
+          </div>
+          <a v-if="activeSkill.link" :href="activeSkill.link" target="_blank" rel="noopener" class="skill-modal-link">Learn more →</a>
+        </div>
+      </div>
+    </Transition>
+
     <!-- CREDENTIAL CAROUSEL MODAL -->
     <Transition name="modal">
       <div v-if="carOpen" class="modal-overlay" @click.self="carOpen = false">
@@ -172,7 +196,7 @@
             <div v-for="group in skillGroups" :key="group.title" class="skill-group">
               <div class="sg-title">{{ group.title }}</div>
               <div class="sg-tags">
-                <span v-for="s in group.items" :key="s" class="sg-tag">{{ s }}</span>
+                <button v-for="s in group.items" :key="s.name" class="sg-tag" @click="openSkill(s)">{{ s.name }}</button>
               </div>
             </div>
           </div>
@@ -409,10 +433,64 @@ const experience = [
 ]
 
 const skillGroups = [
-  { title: 'Languages', items: ['Python', 'Java', 'JavaScript', 'Vue3', 'React', 'Redux', 'C', 'C++', 'C#', 'Fortran', 'Bash'] },
-  { title: 'DevSecOps', items: ['Jenkins CI/CD', 'Docker', 'Ansible', 'SonarQube', 'Fortify', 'DISA STIGs', 'Selenium', 'PyTest', 'Git/BitBucket'] },
-  { title: 'Systems & Comms', items: ['Link16', 'CDL', 'EPLRS', 'VOIP', 'GCCS-J', 'GCCS-M', 'BACN', 'Microservices', 'Pub/Sub', 'SNMP'] },
-  { title: 'Platforms & Tools', items: ['RedHat Linux', 'NGINX', 'Apache', 'Node.js', 'ElasticSearch', 'Redis', 'AWS', 'JIRA', 'Webpack'] },
+  {
+    title: 'Languages',
+    items: [
+      { name: 'Python', desc: 'Primary scripting and backend language for DoD systems. Used for automation, microservices, data processing, and CI/CD scripting.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)'], projects: ['FINN Program', 'SkyTower II', 'BACN BIB', 'DevSecOps Org Build'], link: 'https://www.python.org' },
+      { name: 'Java', desc: 'Enterprise backend language used for web services, data processing, and cross-platform DoD applications.', companies: ['Northrop Grumman (BACN)', 'Northrop Grumman (JEM)'], projects: ['BACN BIB', 'Joint Effects Model'], link: 'https://dev.java' },
+      { name: 'JavaScript', desc: 'Full-stack web language spanning frameworks from Backbone to modern Vue3 and React. Used for all DoD web UIs.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)', 'Northrop Grumman (JEM)'], projects: ['FINN Program', 'BACN BIB', 'Joint Effects Model'], link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+      { name: 'Vue3', desc: 'Modern progressive JavaScript framework used for reactive DoD web interfaces. Composition API with TypeScript-friendly architecture.', companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://vuejs.org' },
+      { name: 'React', desc: 'Component-based UI library used for the BACN situational awareness platform with Redux state management.', companies: ['Northrop Grumman (BACN)'], projects: ['BACN BIB'], link: 'https://react.dev' },
+      { name: 'Redux', desc: 'Predictable state container used alongside React for managing complex real-time battlefield data in the BACN Information Broker.', companies: ['Northrop Grumman (BACN)'], projects: ['BACN BIB'], link: 'https://redux.js.org' },
+      { name: 'C', desc: 'Low-level systems language for submarine communications hardware integration and UNIX inter-process communications via Berkeley sockets.', companies: ['Predicate Logic Inc.'], projects: ['SLVR Submarine Integration'], link: 'https://en.wikipedia.org/wiki/C_(programming_language)' },
+      { name: 'C++', desc: 'Object-oriented systems language for CBRN modeling, Windows desktop apps, and TychoMetrics platform with COM/OLE integration.', companies: ['Northrop Grumman (JEM)', 'Predicate Logic Inc.'], projects: ['Joint Effects Model', 'TychoMetrics Platform'], link: 'https://isocpp.org' },
+      { name: 'C#', desc: 'Microsoft .NET language used to redesign TychoMetrics from a Windows desktop app into a scalable web-based ASP.NET application.', companies: ['Predicate Logic Inc.'], projects: ['TychoMetrics Platform'], link: 'https://learn.microsoft.com/en-us/dotnet/csharp/' },
+      { name: 'Fortran', desc: 'Scientific computing language used in the Joint Effects Model for CBRN physics simulation — still widely used in DoD modeling and simulation.', companies: ['Northrop Grumman (JEM)'], projects: ['Joint Effects Model'], link: 'https://fortran-lang.org' },
+      { name: 'Bash', desc: 'Shell scripting for CI/CD automation, STIG compliance checks, system administration, and deployment orchestration across Linux environments.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)'], projects: ['DevSecOps Org Build', 'FINN Program'], link: 'https://www.gnu.org/software/bash/' },
+    ]
+  },
+  {
+    title: 'DevSecOps',
+    items: [
+      { name: 'Jenkins CI/CD', desc: 'Automated build, test, and deployment pipelines. Built GALT's entire Jenkins infrastructure from scratch including STIG-compliant deployment gates.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)'], projects: ['DevSecOps Org Build', 'FINN Program', 'BACN BIB'], link: 'https://www.jenkins.io' },
+      { name: 'Docker', desc: 'Container platform for packaging and deploying microservices in GALT's pub/sub architecture, ensuring consistent environments from dev to production.', companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II', 'DevSecOps Org Build'], link: 'https://www.docker.com' },
+      { name: 'Ansible', desc: 'Infrastructure-as-code and configuration management tool used for automated provisioning, STIG remediation, and deployment orchestration.', companies: ['GALT Aerospace'], projects: ['FINN Program', 'DevSecOps Org Build'], link: 'https://www.ansible.com' },
+      { name: 'SonarQube', desc: 'Continuous static code analysis platform for detecting bugs, vulnerabilities, and code smells. Used as a quality gate in all CI/CD pipelines.', companies: ['GALT Aerospace'], projects: ['DevSecOps Org Build', 'FINN Program', 'SkyTower II'], link: 'https://www.sonarsource.com/products/sonarqube/' },
+      { name: 'Fortify', desc: 'Static application security testing (SAST) tool for identifying vulnerabilities in source code. Required for DoD software security compliance.', companies: ['Northrop Grumman (BACN)'], projects: ['BACN BIB', 'Cyber Security Upgrades'], link: 'https://www.microfocus.com/en-us/cyberres/application-security/static-code-analyzer' },
+      { name: 'DISA STIGs', desc: 'Defense Information Systems Agency Security Technical Implementation Guides — mandatory security configurations for all DoD software and systems. Automated compliance was a core GALT capability.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)'], projects: ['FINN Program', 'SkyTower II', 'BACN BIB'], link: 'https://public.cyber.mil/stigs/' },
+      { name: 'Selenium', desc: 'Browser automation framework for end-to-end testing of DoD web applications. Part of all automated test suites across GALT and BACN programs.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)'], projects: ['DevSecOps Org Build', 'BACN BIB'], link: 'https://www.selenium.dev' },
+      { name: 'PyTest', desc: 'Python testing framework used for unit, integration, and system testing of backend services across multiple DoD programs.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)'], projects: ['FINN Program', 'BACN BIB', 'DevSecOps Org Build'], link: 'https://docs.pytest.org' },
+      { name: 'Git / BitBucket', desc: 'Distributed version control and code hosting. BitBucket used for DoD programs requiring on-premise or government-cloud code repositories.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)'], projects: ['All programs'], link: 'https://bitbucket.org' },
+    ]
+  },
+  {
+    title: 'Systems & Comms',
+    items: [
+      { name: 'Link 16', desc: 'NATO's primary tactical data link — a TDMA-based network for real-time exchange of voice, data, and surveillance between air, ground, and sea platforms. Core to BACN's gateway mission.', companies: ['Northrop Grumman (BACN)'], projects: ['BACN BIB', 'RF / Tactical Data Link Integration'], link: 'https://en.wikipedia.org/wiki/Link_16' },
+      { name: 'CDL', desc: 'Common Data Link — a family of wideband point-to-point data links used for transmitting imagery and sensor data from airborne ISR platforms to ground stations.', companies: ['Northrop Grumman (BACN)'], projects: ['RF / Tactical Data Link Integration'], link: 'https://en.wikipedia.org/wiki/Common_data_link' },
+      { name: 'EPLRS', desc: 'Enhanced Position Location Reporting System — a digital radio system providing position location, navigation, and data communications for ground forces. Bridged through BACN.', companies: ['Northrop Grumman (BACN)'], projects: ['RF / Tactical Data Link Integration'], link: 'https://en.wikipedia.org/wiki/Enhanced_Position_Location_Reporting_System' },
+      { name: 'VOIP', desc: 'Voice over IP integration for BACN's voice bridging subsystem, allowing ground forces and aircraft to communicate across incompatible radio systems via the BACN gateway.', companies: ['Northrop Grumman (BACN)'], projects: ['RF / Tactical Data Link Integration'], link: 'https://en.wikipedia.org/wiki/Voice_over_IP' },
+      { name: 'GCCS-J / GCCS-M', desc: 'Global Command and Control System — Joint and Maritime. The DoD's primary C2 system integrating operational data across all services. Jamie integrated JEM into both variants.', companies: ['Northrop Grumman (JEM)'], projects: ['GCCS-J / GCCS-M Integration'], link: 'https://en.wikipedia.org/wiki/Global_Command_and_Control_System' },
+      { name: 'BACN', desc: 'Battlefield Airborne Communications Node — Northrop Grumman's high-altitude airborne gateway with 200K+ combat flight hours and a $3.6B IDIQ contract. Jamie was a core developer for 9 years.', companies: ['Northrop Grumman (BACN)'], projects: ['BACN BIB', 'RF / Tactical Data Link Integration'], link: 'https://www.northropgrumman.com/what-we-do/mission-solutions/battlefield-airborne-communications-node-bacn' },
+      { name: 'Microservices', desc: 'Architectural pattern decomposing applications into small, independently deployable services. Used at GALT for airborne C3 systems with pub/sub messaging between services.', companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://microservices.io' },
+      { name: 'Pub/Sub', desc: 'Publish/Subscribe messaging pattern enabling decoupled, real-time communication between microservices. Core to GALT's airborne comms architecture using Redis as the message broker.', companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern' },
+      { name: 'SNMP', desc: 'Simple Network Management Protocol — used for inter-process communication in the SLVR submarine receiver integration on HPUX Unix systems.', companies: ['Predicate Logic Inc.'], projects: ['SLVR Submarine Integration'], link: 'https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol' },
+    ]
+  },
+  {
+    title: 'Platforms & Tools',
+    items: [
+      { name: 'RedHat Linux', desc: 'Enterprise Linux OS used as the primary platform for all GALT and BACN server deployments. DISA STIG hardening applied across all systems.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)'], projects: ['FINN Program', 'SkyTower II', 'BACN BIB'], link: 'https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux' },
+      { name: 'NGINX', desc: 'High-performance web server and reverse proxy used for serving DoD web applications and routing traffic between microservices.', companies: ['GALT Aerospace'], projects: ['FINN Program', 'DevSecOps Org Build'], link: 'https://nginx.org' },
+      { name: 'Apache HTTP', desc: 'Web server used for serving the BACN Information Broker web application and other DoD web interfaces on RedHat Linux.', companies: ['Northrop Grumman (BACN)'], projects: ['BACN BIB'], link: 'https://httpd.apache.org' },
+      { name: 'Node.js', desc: 'JavaScript runtime used for backend services and build tooling in the BACN Information Broker alongside Webpack and Yarn.', companies: ['Northrop Grumman (BACN)'], projects: ['BACN BIB'], link: 'https://nodejs.org' },
+      { name: 'ElasticSearch', desc: 'Distributed search and analytics engine providing real-time tactical data querying for the BACN situational awareness platform.', companies: ['Northrop Grumman (BACN)'], projects: ['BACN BIB'], link: 'https://www.elastic.co/elasticsearch' },
+      { name: 'Redis', desc: 'In-memory data store used as the pub/sub message broker for GALT's microservices architecture, enabling real-time status updates across airborne systems.', companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://redis.io' },
+      { name: 'AWS', desc: 'Amazon Web Services cloud platform. Jamie holds AWS DevOps Engineer Pro, CloudOps Engineer, and Cloud Practitioner certifications earned in 2026.', companies: ['Certification / Current Focus'], projects: ['Post-GALT professional development'], link: 'https://aws.amazon.com' },
+      { name: 'JIRA', desc: 'Agile project management and issue tracking tool used to manage sprints, backlogs, and program-level tracking across GALT and BACN development teams.', companies: ['GALT Aerospace', 'Northrop Grumman (BACN)'], projects: ['DevSecOps Org Build', 'BACN BIB'], link: 'https://www.atlassian.com/software/jira' },
+      { name: 'Webpack', desc: 'JavaScript module bundler used to build and optimize the BACN Information Broker frontend application for production deployment.', companies: ['Northrop Grumman (BACN)'], projects: ['BACN BIB'], link: 'https://webpack.js.org' },
+    ]
+  },
 ]
 
 const credsAndEdu = ref([
@@ -468,10 +546,12 @@ const credsAndEdu = ref([
 
 const activeCompany = ref(null)
 const activeProject = ref(null)
+const activeSkill = ref(null)
 const carOpen = ref(false)
 const carIdx = ref(0)
 const carDirection = ref('next')
 
+function openSkill(s) { activeSkill.value = s }
 function openCompany(job) { activeCompany.value = job; activeProject.value = null }
 function closeCompany() { activeCompany.value = null; activeProject.value = null }
 function openProject(p) { activeProject.value = p }
@@ -556,7 +636,35 @@ a.contact-item.clearance:hover { color: var(--accent); }
 .skill-group { background: var(--surface); border: 1px solid var(--border); padding: 1rem; }
 .sg-title { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
 .sg-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-.sg-tag { font-family: var(--mono); font-size: 0.59rem; padding: 2px 7px; background: var(--bg); border: 1px solid var(--border); color: var(--dim); border-radius: 2px; }
+.sg-tag { font-family: var(--mono); font-size: 0.59rem; padding: 3px 8px; background: var(--bg); border: 1px solid var(--border); color: var(--dim); border-radius: 2px; cursor: pointer; transition: all 0.15s; }
+.sg-tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,200,240,0.06); }
+
+/* ── SKILL MODAL ─────────────────────────── */
+.skill-modal {
+  background: linear-gradient(160deg, var(--surf2) 0%, var(--bg2) 60%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 12px;
+  width: 100%; max-width: 520px;
+  padding: 2rem 2rem 1.8rem;
+  position: relative;
+  display: flex; flex-direction: column; gap: 1.2rem;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04) inset,
+    0 2px 0 rgba(255,255,255,0.06) inset,
+    0 40px 80px rgba(0,0,0,0.6),
+    0 0 80px rgba(0,200,240,0.08);
+}
+.skill-modal-name { font-family: var(--display); font-size: 2.4rem; line-height: 1; color: var(--text); padding-right: 2rem; }
+.skill-modal-desc { font-size: 0.84rem; color: var(--dim); line-height: 1.75; }
+.skill-modal-section { display: flex; flex-direction: column; gap: 0.5rem; }
+.skill-modal-label { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+.skill-modal-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.skill-chip { font-family: var(--mono); font-size: 0.6rem; padding: 3px 9px; border-radius: 2px; }
+.skill-chip.company { background: rgba(0,200,240,0.08); border: 1px solid rgba(0,200,240,0.25); color: var(--accent); }
+.skill-chip.project { background: rgba(168,255,62,0.06); border: 1px solid rgba(168,255,62,0.2); color: #a8ff3e; }
+.skill-modal-link { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--accent); align-self: flex-start; padding: 5px 0; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+.skill-modal-link:hover { border-bottom-color: var(--accent); }
 
 /* ── CRED GRID CARDS ──────────────────────── */
 .cred-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
