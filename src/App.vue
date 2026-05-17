@@ -99,6 +99,7 @@
             <div class="contact-item">📍 Vista, CA</div>
             <a class="contact-item" href="mailto:jgpowers52@hotmail.com">✉ jgpowers52@hotmail.com</a>
             <a class="contact-item" href="tel:4424047185">📞 442-404-7185</a>
+            <a class="contact-item linkedin" href="https://www.linkedin.com/in/jamie-powers-94348a7/" target="_blank" rel="noopener">in linkedin.com/in/jamie-powers</a>
           </div>
         </div>
       </aside>
@@ -434,6 +435,8 @@ body { background: var(--bg); color: var(--text); font-family: var(--body); font
 .contact-block { margin-top: auto; display: flex; flex-direction: column; gap: 0.4rem; }
 .contact-item { font-family: var(--mono); font-size: 0.61rem; color: var(--dim); text-decoration: none; }
 a.contact-item:hover { color: var(--accent); }
+a.contact-item.linkedin { color: #0a9af7; }
+a.contact-item.linkedin:hover { color: var(--accent); }
 
 .panel-right { flex: 1; overflow-y: auto; padding: 2rem 2rem 2rem 2.5rem; display: flex; flex-direction: column; gap: 2.5rem; }
 .panel-right::-webkit-scrollbar { width: 3px; }
