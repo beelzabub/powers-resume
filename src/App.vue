@@ -559,6 +559,19 @@ function closeCompany() { activeCompany.value = null; activeProject.value = null
 function openProject(p) { activeProject.value = p }
 function closeProject() { activeProject.value = null }
 
+// ESC key dismisses any open modal
+function handleEsc(e) {
+  if (e.key !== 'Escape') return
+  if (activeProject.value) { activeProject.value = null; return }
+  if (activeSkill.value) { activeSkill.value = null; return }
+  if (carOpen.value) { carOpen.value = false; return }
+  if (activeCompany.value) { activeCompany.value = null; return }
+}
+
+import { onMounted, onUnmounted } from 'vue'
+onMounted(() => window.addEventListener('keydown', handleEsc))
+onUnmounted(() => window.removeEventListener('keydown', handleEsc))
+
 function openCarousel(i) { carIdx.value = i; carOpen.value = true }
 function carPrev() { carDirection.value = 'prev'; carIdx.value = (carIdx.value - 1 + credsAndEdu.value.length) % credsAndEdu.value.length }
 function carNext() { carDirection.value = 'next'; carIdx.value = (carIdx.value + 1) % credsAndEdu.value.length }
