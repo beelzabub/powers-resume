@@ -150,18 +150,31 @@
             <span class="section-eyebrow">Credentials</span>
             <h2 class="section-title">Certs & Education</h2>
           </div>
-          <div class="creds-layout">
-            <div class="creds-col">
-              <div v-for="c in certifications" :key="c.name" class="cred-card cert">
-                <div class="cred-name">{{ c.name }}</div>
-                <div class="cred-meta">{{ c.issuer }} · {{ c.date }}</div>
-              </div>
-            </div>
-            <div class="creds-col">
-              <div v-for="e in education" :key="e.degree" class="cred-card edu">
-                <div class="cred-name">{{ e.degree }}</div>
-                <div class="cred-field">{{ e.field }}</div>
-                <div class="cred-meta">{{ e.school }} · {{ e.year }}</div>
+          <div class="cred-cards">
+            <div v-for="(item, i) in credsAndEdu" :key="item.id" class="cred-flip-card" :style="{ '--c': item.color, '--i': i }" @click="item.flipped = !item.flipped" :class="{ flipped: item.flipped }">
+              <div class="cred-flip-inner">
+                <div class="cred-face cred-front">
+                  <div class="cred-face-stripe"></div>
+                  <div class="cred-face-body">
+                    <div class="cred-face-top">
+                      <div class="cred-icon">{{ item.icon }}</div>
+                      <div class="cred-badge">{{ item.badge }}</div>
+                    </div>
+                    <div class="cred-face-name">{{ item.name }}</div>
+                    <div class="cred-face-issuer">{{ item.issuer }} · {{ item.date }}</div>
+                    <div class="cred-face-hint">tap to learn more →</div>
+                  </div>
+                </div>
+                <div class="cred-face cred-back">
+                  <div class="cred-face-stripe"></div>
+                  <div class="cred-face-body">
+                    <div class="cred-back-name">{{ item.name }}</div>
+                    <p class="cred-back-why">{{ item.why }}</p>
+                    <div class="cred-back-tags">
+                      <span v-for="t in item.tags" :key="t" class="cred-tag">{{ t }}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -377,17 +390,56 @@ const skillGroups = [
   { title: 'Platforms & Tools', items: ['RedHat Linux', 'NGINX', 'Apache', 'Node.js', 'ElasticSearch', 'Redis', 'AWS', 'JIRA', 'Webpack'] },
 ]
 
-const certifications = [
-  { name: 'AWS DevOps Engineer – Professional', issuer: 'AWS', date: 'Apr 2026' },
-  { name: 'AWS CloudOps Engineer', issuer: 'AWS', date: 'Feb 2026' },
-  { name: 'AWS Cloud Practitioner', issuer: 'AWS', date: 'Feb 2026' },
-  { name: 'CompTIA Security+', issuer: 'CompTIA', date: 'Feb 2026' },
-]
-
-const education = [
-  { degree: 'M.A.S.', field: 'Architecture-Based Enterprise Systems Engineering', school: 'UC San Diego', year: '2014' },
-  { degree: 'B.A.', field: 'Cognitive Science & Music', school: 'UC San Diego', year: '1999' },
-]
+const credsAndEdu = ref([
+  {
+    id: 'devops-pro', icon: '⚙', badge: 'AWS PRO', color: '#ff9500',
+    name: 'AWS DevOps Engineer – Professional',
+    issuer: 'Amazon Web Services', date: 'Apr 2026',
+    why: 'Widely regarded as the hardest AWS certification (rated 8.5/10 difficulty), the DevOps Engineer Pro validates mastery of CI/CD pipelines, infrastructure as code, monitoring, and automated security at scale. Unlike associate-level exams that test recall, this exam presents multi-paragraph real-world scenarios requiring architectural judgment. Earning this while actively building DoD-grade DevSecOps systems demonstrates the rarest combination: hands-on depth plus formal AWS validation.',
+    tags: ['Hardest AWS Cert', 'CI/CD Mastery', 'IaC', 'Security Automation', '$300 Exam'],
+    flipped: false
+  },
+  {
+    id: 'cloudops', icon: '☁', badge: 'AWS ASSOC', color: '#00d4ff',
+    name: 'AWS CloudOps Engineer',
+    issuer: 'Amazon Web Services', date: 'Feb 2026',
+    why: 'The SysOps Administrator Associate is the operations backbone of the AWS certification path — covering monitoring, high availability, networking, cost optimization, and incident response across live AWS environments. It's typically a prerequisite before tackling the DevOps Pro. Passing both in rapid succession (Feb → Apr 2026) demonstrates accelerated, systematic cloud mastery rather than credential collection.',
+    tags: ['Operations Focus', 'High Availability', 'AWS Monitoring', 'Cost Optimization'],
+    flipped: false
+  },
+  {
+    id: 'ccp', icon: '🌐', badge: 'AWS FOUND', color: '#4eff9a',
+    name: 'AWS Cloud Practitioner',
+    issuer: 'Amazon Web Services', date: 'Feb 2026',
+    why: 'The Cloud Practitioner is the structured entry point into the AWS certification path — covering core services, pricing models, security fundamentals, and cloud architecture concepts. For a 24-year DoD software veteran pivoting to cloud-native development, earning this alongside Security+ and CloudOps in a single month signals a deliberate, disciplined upskilling sprint — not a casual checkbox.',
+    tags: ['AWS Foundation', 'Cloud Economics', 'Core Services', 'Architecture Basics'],
+    flipped: false
+  },
+  {
+    id: 'secplus', icon: '🔒', badge: 'DoD 8570', color: '#ff6b35',
+    name: 'CompTIA Security+',
+    issuer: 'CompTIA', date: 'Feb 2026',
+    why: 'Security+ is mandated by DoD Directive 8570/8140 as the baseline cybersecurity credential for IAT Level II roles — covering anyone with privileged access to DoD systems, including all defense contractors. For a TS/SCI-cleared engineer shipping code into DISA STIG-compliant DoD environments, this is the formal seal on what Jamie has been practicing operationally for over a decade. It's not just a cert — it's the DoD's required proof of cybersecurity competency.',
+    tags: ['DoD 8570/8140 Required', 'IAT Level II', 'STIG Compliance', 'Vendor-Neutral'],
+    flipped: false
+  },
+  {
+    id: 'mas', icon: '🎓', badge: 'GRADUATE', color: '#bf5fff',
+    name: 'M.A.S. — Architecture-Based Enterprise Systems Engineering',
+    issuer: 'UC San Diego', date: '2014',
+    why: 'UCSD's Master of Advanced Study in Enterprise Systems Engineering is a practitioner-focused graduate degree designed for engineers leading complex system-of-systems programs — exactly the scale Jamie operates at. The architecture-based framework provides rigorous tools for designing systems where technical, organizational, and mission requirements must all align. For a Director of Engineering winning $250M+ DoD contracts, this degree is the formal articulation of how to think at the enterprise level.',
+    tags: ['Systems Architecture', 'Enterprise Engineering', 'DoD Scale', 'UCSD'],
+    flipped: false
+  },
+  {
+    id: 'ba', icon: '🧠', badge: 'UNDERGRAD', color: '#a8ff3e',
+    name: 'B.A. — Cognitive Science & Music',
+    issuer: 'UC San Diego', date: '1999',
+    why: 'UCSD's Cognitive Science program is ranked #7 nationally and is the most attended program of its kind in the country. The degree uniquely fuses computer science, neuroscience, psychology, and linguistics — training graduates to understand how humans process information, make decisions, and interact with complex systems. Paired with Music (a discipline built on pattern recognition, structure, and performance under pressure), this background directly informs Jamie's ability to build intuitive software systems and lead high-performing engineering teams.',
+    tags: ['#7 Nationally Ranked', 'HCI Foundation', 'Systems Thinking', 'Pattern Recognition'],
+    flipped: false
+  },
+])
 
 const activeCompany = ref(null)
 const activeProject = ref(null)
@@ -471,13 +523,25 @@ a.contact-item.linkedin:hover { color: var(--accent); }
 .sg-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .sg-tag { font-family: var(--mono); font-size: 0.59rem; padding: 2px 7px; background: var(--bg); border: 1px solid var(--border); color: var(--dim); border-radius: 2px; }
 
-.creds-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-.creds-col { display: flex; flex-direction: column; gap: 0.5rem; }
-.cred-card { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 0.75rem 1rem; }
-.cred-card.edu { border-left-color: #bf5fff; }
-.cred-name { font-size: 0.81rem; font-weight: 500; color: var(--text); margin-bottom: 0.15rem; }
-.cred-field { font-size: 0.74rem; color: var(--accent); margin-bottom: 0.15rem; }
-.cred-meta { font-family: var(--mono); font-size: 0.57rem; color: var(--dim); }
+.cred-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.cred-flip-card { height: 190px; cursor: pointer; perspective: 1000px; animation: fadeUp 0.4s ease both; animation-delay: calc(var(--i, 0) * 0.06s); }
+.cred-flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); transform-style: preserve-3d; }
+.cred-flip-card.flipped .cred-flip-inner { transform: rotateY(180deg); }
+.cred-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; }
+.cred-back { transform: rotateY(180deg); }
+.cred-face-stripe { width: 3px; background: var(--c); flex-shrink: 0; transition: none; }
+.cred-face-body { flex: 1; padding: 1.2rem 1.2rem 1.2rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; background: var(--bg2); }
+.cred-flip-card:hover .cred-face-body { background: var(--surface); }
+.cred-face-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.cred-icon { font-size: 1.4rem; }
+.cred-badge { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.12em; color: var(--c); border: 1px solid var(--c); padding: 2px 6px; }
+.cred-face-name { font-family: var(--display); font-size: 1.1rem; color: var(--text); line-height: 1.15; }
+.cred-face-issuer { font-family: var(--mono); font-size: 0.57rem; color: var(--dim); margin-top: auto; }
+.cred-face-hint { font-family: var(--mono); font-size: 0.54rem; color: var(--c); opacity: 0.6; }
+.cred-back-name { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--c); margin-bottom: 0.2rem; text-transform: uppercase; }
+.cred-back-why { font-size: 0.71rem; color: var(--dim); line-height: 1.6; flex: 1; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
+.cred-back-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; }
+.cred-tag { font-family: var(--mono); font-size: 0.53rem; padding: 1px 6px; background: var(--bg); border: 1px solid var(--border); color: var(--dim); border-radius: 2px; }
 
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
 .modal { background: var(--bg2); border: 1px solid var(--border); border-top: 3px solid var(--c, var(--accent)); width: 100%; max-width: 880px; max-height: 88vh; overflow-y: auto; position: relative; padding: 2rem; }
