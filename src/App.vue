@@ -131,7 +131,7 @@
             <div class="contact-item">📍 Vista, CA</div>
             <a class="contact-item" href="mailto:jgpowers52@hotmail.com">✉ jgpowers52@hotmail.com</a>
             <a class="contact-item" href="tel:4424047185">📞 442-404-7185</a>
-            <a class="contact-item linkedin" href="https://www.linkedin.com/in/jamie-powers-94348a7/" target="_blank" rel="noopener">LinkedIn Profile</a>
+            <a class="contact-item linkedin" href="https://www.linkedin.com/in/jamie-powers-94348a7/" target="_blank" rel="noopener">💼 LinkedIn Profile</a>
             <a class="contact-item clearance" href="https://www.clearancejobs.com/profile" target="_blank" rel="noopener">🔐 ClearanceJobs Profile</a>
           </div>
         </div>
