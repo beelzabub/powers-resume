@@ -128,6 +128,7 @@
                 <div class="car-modal-tags">
                   <span v-for="t in credsAndEdu[carIdx].tags" :key="t" class="cred-tag">{{ t }}</span>
                 </div>
+                <a v-if="credsAndEdu[carIdx].verify" :href="credsAndEdu[carIdx].verify" target="_blank" rel="noopener" class="car-verify-link">✓ Verify Credential →</a>
               </div>
             </Transition>
           </div>
@@ -223,6 +224,7 @@
                 </div>
                 <div class="cred-face-name">{{ item.name }}</div>
                 <div class="cred-face-issuer">{{ item.issuer }} · {{ item.date }}</div>
+                <a v-if="item.verify" :href="item.verify" target="_blank" rel="noopener" class="cred-verify-badge" @click.stop>✓ Verify</a>
                 <div class="cred-face-hint">click to explore →</div>
               </div>
             </div>
@@ -495,7 +497,7 @@ const skillGroups = [
 
 const credsAndEdu = ref([
   {
-    id: 'devops-pro', icon: '⚙', badge: 'AWS PRO', color: '#ff9500',
+    id: 'devops-pro', icon: '⚙', badge: 'AWS PRO', color: '#ff9500', verify: 'https://cp.certmetrics.com/amazon/en/public/verify/credential/7a92ec1f57bc4c2586e0176a0e3526d1',
     name: 'AWS DevOps Engineer – Professional',
     issuer: 'Amazon Web Services', date: 'Apr 2026',
     why: 'Widely regarded as the hardest AWS certification (rated 8.5/10 difficulty), the DevOps Engineer Pro validates mastery of CI/CD pipelines, infrastructure as code, monitoring, and automated security at scale. Unlike associate-level exams that test recall, this exam presents multi-paragraph real-world scenarios requiring architectural judgment. Earning this while actively building DoD-grade DevSecOps systems demonstrates the rarest combination: hands-on depth plus formal AWS validation.',
@@ -503,7 +505,7 @@ const credsAndEdu = ref([
     flipped: false
   },
   {
-    id: 'cloudops', icon: '☁', badge: 'AWS ASSOC', color: '#00d4ff',
+    id: 'cloudops', icon: '☁', badge: 'AWS ASSOC', color: '#00d4ff', verify: 'https://cp.certmetrics.com/amazon/en/public/verify/credential/8539182aa69f49c9853626b5d922d256',
     name: 'AWS CloudOps Engineer',
     issuer: 'Amazon Web Services', date: 'Feb 2026',
     why: 'The SysOps Administrator Associate is the operations backbone of the AWS certification path — covering monitoring, high availability, networking, cost optimization, and incident response across live AWS environments. It is typically a prerequisite before tackling the DevOps Pro. Passing both in rapid succession (Feb → Apr 2026) demonstrates accelerated, systematic cloud mastery rather than credential collection.',
@@ -511,7 +513,7 @@ const credsAndEdu = ref([
     flipped: false
   },
   {
-    id: 'ccp', icon: '🌐', badge: 'AWS FOUND', color: '#4eff9a',
+    id: 'ccp', icon: '🌐', badge: 'AWS FOUND', color: '#4eff9a', verify: 'https://cp.certmetrics.com/amazon/en/public/verify/credential/c264415e14d04d7f81861cd6f9c950f2',
     name: 'AWS Cloud Practitioner',
     issuer: 'Amazon Web Services', date: 'Feb 2026',
     why: 'The Cloud Practitioner is the structured entry point into the AWS certification path — covering core services, pricing models, security fundamentals, and cloud architecture concepts. For a 24-year DoD software veteran pivoting to cloud-native development, earning this alongside Security+ and CloudOps in a single month signals a deliberate, disciplined upskilling sprint — not a casual checkbox.',
@@ -519,7 +521,7 @@ const credsAndEdu = ref([
     flipped: false
   },
   {
-    id: 'secplus', icon: '🔒', badge: 'DoD 8570', color: '#ff6b35',
+    id: 'secplus', icon: '🔒', badge: 'DoD 8570', color: '#ff6b35', verify: 'https://cp.certmetrics.com/CompTIA/en/public/verify/credential/71e3f9eb23c8468bb9918b23a0b1a915',
     name: 'CompTIA Security+',
     issuer: 'CompTIA', date: 'Feb 2026',
     why: 'Security+ is mandated by DoD Directive 8570/8140 as the baseline cybersecurity credential for IAT Level II roles — covering anyone with privileged access to DoD systems, including all defense contractors. For a TS/SCI-cleared engineer shipping code into DISA STIG-compliant DoD environments, this is the formal seal on what Jamie has been practicing operationally for over a decade. This is not just a cert — it is the DoD required proof of cybersecurity competency.',
@@ -665,6 +667,8 @@ a.contact-item.clearance:hover { color: var(--accent); }
 .skill-chip.project { background: rgba(168,255,62,0.06); border: 1px solid rgba(168,255,62,0.2); color: #a8ff3e; }
 .skill-modal-link { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--accent); align-self: flex-start; padding: 5px 0; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
 .skill-modal-link:hover { border-bottom-color: var(--accent); }
+.car-verify-link { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: #4eff9a; align-self: flex-start; padding: 5px 10px; border: 1px solid rgba(78,255,154,0.3); border-radius: 3px; transition: all 0.15s; margin-top: 0.2rem; }
+.car-verify-link:hover { background: rgba(78,255,154,0.1); border-color: #4eff9a; }
 
 /* ── CRED GRID CARDS ──────────────────────── */
 .cred-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
@@ -679,6 +683,8 @@ a.contact-item.clearance:hover { color: var(--accent); }
 .cred-face-name { font-family: var(--display); font-size: 1.1rem; color: var(--text); line-height: 1.15; }
 .cred-face-issuer { font-family: var(--mono); font-size: 0.57rem; color: var(--dim); margin-top: auto; }
 .cred-face-hint { font-family: var(--mono); font-size: 0.54rem; color: var(--c); opacity: 0; transition: opacity 0.2s; }
+.cred-verify-badge { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.08em; color: #4eff9a; border: 1px solid rgba(78,255,154,0.35); padding: 2px 7px; border-radius: 2px; align-self: flex-start; transition: all 0.15s; text-decoration: none; margin-top: auto; }
+.cred-verify-badge:hover { background: rgba(78,255,154,0.1); border-color: #4eff9a; }
 
 /* ── CAROUSEL MODAL ───────────────────────── */
 .car-modal {
