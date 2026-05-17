@@ -403,7 +403,7 @@ const credsAndEdu = ref([
     id: 'cloudops', icon: '☁', badge: 'AWS ASSOC', color: '#00d4ff',
     name: 'AWS CloudOps Engineer',
     issuer: 'Amazon Web Services', date: 'Feb 2026',
-    why: 'The SysOps Administrator Associate is the operations backbone of the AWS certification path — covering monitoring, high availability, networking, cost optimization, and incident response across live AWS environments. It's typically a prerequisite before tackling the DevOps Pro. Passing both in rapid succession (Feb → Apr 2026) demonstrates accelerated, systematic cloud mastery rather than credential collection.',
+    why: 'The SysOps Administrator Associate is the operations backbone of the AWS certification path — covering monitoring, high availability, networking, cost optimization, and incident response across live AWS environments. It is typically a prerequisite before tackling the DevOps Pro. Passing both in rapid succession (Feb → Apr 2026) demonstrates accelerated, systematic cloud mastery rather than credential collection.',
     tags: ['Operations Focus', 'High Availability', 'AWS Monitoring', 'Cost Optimization'],
     flipped: false
   },
@@ -419,7 +419,7 @@ const credsAndEdu = ref([
     id: 'secplus', icon: '🔒', badge: 'DoD 8570', color: '#ff6b35',
     name: 'CompTIA Security+',
     issuer: 'CompTIA', date: 'Feb 2026',
-    why: 'Security+ is mandated by DoD Directive 8570/8140 as the baseline cybersecurity credential for IAT Level II roles — covering anyone with privileged access to DoD systems, including all defense contractors. For a TS/SCI-cleared engineer shipping code into DISA STIG-compliant DoD environments, this is the formal seal on what Jamie has been practicing operationally for over a decade. It's not just a cert — it's the DoD's required proof of cybersecurity competency.',
+    why: 'Security+ is mandated by DoD Directive 8570/8140 as the baseline cybersecurity credential for IAT Level II roles — covering anyone with privileged access to DoD systems, including all defense contractors. For a TS/SCI-cleared engineer shipping code into DISA STIG-compliant DoD environments, this is the formal seal on what Jamie has been practicing operationally for over a decade. This is not just a cert — it is the DoD required proof of cybersecurity competency.',
     tags: ['DoD 8570/8140 Required', 'IAT Level II', 'STIG Compliance', 'Vendor-Neutral'],
     flipped: false
   },
@@ -427,7 +427,7 @@ const credsAndEdu = ref([
     id: 'mas', icon: '🎓', badge: 'GRADUATE', color: '#bf5fff',
     name: 'M.A.S. — Architecture-Based Enterprise Systems Engineering',
     issuer: 'UC San Diego', date: '2014',
-    why: 'UCSD's Master of Advanced Study in Enterprise Systems Engineering is a practitioner-focused graduate degree designed for engineers leading complex system-of-systems programs — exactly the scale Jamie operates at. The architecture-based framework provides rigorous tools for designing systems where technical, organizational, and mission requirements must all align. For a Director of Engineering winning $250M+ DoD contracts, this degree is the formal articulation of how to think at the enterprise level.',
+    why: 'UCSD Master of Advanced Study in Enterprise Systems Engineering is a practitioner-focused graduate degree designed for engineers leading complex system-of-systems programs — exactly the scale Jamie operates at. The architecture-based framework provides rigorous tools for designing systems where technical, organizational, and mission requirements must all align. For a Director of Engineering winning $250M+ DoD contracts, this degree is the formal articulation of how to think at the enterprise level.',
     tags: ['Systems Architecture', 'Enterprise Engineering', 'DoD Scale', 'UCSD'],
     flipped: false
   },
@@ -435,7 +435,7 @@ const credsAndEdu = ref([
     id: 'ba', icon: '🧠', badge: 'UNDERGRAD', color: '#a8ff3e',
     name: 'B.A. — Cognitive Science & Music',
     issuer: 'UC San Diego', date: '1999',
-    why: 'UCSD's Cognitive Science program is ranked #7 nationally and is the most attended program of its kind in the country. The degree uniquely fuses computer science, neuroscience, psychology, and linguistics — training graduates to understand how humans process information, make decisions, and interact with complex systems. Paired with Music (a discipline built on pattern recognition, structure, and performance under pressure), this background directly informs Jamie's ability to build intuitive software systems and lead high-performing engineering teams.',
+    why: 'UCSD Cognitive Science program is ranked #7 nationally and is the most attended program of its kind in the country. The degree uniquely fuses computer science, neuroscience, psychology, and linguistics — training graduates to understand how humans process information, make decisions, and interact with complex systems. Paired with Music (a discipline built on pattern recognition, structure, and performance under pressure), this background directly informs Jamie ability to build intuitive software systems and lead high-performing engineering teams.',
     tags: ['#7 Nationally Ranked', 'HCI Foundation', 'Systems Thinking', 'Pattern Recognition'],
     flipped: false
   },
