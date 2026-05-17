@@ -150,33 +150,71 @@
             <span class="section-eyebrow">Credentials</span>
             <h2 class="section-title">Certs & Education</h2>
           </div>
-          <div class="cred-cards">
-            <div v-for="(item, i) in credsAndEdu" :key="item.id" class="cred-flip-card" :style="{ '--c': item.color, '--i': i }" @click="item.flipped = !item.flipped" :class="{ flipped: item.flipped }">
-              <div class="cred-flip-inner">
-                <div class="cred-face cred-front">
-                  <div class="cred-face-stripe"></div>
-                  <div class="cred-face-body">
-                    <div class="cred-face-top">
-                      <div class="cred-icon">{{ item.icon }}</div>
-                      <div class="cred-badge">{{ item.badge }}</div>
+          <div class="carousel-wrap">
+            <!-- Prev arrow -->
+            <button class="car-arrow car-prev" @click="carPrev" :disabled="carIdx === 0">‹</button>
+
+            <!-- Track -->
+            <div class="car-track">
+              <div
+                v-for="(item, i) in credsAndEdu"
+                :key="item.id"
+                class="car-card"
+                :class="{
+                  active:  i === carIdx,
+                  prev:    i === carIdx - 1,
+                  next:    i === carIdx + 1,
+                  far:     Math.abs(i - carIdx) > 1
+                }"
+                :style="{ '--c': item.color }"
+                @click="carIdx = i"
+              >
+                <div class="car-stripe"></div>
+                <div class="car-body">
+                  <!-- collapsed view (non-active) -->
+                  <template v-if="i !== carIdx">
+                    <div class="car-mini-top">
+                      <span class="car-mini-icon">{{ item.icon }}</span>
+                      <span class="car-mini-badge">{{ item.badge }}</span>
                     </div>
-                    <div class="cred-face-name">{{ item.name }}</div>
-                    <div class="cred-face-issuer">{{ item.issuer }} · {{ item.date }}</div>
-                    <div class="cred-face-hint">tap to learn more →</div>
-                  </div>
-                </div>
-                <div class="cred-face cred-back">
-                  <div class="cred-face-stripe"></div>
-                  <div class="cred-face-body">
-                    <div class="cred-back-name">{{ item.name }}</div>
-                    <p class="cred-back-why">{{ item.why }}</p>
-                    <div class="cred-back-tags">
+                    <div class="car-mini-name">{{ item.name }}</div>
+                    <div class="car-mini-issuer">{{ item.issuer }}</div>
+                  </template>
+                  <!-- expanded view (active) -->
+                  <template v-else>
+                    <div class="car-active-top">
+                      <div class="car-active-left">
+                        <div class="car-active-icon">{{ item.icon }}</div>
+                        <div>
+                          <div class="car-active-badge">{{ item.badge }}</div>
+                          <div class="car-active-name">{{ item.name }}</div>
+                          <div class="car-active-issuer">{{ item.issuer }} · {{ item.date }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="car-active-why">{{ item.why }}</p>
+                    <div class="car-active-tags">
                       <span v-for="t in item.tags" :key="t" class="cred-tag">{{ t }}</span>
                     </div>
-                  </div>
+                  </template>
                 </div>
               </div>
             </div>
+
+            <!-- Next arrow -->
+            <button class="car-arrow car-next" @click="carNext" :disabled="carIdx === credsAndEdu.length - 1">›</button>
+          </div>
+
+          <!-- Dots -->
+          <div class="car-dots">
+            <button
+              v-for="(item, i) in credsAndEdu"
+              :key="i"
+              class="car-dot"
+              :class="{ active: i === carIdx }"
+              :style="{ '--c': item.color }"
+              @click="carIdx = i"
+            ></button>
           </div>
         </section>
       </main>
@@ -443,11 +481,14 @@ const credsAndEdu = ref([
 
 const activeCompany = ref(null)
 const activeProject = ref(null)
+const carIdx = ref(0)
 
 function openCompany(job) { activeCompany.value = job; activeProject.value = null }
 function closeCompany() { activeCompany.value = null; activeProject.value = null }
 function openProject(p) { activeProject.value = p }
 function closeProject() { activeProject.value = null }
+function carPrev() { if (carIdx.value > 0) carIdx.value-- }
+function carNext() { if (carIdx.value < credsAndEdu.value.length - 1) carIdx.value++ }
 </script>
 
 <style>
@@ -523,24 +564,55 @@ a.contact-item.linkedin:hover { color: var(--accent); }
 .sg-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .sg-tag { font-family: var(--mono); font-size: 0.59rem; padding: 2px 7px; background: var(--bg); border: 1px solid var(--border); color: var(--dim); border-radius: 2px; }
 
-.cred-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-.cred-flip-card { height: 190px; cursor: pointer; perspective: 1000px; animation: fadeUp 0.4s ease both; animation-delay: calc(var(--i, 0) * 0.06s); }
-.cred-flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); transform-style: preserve-3d; }
-.cred-flip-card.flipped .cred-flip-inner { transform: rotateY(180deg); }
-.cred-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; }
-.cred-back { transform: rotateY(180deg); }
-.cred-face-stripe { width: 3px; background: var(--c); flex-shrink: 0; transition: none; }
-.cred-face-body { flex: 1; padding: 1.2rem 1.2rem 1.2rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; background: var(--bg2); }
-.cred-flip-card:hover .cred-face-body { background: var(--surface); }
-.cred-face-top { display: flex; justify-content: space-between; align-items: flex-start; }
-.cred-icon { font-size: 1.4rem; }
-.cred-badge { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.12em; color: var(--c); border: 1px solid var(--c); padding: 2px 6px; }
-.cred-face-name { font-family: var(--display); font-size: 1.1rem; color: var(--text); line-height: 1.15; }
-.cred-face-issuer { font-family: var(--mono); font-size: 0.57rem; color: var(--dim); margin-top: auto; }
-.cred-face-hint { font-family: var(--mono); font-size: 0.54rem; color: var(--c); opacity: 0.6; }
-.cred-back-name { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--c); margin-bottom: 0.2rem; text-transform: uppercase; }
-.cred-back-why { font-size: 0.71rem; color: var(--dim); line-height: 1.6; flex: 1; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
-.cred-back-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; }
+/* ── CAROUSEL ─────────────────────────────── */
+.carousel-wrap { display: flex; align-items: stretch; gap: 0; position: relative; }
+.car-arrow {
+  flex-shrink: 0; width: 36px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--dim); font-size: 1.4rem; cursor: pointer;
+  transition: all 0.15s; display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+.car-arrow:hover:not(:disabled) { background: var(--surf2); color: var(--text); border-color: var(--accent); }
+.car-arrow:disabled { opacity: 0.2; cursor: default; }
+.car-track {
+  flex: 1; display: flex; align-items: stretch;
+  overflow: hidden; gap: 1px; background: var(--border);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.car-card {
+  flex-shrink: 0; display: flex; cursor: pointer;
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1), background 0.2s, opacity 0.3s;
+  overflow: hidden;
+}
+.car-card.active  { width: 55%; background: var(--surface); }
+.car-card.prev    { width: 18%; background: var(--bg2); opacity: 0.85; }
+.car-card.next    { width: 18%; background: var(--bg2); opacity: 0.85; }
+.car-card.far     { width: 0; opacity: 0; pointer-events: none; }
+.car-card:hover:not(.active) { background: var(--surf2); }
+.car-stripe { width: 3px; background: var(--c); flex-shrink: 0; }
+.car-body { flex: 1; padding: 1.3rem 1.2rem 1.3rem 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+/* mini (non-active) */
+.car-mini-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.2rem; }
+.car-mini-icon { font-size: 1.2rem; }
+.car-mini-badge { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.1em; color: var(--c); border: 1px solid var(--c); padding: 1px 5px; white-space: nowrap; }
+.car-mini-name { font-family: var(--display); font-size: 0.95rem; color: var(--text); line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.car-mini-issuer { font-family: var(--mono); font-size: 0.55rem; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: auto; }
+/* active (expanded) */
+.car-active-top { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.2rem; }
+.car-active-left { display: flex; align-items: flex-start; gap: 0.8rem; }
+.car-active-icon { font-size: 2rem; flex-shrink: 0; }
+.car-active-badge { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em; color: var(--c); border: 1px solid var(--c); padding: 2px 6px; display: inline-block; margin-bottom: 0.3rem; }
+.car-active-name { font-family: var(--display); font-size: 1.5rem; color: var(--text); line-height: 1.05; margin-bottom: 0.15rem; }
+.car-active-issuer { font-family: var(--mono); font-size: 0.58rem; color: var(--dim); }
+.car-active-why { font-size: 0.77rem; color: var(--dim); line-height: 1.65; flex: 1; overflow-y: auto; }
+.car-active-why::-webkit-scrollbar { width: 2px; }
+.car-active-why::-webkit-scrollbar-thumb { background: var(--border); }
+.car-active-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; }
+/* dots */
+.car-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.8rem; }
+.car-dot { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--dim); background: transparent; cursor: pointer; padding: 0; transition: all 0.2s; }
+.car-dot.active { background: var(--c); border-color: var(--c); transform: scale(1.3); }
 .cred-tag { font-family: var(--mono); font-size: 0.53rem; padding: 1px 6px; background: var(--bg); border: 1px solid var(--border); color: var(--dim); border-radius: 2px; }
 
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
