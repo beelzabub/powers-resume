@@ -87,8 +87,8 @@
       <div v-if="carOpen" class="modal-overlay" @click.self="carOpen = false">
         <div class="car-modal" :style="{ '--c': credsAndEdu[carIdx].color }">
           <button class="modal-close" @click="carOpen = false">✕</button>
-          <button class="car-modal-arrow car-modal-prev" @click="carPrev" :disabled="carIdx === 0">‹</button>
-          <button class="car-modal-arrow car-modal-next" @click="carNext" :disabled="carIdx === credsAndEdu.length - 1">›</button>
+          <button class="car-modal-arrow car-modal-prev" @click="carPrev">‹</button>
+          <button class="car-modal-arrow car-modal-next" @click="carNext">›</button>
           <div class="car-modal-track">
             <Transition :name="carDirection === 'next' ? 'slide-left' : 'slide-right'" mode="out-in">
               <div :key="carIdx" class="car-modal-slide">
@@ -477,8 +477,8 @@ function openProject(p) { activeProject.value = p }
 function closeProject() { activeProject.value = null }
 
 function openCarousel(i) { carIdx.value = i; carOpen.value = true }
-function carPrev() { if (carIdx.value > 0) { carDirection.value = 'prev'; carIdx.value-- } }
-function carNext() { if (carIdx.value < credsAndEdu.value.length - 1) { carDirection.value = 'next'; carIdx.value++ } }
+function carPrev() { carDirection.value = 'prev'; carIdx.value = (carIdx.value - 1 + credsAndEdu.value.length) % credsAndEdu.value.length }
+function carNext() { carDirection.value = 'next'; carIdx.value = (carIdx.value + 1) % credsAndEdu.value.length }
 function jumpTo(i) { carDirection.value = i > carIdx.value ? 'next' : 'prev'; carIdx.value = i }
 </script>
 
@@ -571,27 +571,36 @@ a.contact-item.linkedin:hover { color: var(--accent); }
 
 /* ── CAROUSEL MODAL ───────────────────────── */
 .car-modal {
-  background: var(--bg2);
+  background: linear-gradient(160deg, var(--surf2) 0%, var(--bg2) 60%);
   border: 1px solid var(--border);
   border-top: 3px solid var(--c, var(--accent));
+  border-radius: 12px;
   width: 100%; max-width: 680px;
   padding: 2.5rem 4rem;
   position: relative;
   min-height: 320px;
   display: flex; flex-direction: column; gap: 1.5rem;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04) inset,
+    0 2px 0 rgba(255,255,255,0.06) inset,
+    0 40px 80px rgba(0,0,0,0.6),
+    0 0 60px rgba(0,0,0,0.4),
+    0 0 120px color-mix(in srgb, var(--c, #00c8f0) 12%, transparent);
 }
 .car-modal-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
-  width: 40px; height: 40px;
-  background: var(--surface); border: 1px solid var(--border);
-  color: var(--text); font-size: 1.6rem; cursor: pointer;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--dim); font-size: 1.5rem; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: all 0.15s; z-index: 2; line-height: 1;
+  transition: all 0.2s; z-index: 2; line-height: 1;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
-.car-modal-arrow:hover:not(:disabled) { background: var(--c); border-color: var(--c); color: var(--bg); }
-.car-modal-arrow:disabled { opacity: 0.15; cursor: default; }
-.car-modal-prev { left: 0.6rem; }
-.car-modal-next { right: 0.6rem; }
+.car-modal-arrow:hover { background: var(--c); border-color: var(--c); color: var(--bg); box-shadow: 0 0 16px color-mix(in srgb, var(--c) 40%, transparent); transform: translateY(-50%) scale(1.08); }
+.car-modal-prev { left: 0.75rem; }
+.car-modal-next { right: 0.75rem; }
 .car-modal-track { flex: 1; overflow: hidden; }
 .car-modal-slide { display: flex; flex-direction: column; gap: 1.2rem; }
 .car-modal-header { display: flex; align-items: flex-start; gap: 1.2rem; }
