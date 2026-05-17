@@ -616,7 +616,7 @@ function jumpTo(i) { carDirection.value = i > carIdx.value ? 'next' : 'prev'; ca
 
 :root {
   --bg: #04080d; --bg2: #070e17; --surface: #0a1520; --surf2: #0f1e2e;
-  --border: #162840; --text: #ddeeff; --dim: #557799; --muted: #2a4a66;
+  --border: #162840; --text: #ddeeff; --dim: #9abdd4; --muted: #5a8090;
   --accent: #00c8f0;
   --mono: 'DM Mono', monospace;
   --display: 'Bebas Neue', sans-serif;
