@@ -65,16 +65,16 @@ export const experience = [
     ]
   },
   {
-    id: 'ng-bacn', logo: '🛩', color: '#ff6b35',
-    company: 'Northrop Grumman', title: 'Software Engineer / Team Leader',
-    period: '2009 – 2018',
-    tagline: "BACN — the battlefield's high-altitude digital backbone",
-    context: "Northrop Grumman's BACN (Battlefield Airborne Communications Node) is a high-altitude airborne gateway flying on the E-11A that translates voice, imagery, and tactical data across disparate military systems — bridging Link 16, EPLRS, CDL, VOIP and more. With 200,000+ combat flight hours, a $3.6B IDIQ contract, and 98%+ mission availability, BACN is one of the most proven C2 programs in the DoD. Jamie was a core developer and team leader for 9 years across 3 major baselines.",
+    id: 'northrop', logo: '🛩', color: '#ff6b35',
+    company: 'Northrop Grumman', title: 'Software Engineer → Team Leader',
+    period: '2005 – 2018',
+    tagline: '13 years — from CBRN modeling to battlefield airspace awareness',
+    context: "Jamie spent 13 years at Northrop Grumman across two major programs. From 2005–2008 he led a ~20-person team on the Joint Effects Model (JEM) — a DoD CBRN modeling and simulation system integrated into GCCS-J and GCCS-M. From 2009–2018 he was a core developer and team leader on BACN (Battlefield Airborne Communications Node) — the high-altitude airborne gateway flying on the E-11A with 200,000+ combat flight hours, a $3.6B IDIQ contract, and 98%+ mission availability.",
     stats: [
+      { value: '13 yrs', label: 'Tenure' },
+      { value: '$3.6B', label: 'BACN IDIQ' },
       { value: '200K+', label: 'Combat Flight Hrs' },
-      { value: '$3.6B', label: 'IDIQ Contract' },
-      { value: '3', label: 'Major Baselines' },
-      { value: '98%+', label: 'Mission Availability' },
+      { value: '~20', label: 'Developers Led (JEM)' },
     ],
     projects: [
       {
@@ -93,34 +93,20 @@ export const experience = [
         ]
       },
       {
-        id: 'rf-links', name: 'BACN', customer: 'US Air Force / DoD Joint',
-        blurb: 'Hands-on coding and field integration for Link 16, CDL, Inmarsat, SADL, EPLRS, and VOIP across ground and airborne platforms.',
-        description: "A core part of BACN mission is translating between incompatible tactical data links — making Link 16, CDL, EPLRS, SADL, VOIP, and Inmarsat all interoperate seamlessly. Jamie was hands-on at the code level debugging these integrations and personally supporting their deployment in forward-deployed operational environments worldwide.",
-        tech: ['C', 'C++', 'Java', 'Python', 'Link16', 'CDL', 'VOIP', 'SADL', 'EPLRS', 'Inmarsat'],
-        outcome: 'Operational multi-domain data link integration across forward-deployed theaters',
+        id: 'bacn-gateway', name: 'BACN', customer: 'US Air Force / DoD Joint',
+        blurb: 'Core BACN payload software — the airborne gateway that translates and bridges Link 16, CDL, EPLRS, SADL, VOIP, and Inmarsat across the battlespace on the E-11A at 51,000 ft.',
+        description: "BACN (Battlefield Airborne Communications Node) is a high-altitude airborne gateway carried on the E-11A that acts as a universal translator between otherwise incompatible tactical data links and voice systems — bridging Link 16, EPLRS, CDL, SADL, VOIP, Inmarsat and more in real time. Jamie worked hands-on at the code level on the BACN payload software, debugging data link integrations and personally supporting operational deployments worldwide. Over 15,500 missions flown with 98%+ mission availability.",
+        tech: ['C', 'C++', 'Java', 'Python', 'Link16', 'CDL', 'VOIP', 'SADL', 'EPLRS', 'Inmarsat', 'RedHat Linux'],
+        outcome: '15,500+ missions flown; 98%+ availability; $3.6B IDIQ; globally forward-deployed',
         bullets: [
-          'Developed and debugged RF/tactical data link integrations for BACN gateway',
-          'Worked across full suite: Link 16, CDL, Inmarsat, SADL, EPLRS, and VOIP',
-          'Supported field deployments and upgrades at ground and airborne operational locations',
+          'Developed and debugged BACN payload software for real-time tactical data link translation and relay',
+          'BACN acts as a universal translator between incompatible military comms on the E-11A at 51,000 ft',
+          'Worked across full data link suite: Link 16, CDL, Inmarsat, SADL, EPLRS, and VOIP',
+          'Supported field deployments and upgrades at forward-deployed operational locations worldwide',
           'Provided on-site integration support with trips ranging from 1 to 5.5 months',
-          'Administered Windows and RedHat Linux servers in operational environments',
+          'Administered Windows and RedHat Linux server infrastructure in operational environments',
         ]
-      }
-    ]
-  },
-  {
-    id: 'ng-jem', logo: '☢', color: '#a8ff3e',
-    company: 'Northrop Grumman', title: 'Software Engineer — JEM/GCCS',
-    period: '2005 – 2008',
-    tagline: 'CBRN modeling & simulation integrated into global command systems',
-    context: 'The Joint Effects Model (JEM) was a DoD web application for modeling and simulating Chemical, Biological, Radiological, and Nuclear events — integrated into GCCS-J and GCCS-M. Jamie led a ~20-person developer team on this high-complexity, multi-platform program across Windows and Solaris.',
-    stats: [
-      { value: '~20', label: 'Developers Led' },
-      { value: '2', label: 'GCCS Integrations' },
-      { value: 'CBRN', label: 'Domain' },
-      { value: 'Win+Sol', label: 'Platforms' },
-    ],
-    projects: [
+      },
       {
         id: 'jem', name: 'Joint Effects Model (JEM)', customer: 'DoD Joint Command',
         blurb: 'Web-based CBRN modeling and simulation for DoD commanders. Led ~20 developers across full stack on Windows and Solaris.',
