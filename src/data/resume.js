@@ -1,243 +1,305 @@
-export const profile = {
-  name: 'Jamie Powers',
-  location: 'Vista, CA 92084',
-  phone: '442-404-7185',
-  email: 'jgpowers52@hotmail.com',
-  clearance: 'Active DoD Top Secret/SCI Clearance',
-  summary: `Results-driven Software Engineering Leader with 24+ years of hands-on experience in software development, systems engineering, and leadership within DoD environments. Expertise in delivering scalable, secure solutions for DoD customers (Navy, Air Force, Marine Corps) using Agile/Scrum methodologies. Proven track record in architecting software systems, implementing DevSecOps practices, and contributing code in high-stakes projects.`,
-  tagline: '24+ Years Engineering Excellence in Defense & Aerospace'
-}
-
-export const skills = {
-  languages: ['Python', 'Java', 'JavaScript', 'Vue3', 'React', 'Redux', 'C', 'C++', 'C#', 'Fortran', 'Bash', 'JSP', 'JSON', 'XML'],
-  tools: ['Jenkins', 'Git/BitBucket', 'Ansible', 'Docker', 'SonarQube', 'Selenium', 'PyTest', 'Redis', 'ElasticSearch', 'Node.js', 'Webpack', 'Fortify', 'Apache HTTP', 'NGINX', 'JIRA'],
-  devsecops: ['CI/CD Pipelines', 'Automated Testing', 'Static Code Analysis', 'Vulnerability Management', 'DISA STIG Compliance', 'Pub/Sub Architectures', 'Microservices Design'],
-  systems: ['RF Communications', 'Link16', 'CDL', 'Inmarsat', 'SADL', 'EPLRS', 'VOIP', 'CBRN Modeling/Simulation', 'GCCS-J/GCCS-M Integration'],
-  methodologies: ['Agile/Scrum', 'Technical Architecture', 'Code Review', 'DevSecOps', 'Cross-Functional Leadership']
-}
+export const quickStats = [
+  { value: '24+', label: 'Years' },
+  { value: '$250M+', label: 'Contracts' },
+  { value: '50', label: 'Eng Team' },
+  { value: 'TS/SCI', label: 'Clearance' },
+]
 
 export const experience = [
   {
-    id: 'galt',
-    title: 'Director of Engineering',
-    company: 'GALT Aerospace',
-    location: 'San Diego, CA',
-    period: '02/2019 – 11/2023',
-    logo: '✈',
-    color: '#00d4ff',
-    tagline: 'Built a DoD software org from zero to $250M+',
-    highlights: [
-      '$250M+ contracts secured through disciplined software dev',
-      'Scaled engineering team from 10 → 50 engineers',
-      '$35M+ SkyTower II contract win',
-      'Successful FINN program flight tests',
-      'Led DevSecOps implementation from ground up'
+    id: 'galt', logo: '✈', color: '#00d4ff',
+    company: 'GALT Aerospace', title: 'Director of Engineering',
+    period: '2019 – 2023',
+    tagline: "Built DoD C3 software org from zero to $250M+",
+    context: "GALT Aerospace is a non-traditional, veteran-owned defense contractor delivering premier C3 solutions for airborne systems — specializing in open-architecture rapid-prototyping for the warfighter. Jamie joined as the founding engineering leader and built the entire software organization from scratch, scaling to 50 engineers and winning $250M+ in contracts against major industry primes.",
+    stats: [
+      { value: '$250M+', label: 'Contracts Won' },
+      { value: '10→50', label: 'Team Scaled' },
+      { value: '$35M+', label: 'SkyTower II Win' },
+      { value: 'IATT', label: 'Accreditations' },
     ],
     projects: [
       {
-        id: 'finn',
-        name: 'FINN Program',
-        description: 'Airborne communications system status/control software for the FINN flight test program. Led end-to-end development using microservices/pub-sub architecture with automated DISA STIG compliance.',
-        tech: ['Python', 'Vue3', 'Redis', 'Ansible', 'Docker', 'Linux', 'Jenkins'],
-        outcome: 'Successful flight tests; secured IATT accreditations',
-        customer: 'Marine Corps Warfighting Lab'
+        id: 'finn', name: 'FINN Program', customer: 'Marine Corps Warfighting Lab',
+        blurb: 'Airborne comms status/control system on microservices & pub-sub architecture. Led end-to-end DevSecOps from ground up.',
+        description: 'The FINN program required a full-stack airborne communications status and control software system built on a microservices/pub-sub architecture. Jamie architected and developed the system using Python, Redis, Vue3, Ansible, and Docker on Linux — while simultaneously standing up the entire DevSecOps pipeline including Jenkins CI/CD, automated DISA STIG compliance, SonarQube static analysis, and automated testing.',
+        tech: ['Python', 'Vue3', 'Redis', 'Ansible', 'Docker', 'Linux', 'Jenkins', 'SonarQube', 'PyTest', 'Selenium'],
+        outcome: 'Successful DoD flight tests; multiple IATT accreditations achieved',
+        bullets: [
+          'Architected microservices/pub-sub system for real-time airborne comms status and control',
+          'Built Jenkins CI/CD pipeline with automated builds, deployments, and DISA STIG compliance',
+          'Implemented SonarQube static analysis and PyTest/Selenium automated test suites',
+          'Achieved IATT accreditation through rigorous automated security practices',
+          'Led system through successful DoD flight test milestones with Marine Corps Warfighting Lab',
+        ]
       },
       {
-        id: 'skytower',
-        name: 'SkyTower II',
-        description: 'Architected and delivered scalable, secure airborne communications software that competed against and beat major industry players, resulting in a landmark contract win.',
-        tech: ['Python', 'JavaScript', 'Docker', 'Ansible', 'Jenkins', 'SonarQube'],
-        outcome: '$35M+ contract win against major industry competitors',
-        customer: 'DoD / Marine Corps'
+        id: 'skytower', name: 'SkyTower II', customer: 'DoD / Marine Corps',
+        blurb: 'Scalable airborne C3 software that beat major industry primes and secured a landmark $35M+ contract win.',
+        description: 'SkyTower II was a high-stakes competitive DoD program where GALT competed directly against major industry primes and won. Jamie led the software architecture and engineering execution — delivering a scalable, secure, mission-ready airborne C3 system under aggressive timelines with full DevSecOps compliance.',
+        tech: ['Python', 'JavaScript', 'Docker', 'Ansible', 'Jenkins', 'SonarQube', 'BitBucket', 'RedHat Linux'],
+        outcome: '$35M+ contract win against major defense industry primes',
+        bullets: [
+          'Architected full software stack for SkyTower II airborne communications system',
+          'Competed directly against major defense primes — and won on technical merit',
+          'Delivered on aggressive DoD timelines with full DevSecOps and STIG compliance',
+          'Integrated automated vulnerability management throughout the development pipeline',
+          'Win positioned GALT for $250M+ total contract portfolio growth',
+        ]
       },
       {
-        id: 'devsecops-galt',
-        name: 'DevSecOps Pipeline Build-Out',
-        description: 'Built the entire DevSecOps organization from scratch: CI/CD pipelines, automated builds, deployments, testing, static code analysis, and STIG compliance automation.',
-        tech: ['Jenkins', 'Ansible', 'Docker', 'SonarQube', 'PyTest', 'Selenium', 'BitBucket'],
-        outcome: 'Enabled rapid, secure delivery at DoD scale',
-        customer: 'Internal / DoD'
+        id: 'devsecops-galt', name: 'DevSecOps Org Build', customer: 'Internal / DoD Programs',
+        blurb: 'Built the entire software engineering organization and DevSecOps pipeline from zero — scaling to 50 engineers.',
+        description: 'When Jamie joined GALT there was no software engineering organization. He built it entirely: hiring engineers, establishing DevSecOps culture and tooling, implementing CI/CD pipelines, automated testing, code review processes, and security compliance automation — all while delivering production software for live DoD programs.',
+        tech: ['Jenkins', 'Ansible', 'Docker', 'SonarQube', 'Fortify', 'BitBucket', 'JIRA', 'Selenium', 'PyTest', 'Bash'],
+        outcome: 'Org scaled from 10 to 50 engineers; enabled $250M+ in contract wins',
+        bullets: [
+          'Hired and developed engineering team from 10 to 50 professionals',
+          'Established full DevSecOps culture, tooling, and processes from zero',
+          'Implemented Jenkins CI/CD with automated builds, tests, and deployments',
+          'Integrated SonarQube static analysis and Fortify vulnerability management',
+          'Created automated DISA STIG compliance pipeline supporting multiple IATT accreditations',
+          'Mentored engineers on best practices, code review, and security-first development',
+        ]
       }
-    ],
-    bullets: [
-      'Architected and developed software for status/control of airborne communications systems using Python, Redis, Ansible, Vue3/JavaScript, Docker, and Linux in a microservices/pub-sub architecture.',
-      'Led DevSecOps implementation from ground up including Jenkins CI/CD pipelines, automated builds/deployments/testing, static code analysis (SonarQube), and automation scripting.',
-      'Achieved numerous IATT accreditations through automated DISA STIG compliance and rigorous security practices.',
-      'Scaled software engineering team from 10 to 50, hiring developers and fostering a culture of continuous improvement.',
-      'Partnered with DoD stakeholders (Marine Corps Warfighting Lab) to align technical roadmaps with program goals, securing $250M+ in contracts.'
     ]
   },
   {
-    id: 'ng-bacn',
-    title: 'Software Engineer / Software Team Leader',
-    company: 'Northrop Grumman',
-    location: 'San Diego, CA',
-    period: '01/2009 – 12/2018',
-    logo: '🛩',
-    color: '#ff6b35',
-    tagline: 'Battlefield Airspace Awareness & Tactical Data Links',
-    highlights: [
-      'Led BACN Information Broker (BIB) development',
-      '3 major baseline deliveries + cyber upgrades',
-      'Tactical data link integration (Link16, CDL, VOIP)',
-      'Forward-deployed field support (1–5.5 month trips)',
-      'Full-stack web-based situational awareness platform'
+    id: 'ng-bacn', logo: '🛩', color: '#ff6b35',
+    company: 'Northrop Grumman', title: 'Software Engineer / Team Leader',
+    period: '2009 – 2018',
+    tagline: "BACN — the battlefield's high-altitude digital backbone",
+    context: "Northrop Grumman's BACN (Battlefield Airborne Communications Node) is a high-altitude airborne gateway flying on the E-11A that translates voice, imagery, and tactical data across disparate military systems — bridging Link 16, EPLRS, CDL, VOIP and more. With 200,000+ combat flight hours, a $3.6B IDIQ contract, and 98%+ mission availability, BACN is one of the most proven C2 programs in the DoD. Jamie was a core developer and team leader for 9 years across 3 major baselines.",
+    stats: [
+      { value: '200K+', label: 'Combat Flight Hrs' },
+      { value: '$3.6B', label: 'IDIQ Contract' },
+      { value: '3', label: 'Major Baselines' },
+      { value: '98%+', label: 'Mission Availability' },
     ],
     projects: [
       {
-        id: 'bacn-bib',
-        name: 'BACN Information Broker (BIB)',
-        description: 'Web-based situational awareness and mission planning application for the Battlefield Airborne Communications Node. Full-stack development with 3D geospatial visualization.',
-        tech: ['React', 'Redux', 'Backbone', 'CesiumJS', 'Python', 'Java', 'ElasticSearch', 'Node.js', 'Jenkins', 'RedHat Linux'],
-        outcome: '3 major baselines delivered ahead of schedule; forward-deployed globally',
-        customer: 'US Air Force / Joint DoD'
+        id: 'bacn-bib', name: 'BACN Information Broker', customer: 'US Air Force / Joint DoD',
+        blurb: 'Full-stack web-based situational awareness & mission planning app with 3D geospatial visualization — globally forward-deployed.',
+        description: 'The BACN Information Broker (BIB) was the primary situational awareness and mission planning application for BACN — a real-time 3D geospatial view of the battlespace fusing data from Link 16, EPLRS, SADL and other tactical data links. Jamie led development across 3 major baselines working the full stack from Python/Java backend through React/Redux/CesiumJS 3D frontend.',
+        tech: ['React', 'Redux', 'Backbone', 'CesiumJS', 'Python', 'Java', 'ElasticSearch', 'Node.js', 'Jenkins', 'RedHat Linux', 'PyTest', 'Selenium', 'Fortify'],
+        outcome: '3 major baselines delivered ahead of schedule; globally forward-deployed',
+        bullets: [
+          'Led full-stack BIB development across 3 major baselines over 9 years',
+          'Built 3D geospatial visualization in CesiumJS fusing multi-source tactical data links',
+          'Implemented ElasticSearch backend for high-performance real-time data queries',
+          'Oversaw 3 cyber security upgrade cycles with Fortify and automated STIG compliance',
+          'Supported forward-deployed field installations globally (trips 1–5.5 months)',
+          'Delivered all baselines ahead of schedule through disciplined scope management',
+        ]
       },
       {
-        id: 'rf-tactical',
-        name: 'RF/Tactical Data Link Integration',
-        description: 'Hands-on coding, debugging, and troubleshooting for RF and tactical data link systems including Link16, CDL, Inmarsat, SADL, EPLRS, and VOIP across ground and airborne platforms.',
-        tech: ['C', 'C++', 'Java', 'Python', 'Link16', 'CDL', 'VOIP', 'SADL', 'EPLRS'],
-        outcome: 'Operational integration across multiple forward-deployed environments',
-        customer: 'US Air Force / DoD Joint'
-      },
-      {
-        id: 'cyber-vuln',
-        name: 'Cyber Security & Vulnerability Management',
-        description: 'Oversaw three major cyber security upgrades including vulnerability management implementation (Fortify), STIG compliance, and automated testing frameworks.',
-        tech: ['Fortify', 'Selenium', 'PyTest', 'Jenkins', 'SonarQube'],
-        outcome: 'Delivered all cyber upgrades ahead of schedule',
-        customer: 'US Air Force'
+        id: 'rf-links', name: 'BACN', customer: 'US Air Force / DoD Joint',
+        blurb: 'Hands-on coding and field integration for Link 16, CDL, Inmarsat, SADL, EPLRS, and VOIP across ground and airborne platforms.',
+        description: "A core part of BACN mission is translating between incompatible tactical data links — making Link 16, CDL, EPLRS, SADL, VOIP, and Inmarsat all interoperate seamlessly. Jamie was hands-on at the code level debugging these integrations and personally supporting their deployment in forward-deployed operational environments worldwide.",
+        tech: ['C', 'C++', 'Java', 'Python', 'Link16', 'CDL', 'VOIP', 'SADL', 'EPLRS', 'Inmarsat'],
+        outcome: 'Operational multi-domain data link integration across forward-deployed theaters',
+        bullets: [
+          'Developed and debugged RF/tactical data link integrations for BACN gateway',
+          'Worked across full suite: Link 16, CDL, Inmarsat, SADL, EPLRS, and VOIP',
+          'Supported field deployments and upgrades at ground and airborne operational locations',
+          'Provided on-site integration support with trips ranging from 1 to 5.5 months',
+          'Administered Windows and RedHat Linux servers in operational environments',
+        ]
       }
-    ],
-    bullets: [
-      'Led development of Battlefield Airborne Communications Node (BACN) Information Broker (BIB), a web-based situational awareness/mission planning application.',
-      'Utilized JavaScript (React, Redux, Backbone, Cesium), Python, Java, RedHat Linux, Apache HTTP, Git, JIRA, Jenkins, ElasticSearch, Node.js.',
-      'Oversaw three major baselines and cyber security upgrades, implementing vulnerability management (Fortify), STIGs, and automated testing.',
-      'Provided hands-on coding and troubleshooting for RF/tactical data links (Link16, CDL, Inmarsat, SADL, EPLRS, VOIP).',
-      'Supported field deployments and installations across ground/airborne systems in operational environments.'
     ]
   },
   {
-    id: 'ng-jem',
-    title: 'Software Engineer',
-    company: 'Northrop Grumman',
-    location: 'San Diego, CA',
-    period: '01/2005 – 12/2008',
-    logo: '☢',
-    color: '#a8ff3e',
-    tagline: 'CBRN Modeling & Simulation / GCCS Integration',
-    highlights: [
-      'Team lead for ~20 developers on JEM',
-      'Ported JEM into GCCS-J and GCCS-M',
-      'Built automated test framework for JEM',
-      'Cross-platform: Windows and Solaris',
-      'Regular travel to DC for integration support'
+    id: 'ng-jem', logo: '☢', color: '#a8ff3e',
+    company: 'Northrop Grumman', title: 'Software Engineer — JEM/GCCS',
+    period: '2005 – 2008',
+    tagline: 'CBRN modeling & simulation integrated into global command systems',
+    context: 'The Joint Effects Model (JEM) was a DoD web application for modeling and simulating Chemical, Biological, Radiological, and Nuclear events — integrated into GCCS-J and GCCS-M. Jamie led a ~20-person developer team on this high-complexity, multi-platform program across Windows and Solaris.',
+    stats: [
+      { value: '~20', label: 'Developers Led' },
+      { value: '2', label: 'GCCS Integrations' },
+      { value: 'CBRN', label: 'Domain' },
+      { value: 'Win+Sol', label: 'Platforms' },
     ],
     projects: [
       {
-        id: 'jem',
-        name: 'Joint Effects Model (JEM)',
-        description: 'Web-based software application for modeling and simulation of Chemical, Biological, Radiological, and Nuclear (CBRN) events. Led team of ~20 developers across full stack.',
-        tech: ['Fortran', 'C', 'C++', 'Java', 'JSP', 'JavaScript', 'Windows', 'Solaris'],
-        outcome: 'Successfully integrated into GCCS-J and GCCS-M',
-        customer: 'DoD Joint Command'
+        id: 'jem', name: 'Joint Effects Model (JEM)', customer: 'DoD Joint Command',
+        blurb: 'Web-based CBRN modeling and simulation for DoD commanders. Led ~20 developers across full stack on Windows and Solaris.',
+        description: 'JEM was a DoD web application for real-time modeling and simulation of CBRN events, providing commanders with effects prediction integrated into the global command picture. Jamie led ~20 developers across the full stack — Fortran scientific code, C/C++ middleware, Java web tier, and JSP/JavaScript frontend — running cross-platform on Windows and SUN Solaris.',
+        tech: ['Fortran', 'C', 'C++', 'Java', 'JSP', 'JavaScript', 'Windows', 'SUN Solaris'],
+        outcome: 'Operational CBRN modeling capability for DoD joint command',
+        bullets: [
+          'Led ~20 developer team across full CBRN modeling application stack',
+          'Managed scheduling, peer reviews, technical documentation, and team development',
+          'Developed across Fortran scientific computing, C/C++ middleware, and Java/JSP web tier',
+          'Maintained cross-platform support across Windows desktop and SUN Solaris servers',
+          'Regular travel to DC/Virginia area for on-site customer integration support',
+        ]
       },
       {
-        id: 'gccs-integration',
-        name: 'GCCS-J / GCCS-M Integration',
-        description: 'Ported JEM from Windows and integrated it into the Global Command and Control System Joint and Maritime. Administered all computer systems including Windows Domain Controllers and SUN Solaris servers.',
-        tech: ['Java', 'C++', 'Windows Server', 'SUN Solaris', 'GCCS-J', 'GCCS-M'],
-        outcome: 'Operational CBRN capability integrated into global command systems',
-        customer: 'DoD Joint Command / Navy'
-      },
-      {
-        id: 'jem-test-framework',
-        name: 'JEM Automated Test Framework',
-        description: 'Designed and led development of an automated test framework for JEM, establishing repeatable quality gates and reducing manual testing burden across the team.',
-        tech: ['Java', 'C++', 'Shell Scripting'],
-        outcome: 'Automated QA for 20-person development team',
-        customer: 'Internal / DoD'
+        id: 'gccs', name: 'GCCS-J / GCCS-M Integration', customer: 'DoD Joint Command / US Navy',
+        blurb: 'Ported JEM into Global Command and Control System Joint and Maritime, administering all Windows and Solaris infrastructure.',
+        description: 'Integrating JEM into GCCS-J and GCCS-M required deep systems integration work — porting from standalone Windows into the tightly controlled GCCS ecosystem and administering all associated infrastructure. Also led development of an automated test framework for ongoing JEM quality assurance.',
+        tech: ['Java', 'C++', 'Windows Server', 'SUN Solaris', 'GCCS-J', 'GCCS-M', 'Active Directory'],
+        outcome: 'CBRN modeling capability fully integrated into global DoD command systems',
+        bullets: [
+          'Ported JEM from standalone Windows into GCCS-J and GCCS-M environments',
+          'Administered Windows Domain Controllers and SUN Solaris servers for GCCS',
+          'Led development of automated test framework for JEM quality assurance',
+          'Regular travel to Virginia/DC area for on-site integration coordination',
+        ]
       }
-    ],
-    bullets: [
-      'Team leader (~20 developers) on multiple efforts for the Joint Effects Model (JEM).',
-      'JEM was a web-based application for modeling and simulation of CBRN events.',
-      'Ported JEM from Windows and integrated it into GCCS-J and GCCS-M.',
-      'Responsible for scheduling, peer reviews, technical documentation, and managing a team of 4-6 people.',
-      'Led development of an automated test framework for JEM.'
     ]
   },
   {
-    id: 'predicate',
-    title: 'Software Engineer',
-    company: 'Predicate Logic Inc.',
-    location: 'San Diego, CA',
-    period: '04/1999 – 04/2005',
-    logo: '📡',
-    color: '#bf5fff',
-    tagline: 'Submarine Systems & Advanced Metrics Platform',
-    highlights: [
-      'SLVR submarine receiver IRM integration',
-      'TychoMetrics automated data collection platform',
-      'Led redesign from desktop to web-based .NET app',
-      'Multi-source data extraction and reporting',
-      'Berkeley sockets & SNMP inter-process comms'
+    id: 'predicate', logo: '📡', color: '#bf5fff',
+    company: 'Predicate Logic Inc.', title: 'Software Engineer',
+    period: '1999 – 2005',
+    tagline: 'Submarine comms integration & advanced metrics platform',
+    context: 'Predicate Logic was a San Diego defense software company focused on submarine communications systems and advanced data metrics platforms. Jamie spent 6 years gaining deep expertise in low-level C systems programming on HPUX Unix, Berkeley sockets IPC, and building data-driven reporting tools across DoD and commercial customers.',
+    stats: [
+      { value: 'US Navy', label: 'Primary Customer' },
+      { value: 'HPUX', label: 'Platform' },
+      { value: 'C/C++', label: 'Core Stack' },
+      { value: '.NET', label: 'Web Migration' },
     ],
     projects: [
       {
-        id: 'slvr',
-        name: 'SLVR Submarine Receiver Integration',
-        description: 'Full lifecycle support for integration of the SLVR (Submarine Low Frequency/Very Low Frequency VME Bus Receiver) into the Integrated Resource Manager (IRM). GUI design using Neuron Data, inter-process comms via Berkeley sockets and SNMP.',
-        tech: ['C', 'HPUX Unix', 'Berkeley Sockets', 'SNMP', 'Neuron Data'],
-        outcome: 'Operational submarine communications integration',
-        customer: 'US Navy'
+        id: 'slvr', name: 'SLVR Submarine Integration', customer: 'US Navy',
+        blurb: 'Full lifecycle integration of submarine Low Frequency/VLF receiver into the Integrated Resource Manager using C, Berkeley sockets, and SNMP on HPUX Unix.',
+        description: 'The SLVR (Submarine Low Frequency/Very Low Frequency VME Bus Receiver) integration into the Integrated Resource Manager required deep low-level systems programming on HPUX Unix. Jamie was responsible for GUI design, inter-process communication via Berkeley sockets, and SNMP protocol implementation — all in C on a submarine platform.',
+        tech: ['C', 'HPUX Unix', 'Berkeley Sockets', 'SNMP', 'Neuron Data', 'VME Bus'],
+        outcome: 'Operational submarine VLF communications integration for US Navy',
+        bullets: [
+          'Developed GUI using Neuron Data Development software suite on HPUX Unix',
+          'Implemented inter-process communication using Berkeley sockets and SNMP protocol',
+          'Provided full lifecycle support from design through operational deployment',
+          'Integrated VME Bus receiver hardware interface with IRM software',
+        ]
       },
       {
-        id: 'tychometrics',
-        name: 'TychoMetrics Platform',
-        description: 'Automated data collection and reporting tool applying advanced metrics to disparate data sources. Led full redesign from Windows desktop (Visual C++/MFC) to web-based .NET application.',
-        tech: ['Visual C++', 'MFC', 'Versant OODB', 'C#', 'ASP.NET', 'COM', 'IIS', 'ADO.NET', 'Perl'],
-        outcome: 'Scalable web-based metrics platform serving multiple DoD customers',
-        customer: 'DoD Contractors / Internal'
+        id: 'tychometrics', name: 'TychoMetrics Platform', customer: 'DoD Contractors / Commercial',
+        blurb: 'Automated data collection and advanced metrics platform. Led full redesign from Windows desktop to web-based ASP.NET application.',
+        description: 'TychoMetrics was an automated data collection and reporting platform applying advanced metrics across disparate data sources. Jamie built the original Windows desktop version in Visual C++/MFC, then led its full redesign as a web-based .NET application — significantly expanding reach and maintainability.',
+        tech: ['Visual C++', 'MFC', 'Versant OODB', 'C#', 'ASP.NET', 'COM', 'IIS', 'ADO.NET', 'Perl', 'SQL Server', 'Oracle'],
+        outcome: 'Scalable web-based metrics platform serving multiple DoD and commercial customers',
+        bullets: [
+          'Built original TychoMetrics as Windows desktop app using Visual C++/MFC and Versant OODB',
+          'Led full redesign to web-based ASP.NET application with C#, COM, and IIS',
+          'Implemented OLE automation to integrate Excel as a reporting output via COM and C++',
+          'Developed custom metrics solutions against SQL Server, Oracle, Access, and XML sources',
+          'Created Perl and UNIX shell scripts for monthly data extraction and transformation',
+        ]
       }
-    ],
-    bullets: [
-      'Full lifecycle support for SLVR submarine receiver integration into the Integrated Resource Manager.',
-      'Developed TychoMetrics: automated data collection and reporting tool across disparate data sources.',
-      'Led redesign of TychoMetrics from Windows desktop to web-based .NET application.',
-      'Utilized OLE automation to integrate Microsoft Excel as a reporting option using COM and C++.',
-      'Developed custom metrics solutions for customers using XML, CSV/TSV, SQL Server, Oracle, and IBM/Rational tools.'
     ]
   }
 ]
 
-export const accomplishments = [
-  { icon: '💰', value: '$250M+', label: 'Contracts Secured at GALT Aerospace' },
-  { icon: '👥', value: '10 → 50', label: 'Engineers Scaled at GALT' },
-  { icon: '✈', value: '2', label: 'Successful DoD Flight Test Programs' },
-  { icon: '🔒', value: 'TS/SCI', label: 'Active DoD Clearance' },
-  { icon: '📅', value: '24+', label: 'Years Engineering Experience' },
-  { icon: '🏆', value: '$35M+', label: 'SkyTower II Contract Win' }
-]
-
-export const education = [
+export const skillGroups = [
   {
-    degree: 'Master of Advanced Study',
-    field: 'Architecture-Based Enterprise Systems Engineering',
-    school: 'University of California, San Diego (UCSD)',
-    year: '2014'
+    title: 'Languages',
+    items: [
+      { name: 'Python', desc: "Primary scripting and backend language for DoD systems. Used for automation, microservices, data processing, and CI/CD scripting across GALT and BACN programs.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['FINN Program', 'SkyTower II', 'BIB', 'DevSecOps Org Build'], link: 'https://www.python.org' },
+      { name: 'Java', desc: "Enterprise backend language used for web services, data processing, and cross-platform DoD applications including BACN and the Joint Effects Model.", companies: ['Northrop Grumman'], projects: ['BIB', 'Joint Effects Model'], link: 'https://dev.java' },
+      { name: 'JavaScript', desc: "Full-stack web language used across all DoD web UIs — spanning Backbone, React/Redux, and Vue3. Present on every program from JEM through GALT.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['FINN Program', 'BIB', 'Joint Effects Model'], link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+      { name: 'Vue3', desc: "Modern progressive JavaScript framework used for reactive DoD web interfaces at GALT. Composition API with TypeScript-friendly architecture and pub/sub integration.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://vuejs.org' },
+      { name: 'React', desc: "Component-based UI library used for the BACN situational awareness platform with Redux state management and CesiumJS 3D geospatial visualization.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://react.dev' },
+      { name: 'Redux', desc: "Predictable state container used alongside React for managing complex real-time battlefield data in the BACN Information Broker application.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://redux.js.org' },
+      { name: 'C', desc: "Low-level systems language for submarine communications hardware integration and UNIX inter-process communications via Berkeley sockets and SNMP on HPUX.", companies: ['Predicate Logic Inc.'], projects: ['SLVR Submarine Integration'], link: 'https://en.wikipedia.org/wiki/C_(programming_language)' },
+      { name: 'C++', desc: "Object-oriented systems language for CBRN modeling, Windows desktop apps, and the TychoMetrics platform with COM and OLE automation integration.", companies: ['Northrop Grumman', 'Predicate Logic Inc.'], projects: ['Joint Effects Model', 'TychoMetrics Platform'], link: 'https://isocpp.org' },
+      { name: 'C#', desc: "Microsoft .NET language used to redesign TychoMetrics from a Windows desktop application into a scalable web-based ASP.NET platform using COM, IIS, and ADO.NET.", companies: ['Predicate Logic Inc.'], projects: ['TychoMetrics Platform'], link: 'https://learn.microsoft.com/en-us/dotnet/csharp/' },
+      { name: 'Fortran', desc: "Scientific computing language used in the Joint Effects Model for CBRN physics simulation — still widely used in DoD modeling and simulation programs today.", companies: ['Northrop Grumman'], projects: ['Joint Effects Model'], link: 'https://fortran-lang.org' },
+      { name: 'Bash', desc: "Shell scripting for CI/CD automation, STIG compliance checks, system administration, and deployment orchestration across all Linux-based DoD environments.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['DevSecOps Org Build', 'FINN Program'], link: 'https://www.gnu.org/software/bash/' },
+    ]
   },
   {
-    degree: 'Bachelor of Arts',
-    field: 'Cognitive Science and Music',
-    school: 'University of California, San Diego (UCSD)',
-    year: '1999'
-  }
+    title: 'DevSecOps',
+    items: [
+      { name: 'Jenkins CI/CD', desc: "Automated build, test, and deployment pipelines. Built GALT entire Jenkins infrastructure from scratch including STIG-compliant deployment gates and approval workflows.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['DevSecOps Org Build', 'FINN Program', 'BIB'], link: 'https://www.jenkins.io' },
+      { name: 'Docker', desc: "Container platform for packaging and deploying microservices in GALT pub/sub architecture, ensuring consistent environments from development through production deployment.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II', 'DevSecOps Org Build'], link: 'https://www.docker.com' },
+      { name: 'Ansible', desc: "Infrastructure-as-code and configuration management tool used for automated provisioning, STIG remediation, and deployment orchestration across DoD environments.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'DevSecOps Org Build'], link: 'https://www.ansible.com' },
+      { name: 'SonarQube', desc: "Continuous static code analysis platform for detecting bugs, vulnerabilities, and code smells. Used as a quality gate in all CI/CD pipelines at GALT.", companies: ['GALT Aerospace'], projects: ['DevSecOps Org Build', 'FINN Program', 'SkyTower II'], link: 'https://www.sonarsource.com/products/sonarqube/' },
+      { name: 'Fortify', desc: "Static application security testing (SAST) tool for identifying vulnerabilities in source code. Required for DoD software security compliance on the BACN program.", companies: ['Northrop Grumman'], projects: ['BIB', 'Cyber Security Upgrades'], link: 'https://www.opentext.com/products/fortify-static-code-analyzer' },
+      { name: 'DISA STIGs', desc: "Defense Information Systems Agency Security Technical Implementation Guides — mandatory security configurations for all DoD software. Automated STIG compliance was a core GALT capability enabling IATT accreditations.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['FINN Program', 'SkyTower II', 'BIB'], link: 'https://public.cyber.mil/stigs/' },
+      { name: 'Selenium', desc: "Browser automation framework for end-to-end testing of DoD web applications. Part of all automated test suites across GALT and BACN programs.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['DevSecOps Org Build', 'BIB'], link: 'https://www.selenium.dev' },
+      { name: 'PyTest', desc: "Python testing framework used for unit, integration, and system testing of backend services across multiple DoD programs at GALT and Northrop Grumman.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['FINN Program', 'BIB', 'DevSecOps Org Build'], link: 'https://docs.pytest.org' },
+      { name: 'Git / BitBucket', desc: "Distributed version control and code hosting. BitBucket used for DoD programs requiring on-premise or government-cloud repositories with audit trail compliance.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['All programs'], link: 'https://bitbucket.org' },
+    ]
+  },
+  {
+    title: 'Systems & Comms',
+    items: [
+      { name: 'Link 16', desc: "NATO primary tactical data link — a TDMA-based network for real-time exchange of voice, data, and surveillance between air, ground, and sea platforms. Core to the BACN gateway mission.", companies: ['Northrop Grumman'], projects: ['BIB', 'BACN'], link: 'https://en.wikipedia.org/wiki/Link_16' },
+      { name: 'CDL', desc: "Common Data Link — a family of wideband point-to-point data links for transmitting imagery and sensor data from airborne ISR platforms to ground stations. Integrated via BACN.", companies: ['Northrop Grumman'], projects: ['BACN'], link: 'https://en.wikipedia.org/wiki/Common_data_link' },
+      { name: 'EPLRS', desc: "Enhanced Position Location Reporting System — a digital radio system providing position location, navigation, and data communications for ground forces. Bridged through BACN gateway.", companies: ['Northrop Grumman'], projects: ['BACN'], link: 'https://en.wikipedia.org/wiki/Enhanced_Position_Location_Reporting_System' },
+      { name: 'VOIP', desc: "Voice over IP integration for BACN voice bridging subsystem, allowing ground forces and aircraft to communicate across incompatible radio systems via the airborne gateway.", companies: ['Northrop Grumman'], projects: ['BACN'], link: 'https://en.wikipedia.org/wiki/Voice_over_IP' },
+      { name: 'GCCS-J / GCCS-M', desc: "Global Command and Control System — Joint and Maritime. The DoD primary C2 system integrating operational data across all services. Jamie integrated JEM into both variants.", companies: ['Northrop Grumman'], projects: ['GCCS-J / GCCS-M Integration'], link: 'https://en.wikipedia.org/wiki/Global_Command_and_Control_System' },
+      { name: 'BACN', desc: "Battlefield Airborne Communications Node — Northrop Grumman high-altitude airborne gateway with 200K+ combat flight hours and a $3.6B IDIQ contract. Jamie was a core developer for 9 years.", companies: ['Northrop Grumman'], projects: ['BIB', 'BACN'], link: 'https://www.northropgrumman.com/what-we-do/mission-solutions/battlefield-airborne-communications-node-bacn' },
+      { name: 'Microservices', desc: "Architectural pattern decomposing applications into small, independently deployable services. Used at GALT for airborne C3 systems with pub/sub messaging between services.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://microservices.io' },
+      { name: 'Pub/Sub', desc: "Publish/Subscribe messaging pattern enabling decoupled, real-time communication between microservices. Core to GALT airborne comms architecture using Redis as the message broker.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern' },
+      { name: 'SNMP', desc: "Simple Network Management Protocol — used for inter-process communication in the SLVR submarine receiver integration on HPUX Unix systems at Predicate Logic.", companies: ['Predicate Logic Inc.'], projects: ['SLVR Submarine Integration'], link: 'https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol' },
+    ]
+  },
+  {
+    title: 'Platforms & Tools',
+    items: [
+      { name: 'RedHat Linux', desc: "Enterprise Linux OS used as the primary platform for all GALT and BACN server deployments. DISA STIG hardening applied across all systems per DoD requirements.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['FINN Program', 'SkyTower II', 'BIB'], link: 'https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux' },
+      { name: 'NGINX', desc: "High-performance web server and reverse proxy used for serving DoD web applications and routing traffic between microservices in GALT architecture.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'DevSecOps Org Build'], link: 'https://nginx.org' },
+      { name: 'Apache HTTP', desc: "Web server used for serving the BACN Information Broker web application and other DoD web interfaces on RedHat Linux in operational environments.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://httpd.apache.org' },
+      { name: 'Node.js', desc: "JavaScript runtime used for backend services and build tooling in the BACN Information Broker alongside Webpack and Yarn for asset bundling.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://nodejs.org' },
+      { name: 'ElasticSearch', desc: "Distributed search and analytics engine providing real-time tactical data querying for the BACN situational awareness platform across large operational datasets.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://www.elastic.co/elasticsearch' },
+      { name: 'Redis', desc: "In-memory data store used as the pub/sub message broker for GALT microservices architecture, enabling real-time status updates across airborne systems.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://redis.io' },
+      { name: 'AWS', desc: "Amazon Web Services cloud platform. Jamie holds AWS DevOps Engineer Pro, CloudOps Engineer, and Cloud Practitioner certifications — all earned in early 2026.", companies: ['Certification / Current Focus'], projects: ['Post-GALT professional development'], link: 'https://aws.amazon.com' },
+      { name: 'JIRA', desc: "Agile project management and issue tracking used to manage sprints, backlogs, and program-level tracking across all programs from Northrop Grumman forward.", companies: ['Northrop Grumman', 'GALT Aerospace'], projects: ['BIB', 'Joint Effects Model', 'GCCS-J / GCCS-M Integration', 'FINN Program', 'SkyTower II', 'DevSecOps Org Build'], link: 'https://www.atlassian.com/software/jira' },
+      { name: 'Webpack', desc: "JavaScript module bundler used to build and optimize the BACN Information Broker frontend application for production deployment on RedHat Linux.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://webpack.js.org' },
+    ]
+  },
 ]
 
-export const certifications = [
-  { name: 'AWS Certified DevOps Engineer – Professional', issuer: 'Amazon Web Services', date: 'April 2026' },
-  { name: 'AWS Certified CloudOps Engineer', issuer: 'Amazon Web Services', date: 'February 2026' },
-  { name: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services', date: 'February 2026' },
-  { name: 'CompTIA Security+', issuer: 'CompTIA', date: 'February 2026' }
+export const credsAndEdu = [
+  {
+    id: 'devops-pro', icon: '⚙', badge: 'AWS PRO', color: '#ff9500',
+    verify: 'https://cp.certmetrics.com/amazon/en/public/verify/credential/7a92ec1f57bc4c2586e0176a0e3526d1',
+    name: 'AWS DevOps Engineer – Professional',
+    issuer: 'Amazon Web Services', date: 'Apr 2026',
+    why: 'Widely regarded as the hardest AWS certification (rated 8.5/10 difficulty), the DevOps Engineer Pro validates mastery of CI/CD pipelines, infrastructure as code, monitoring, and automated security at scale. Unlike associate-level exams that test recall, this exam presents multi-paragraph real-world scenarios requiring architectural judgment. Earning this while actively building DoD-grade DevSecOps systems demonstrates the rarest combination: hands-on depth plus formal AWS validation.',
+    tags: ['Hardest AWS Cert', 'CI/CD Mastery', 'IaC', 'Security Automation', '$300 Exam'],
+  },
+  {
+    id: 'cloudops', icon: '☁', badge: 'AWS ASSOC', color: '#00d4ff',
+    verify: 'https://cp.certmetrics.com/amazon/en/public/verify/credential/8539182aa69f49c9853626b5d922d256',
+    name: 'AWS CloudOps Engineer',
+    issuer: 'Amazon Web Services', date: 'Feb 2026',
+    why: 'The SysOps Administrator Associate is the operations backbone of the AWS certification path — covering monitoring, high availability, networking, cost optimization, and incident response across live AWS environments. It is typically a prerequisite before tackling the DevOps Pro. Passing both in rapid succession (Feb → Apr 2026) demonstrates accelerated, systematic cloud mastery rather than credential collection.',
+    tags: ['Operations Focus', 'High Availability', 'AWS Monitoring', 'Cost Optimization'],
+  },
+  {
+    id: 'ccp', icon: '🌐', badge: 'AWS FOUND', color: '#4eff9a',
+    verify: 'https://cp.certmetrics.com/amazon/en/public/verify/credential/c264415e14d04d7f81861cd6f9c950f2',
+    name: 'AWS Cloud Practitioner',
+    issuer: 'Amazon Web Services', date: 'Feb 2026',
+    why: 'The Cloud Practitioner is the structured entry point into the AWS certification path — covering core services, pricing models, security fundamentals, and cloud architecture concepts. For a 24-year DoD software veteran pivoting to cloud-native development, earning this alongside Security+ and CloudOps in a single month signals a deliberate, disciplined upskilling sprint — not a casual checkbox.',
+    tags: ['AWS Foundation', 'Cloud Economics', 'Core Services', 'Architecture Basics'],
+  },
+  {
+    id: 'secplus', icon: '🔒', badge: 'DoD 8570', color: '#ff6b35',
+    verify: 'https://cp.certmetrics.com/CompTIA/en/public/verify/credential/71e3f9eb23c8468bb9918b23a0b1a915',
+    name: 'CompTIA Security+',
+    issuer: 'CompTIA', date: 'Feb 2026',
+    why: 'Security+ is mandated by DoD Directive 8570/8140 as the baseline cybersecurity credential for IAT Level II roles — covering anyone with privileged access to DoD systems, including all defense contractors. For a TS/SCI-cleared engineer shipping code into DISA STIG-compliant DoD environments, this is the formal seal on what Jamie has been practicing operationally for over a decade. This is not just a cert — it is the DoD required proof of cybersecurity competency.',
+    tags: ['DoD 8570/8140 Required', 'IAT Level II', 'STIG Compliance', 'Vendor-Neutral'],
+  },
+  {
+    id: 'mas', icon: '🎓', badge: 'GRADUATE', color: '#bf5fff',
+    name: 'M.A.S. — Architecture-Based Enterprise Systems Engineering',
+    issuer: 'UC San Diego', date: '2014',
+    why: 'UCSD Master of Advanced Study in Enterprise Systems Engineering is a practitioner-focused graduate degree designed for engineers leading complex system-of-systems programs — exactly the scale Jamie operates at. The architecture-based framework provides rigorous tools for designing systems where technical, organizational, and mission requirements must all align. For a Director of Engineering winning $250M+ DoD contracts, this degree is the formal articulation of how to think at the enterprise level.',
+    tags: ['Systems Architecture', 'Enterprise Engineering', 'DoD Scale', 'UCSD'],
+  },
+  {
+    id: 'ba', icon: '🧠', badge: 'UNDERGRAD', color: '#a8ff3e',
+    name: 'B.A. — Cognitive Science & Music',
+    issuer: 'UC San Diego', date: '1999',
+    why: 'UCSD Cognitive Science program is ranked #7 nationally and is the most attended program of its kind in the country. The degree uniquely fuses computer science, neuroscience, psychology, and linguistics — training graduates to understand how humans process information, make decisions, and interact with complex systems. Paired with Music (a discipline built on pattern recognition, structure, and performance under pressure), this background directly informs Jamie ability to build intuitive software systems and lead high-performing engineering teams.',
+    tags: ['#7 Nationally Ranked', 'HCI Foundation', 'Systems Thinking', 'Pattern Recognition'],
+  },
 ]

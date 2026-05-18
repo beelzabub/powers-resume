@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg:      #04080d;
+  --bg2:     #070e17;
+  --surface: #0a1520;
+  --surf2:   #0f1e2e;
+  --border:  #162840;
+  --text:    #ddeeff;
+  --dim:     #9abdd4;
+  --muted:   #5a8090;
+  --accent:  #00c8f0;
+  --mono:    'DM Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
+  --body:    'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #app { height: 100%; overflow: hidden; }
+body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 300; }
+
+/* ── Shared utilities ─────────────────────── */
+@keyframes blink   { 0%,100%{opacity:1} 50%{opacity:.5} }
+@keyframes fadeUp  { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── Modal overlay (shared) ───────────────── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+}
+
+/* ── Modal base (company / project) ──────── */
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--c, var(--accent));
+  width: 100%; max-width: 880px; max-height: 88vh;
+  overflow-y: auto; position: relative; padding: 2rem;
+}
+.modal::-webkit-scrollbar { width: 3px; }
+.modal::-webkit-scrollbar-thumb { background: var(--border); }
+
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: 1px solid var(--border);
+  color: var(--dim); cursor: pointer;
+  width: 28px; height: 28px; font-size: 0.7rem;
+  transition: all 0.15s; display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { border-color: var(--c, var(--accent)); color: var(--c, var(--accent)); }
+
+/* ── Shared chips ─────────────────────────── */
+.skill-chip         { font-family: var(--mono); font-size: 0.6rem; padding: 3px 9px; border-radius: 2px; }
+.skill-chip.company { background: rgba(0,200,240,0.08); border: 1px solid rgba(0,200,240,0.25); color: var(--accent); }
+.skill-chip.project { background: rgba(168,255,62,0.06); border: 1px solid rgba(168,255,62,0.2); color: #a8ff3e; }
+.cred-tag           { font-family: var(--mono); font-size: 0.53rem; padding: 1px 6px; background: var(--bg); border: 1px solid var(--border); color: var(--dim); border-radius: 2px; }
+.tech-pill          { font-family: var(--mono); font-size: 0.55rem; padding: 1px 5px; background: var(--surface); border: 1px solid var(--border); color: var(--dim); }
+
+/* ── Slide transitions (carousel / skill) ─── */
+.slide-left-enter-active,  .slide-left-leave-active,
+.slide-right-enter-active, .slide-right-leave-active { transition: all 0.28s ease; }
+.slide-left-enter-from   { opacity: 0; transform: translateX(40px); }
+.slide-left-leave-to     { opacity: 0; transform: translateX(-40px); }
+.slide-right-enter-from  { opacity: 0; transform: translateX(-40px); }
+.slide-right-leave-to    { opacity: 0; transform: translateX(40px); }
+
+/* ── Modal enter/leave transition ─────────── */
+.modal-enter-active { transition: opacity 0.2s ease, transform 0.2s ease; }
+.modal-leave-active { transition: opacity 0.15s ease; }
+.modal-enter-from   { opacity: 0; transform: translateY(14px); }
+.modal-leave-to     { opacity: 0; }
+
+/* ── Scrollbars ───────────────────────────── */
+::-webkit-scrollbar       { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--border); }
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 768px) {
+  html, body, #app { overflow: auto; height: auto; }
+}
