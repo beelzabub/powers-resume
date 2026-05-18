@@ -40,7 +40,7 @@
                 @click="$emit('open-project', p)"
               >
                 <div class="pc-top">
-                  <div class="pc-name">{{ p.name }}</div>
+                  <div class="pc-name"><span v-if="p.icon" class="pc-icon">{{ p.icon }}</span>{{ p.name }}</div>
                   <div class="pc-customer">{{ p.customer }}</div>
                 </div>
                 <p class="pc-desc">{{ p.blurb }}</p>
@@ -101,6 +101,7 @@ defineEmits(['close', 'open-project', 'prev', 'next'])
 .project-card:hover { background: var(--surface); border-left-color: var(--c); }
 
 .pc-top      { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+.pc-icon     { margin-right: 0.4rem; }
 .pc-name     { font-family: var(--display); font-size: 1.15rem; color: var(--text); line-height: 1.1; }
 .pc-customer { font-family: var(--mono); font-size: 0.51rem; color: var(--c); border: 1px solid var(--c); padding: 2px 5px; white-space: nowrap; flex-shrink: 0; }
 .pc-desc     { font-size: 0.74rem; color: var(--dim); line-height: 1.6; }

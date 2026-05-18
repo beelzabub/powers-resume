@@ -22,7 +22,7 @@
                 {{ company?.logo }} {{ company?.company }}
               </div>
               <div class="pm-customer">{{ project.customer }}</div>
-              <h2 class="pm-name">{{ project.name }}</h2>
+              <h2 class="pm-name"><span v-if="project.icon" class="pm-icon">{{ project.icon }}</span>{{ project.name }}</h2>
               <p class="pm-desc">{{ project.description }}</p>
             </div>
 
@@ -85,7 +85,8 @@ defineEmits(['close', 'prev', 'next'])
 
 .pm-header    { margin-bottom: 1.1rem; }
 .pm-customer  { font-family: var(--mono); font-size: 0.57rem; color: var(--dim); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.25rem; }
-.pm-name      { font-family: var(--display); font-size: 3.2rem; line-height: 0.95; color: var(--text); margin-bottom: 0.7rem; }
+.pm-name      { font-family: var(--display); font-size: 3.2rem; line-height: 0.95; color: var(--text); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.5rem; }
+.pm-icon      { font-size: 2rem; line-height: 1; }
 .pm-desc      { font-size: 0.84rem; color: var(--dim); line-height: 1.75; max-width: 680px; }
 
 .pm-outcome-banner  { display: flex; align-items: center; gap: 1rem; background: var(--surface); border: 1px solid var(--border); border-left: 3px solid #4eff9a; padding: 0.8rem 1.1rem; margin-bottom: 1.4rem; }

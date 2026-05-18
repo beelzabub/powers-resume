@@ -7,10 +7,10 @@ export const quickStats = [
 
 export const experience = [
   {
-    id: 'galt', logo: '✈', color: '#00d4ff',
+    id: 'galt', logo: '🛰', color: '#00d4ff',
     company: 'GALT Aerospace', title: 'Director of Engineering',
     period: '2019 – 2023',
-    tagline: "Built DoD C3 software org from zero to $250M+",
+    tagline: "Airborne C3 networks, rapid prototyping, and JADC2 — zero to $250M+",
     context: "GALT Aerospace is a non-traditional, veteran-owned defense contractor delivering premier C3 solutions for airborne systems — specializing in open-architecture rapid-prototyping for the warfighter. Jamie joined as the founding engineering leader and built the entire software organization from scratch, scaling to 50 engineers and winning $250M+ in contracts against major industry primes.",
     stats: [
       { value: '$250M+', label: 'Contracts Won' },
@@ -20,7 +20,7 @@ export const experience = [
     ],
     projects: [
       {
-        id: 'finn', name: 'FINN Program', customer: 'Marine Corps Warfighting Lab',
+        id: 'finn', icon: '📡', name: 'FINN Program', customer: 'Marine Corps Warfighting Lab',
         blurb: 'Airborne comms status/control system on microservices & pub-sub architecture. Led end-to-end DevSecOps from ground up.',
         description: 'The FINN program required a full-stack airborne communications status and control software system built on a microservices/pub-sub architecture. Jamie architected and developed the system using Python, Redis, Vue3, Ansible, and Docker on Linux — while simultaneously standing up the entire DevSecOps pipeline including Jenkins CI/CD, automated DISA STIG compliance, SonarQube static analysis, and automated testing.',
         tech: ['Python', 'Vue3', 'Redis', 'Ansible', 'Docker', 'Linux', 'Jenkins', 'SonarQube', 'PyTest', 'Selenium'],
@@ -34,7 +34,7 @@ export const experience = [
         ]
       },
       {
-        id: 'skytower', name: 'SkyTower II', customer: 'DoD / Marine Corps',
+        id: 'skytower', icon: '🛸', name: 'SkyTower II', customer: 'DoD / Marine Corps',
         blurb: 'Scalable airborne C3 software that beat major industry primes and secured a landmark $35M+ contract win.',
         description: 'SkyTower II was a high-stakes competitive DoD program where GALT competed directly against major industry primes and won. Jamie led the software architecture and engineering execution — delivering a scalable, secure, mission-ready airborne C3 system under aggressive timelines with full DevSecOps compliance.',
         tech: ['Python', 'JavaScript', 'Docker', 'Ansible', 'Jenkins', 'SonarQube', 'BitBucket', 'RedHat Linux'],
@@ -48,7 +48,7 @@ export const experience = [
         ]
       },
       {
-        id: 'devsecops-galt', name: 'DevSecOps Org Build', customer: 'Internal / DoD Programs',
+        id: 'devsecops-galt', icon: '⚙', name: 'DevSecOps Org Build', customer: 'Internal / DoD Programs',
         blurb: 'Built the entire software engineering organization and DevSecOps pipeline from zero — scaling to 50 engineers.',
         description: 'When Jamie joined GALT there was no software engineering organization. He built it entirely: hiring engineers, establishing DevSecOps culture and tooling, implementing CI/CD pipelines, automated testing, code review processes, and security compliance automation — all while delivering production software for live DoD programs.',
         tech: ['Jenkins', 'Ansible', 'Docker', 'SonarQube', 'Fortify', 'BitBucket', 'JIRA', 'Selenium', 'PyTest', 'Bash'],
@@ -68,7 +68,7 @@ export const experience = [
     id: 'northrop', logo: '🛩', color: '#ff6b35',
     company: 'Northrop Grumman', title: 'Software Engineer → Team Leader',
     period: '2005 – 2018',
-    tagline: '13 years — from CBRN modeling to battlefield airspace awareness',
+    tagline: '13 years — CBRN modeling, GCCS integration, and the BACN airborne gateway',
     context: "Jamie spent 13 years at Northrop Grumman across two major programs. From 2005–2008 he led a ~20-person team on the Joint Effects Model (JEM) — a DoD CBRN modeling and simulation system integrated into GCCS-J and GCCS-M. From 2009–2018 he was a core developer and team leader on BACN (Battlefield Airborne Communications Node) — the high-altitude airborne gateway flying on the E-11A with 200,000+ combat flight hours, a $3.6B IDIQ contract, and 98%+ mission availability.",
     stats: [
       { value: '13 yrs', label: 'Tenure' },
@@ -78,7 +78,7 @@ export const experience = [
     ],
     projects: [
       {
-        id: 'bacn-bib', name: 'BACN Information Broker', customer: 'US Air Force / Joint DoD',
+        id: 'bacn-bib', icon: '🗺', name: 'BACN Information Broker', customer: 'US Air Force / Joint DoD',
         blurb: 'Full-stack web-based situational awareness & mission planning app with 3D geospatial visualization — globally forward-deployed.',
         description: 'The BACN Information Broker (BIB) was the primary situational awareness and mission planning application for BACN — a real-time 3D geospatial view of the battlespace fusing data from Link 16, EPLRS, SADL and other tactical data links. Jamie led development across 3 major baselines working the full stack from Python/Java backend through React/Redux/CesiumJS 3D frontend.',
         tech: ['React', 'Redux', 'Backbone', 'CesiumJS', 'Python', 'Java', 'ElasticSearch', 'Node.js', 'Jenkins', 'RedHat Linux', 'PyTest', 'Selenium', 'Fortify'],
@@ -93,7 +93,7 @@ export const experience = [
         ]
       },
       {
-        id: 'bacn-gateway', name: 'BACN', customer: 'US Air Force / DoD Joint',
+        id: 'bacn-gateway', icon: '🌐', name: 'BACN', customer: 'US Air Force / DoD Joint',
         blurb: 'Core BACN payload software — the airborne gateway that translates and bridges Link 16, CDL, EPLRS, SADL, VOIP, and Inmarsat across the battlespace on the E-11A at 51,000 ft.',
         description: "BACN (Battlefield Airborne Communications Node) is a high-altitude airborne gateway carried on the E-11A that acts as a universal translator between otherwise incompatible tactical data links and voice systems — bridging Link 16, EPLRS, CDL, SADL, VOIP, Inmarsat and more in real time. Jamie worked hands-on at the code level on the BACN payload software, debugging data link integrations and personally supporting operational deployments worldwide. Over 15,500 missions flown with 98%+ mission availability.",
         tech: ['C', 'C++', 'Java', 'Python', 'Link16', 'CDL', 'VOIP', 'SADL', 'EPLRS', 'Inmarsat', 'RedHat Linux'],
@@ -108,7 +108,7 @@ export const experience = [
         ]
       },
       {
-        id: 'jem', name: 'Joint Effects Model (JEM)', customer: 'DoD Joint Command',
+        id: 'jem', icon: '☢', name: 'Joint Effects Model (JEM)', customer: 'DoD Joint Command',
         blurb: 'Web-based CBRN modeling and simulation for DoD commanders. Led ~20 developers across full stack on Windows and Solaris.',
         description: 'JEM was a DoD web application for real-time modeling and simulation of CBRN events, providing commanders with effects prediction integrated into the global command picture. Jamie led ~20 developers across the full stack — Fortran scientific code, C/C++ middleware, Java web tier, and JSP/JavaScript frontend — running cross-platform on Windows and SUN Solaris.',
         tech: ['Fortran', 'C', 'C++', 'Java', 'JSP', 'JavaScript', 'Windows', 'SUN Solaris'],
@@ -122,7 +122,7 @@ export const experience = [
         ]
       },
       {
-        id: 'gccs', name: 'GCCS-J / GCCS-M Integration', customer: 'DoD Joint Command / US Navy',
+        id: 'gccs', icon: '🖥', name: 'GCCS-J / GCCS-M Integration', customer: 'DoD Joint Command / US Navy',
         blurb: 'Ported JEM into Global Command and Control System Joint and Maritime, administering all Windows and Solaris infrastructure.',
         description: 'Integrating JEM into GCCS-J and GCCS-M required deep systems integration work — porting from standalone Windows into the tightly controlled GCCS ecosystem and administering all associated infrastructure. Also led development of an automated test framework for ongoing JEM quality assurance.',
         tech: ['Java', 'C++', 'Windows Server', 'SUN Solaris', 'GCCS-J', 'GCCS-M', 'Active Directory'],
@@ -137,10 +137,10 @@ export const experience = [
     ]
   },
   {
-    id: 'predicate', logo: '📡', color: '#bf5fff',
+    id: 'predicate', logo: '⚓', color: '#bf5fff',
     company: 'Predicate Logic Inc.', title: 'Software Engineer',
     period: '1999 – 2005',
-    tagline: 'Submarine comms integration & advanced metrics platform',
+    tagline: 'Navy submarine C4ISR engineering & TychoMetrics metrics platform',
     context: 'Predicate Logic was a San Diego defense software company focused on submarine communications systems and advanced data metrics platforms. Jamie spent 6 years gaining deep expertise in low-level C systems programming on HPUX Unix, Berkeley sockets IPC, and building data-driven reporting tools across DoD and commercial customers.',
     stats: [
       { value: 'US Navy', label: 'Primary Customer' },
@@ -150,7 +150,7 @@ export const experience = [
     ],
     projects: [
       {
-        id: 'slvr', name: 'SLVR Submarine Integration', customer: 'US Navy',
+        id: 'slvr', icon: '🌊', name: 'SLVR Submarine Integration', customer: 'US Navy',
         blurb: 'Full lifecycle integration of submarine Low Frequency/VLF receiver into the Integrated Resource Manager using C, Berkeley sockets, and SNMP on HPUX Unix.',
         description: 'The SLVR (Submarine Low Frequency/Very Low Frequency VME Bus Receiver) integration into the Integrated Resource Manager required deep low-level systems programming on HPUX Unix. Jamie was responsible for GUI design, inter-process communication via Berkeley sockets, and SNMP protocol implementation — all in C on a submarine platform.',
         tech: ['C', 'HPUX Unix', 'Berkeley Sockets', 'SNMP', 'Neuron Data', 'VME Bus'],
@@ -163,7 +163,7 @@ export const experience = [
         ]
       },
       {
-        id: 'tychometrics', name: 'TychoMetrics Platform', customer: 'DoD Contractors / Commercial',
+        id: 'tychometrics', icon: '📊', name: 'TychoMetrics Platform', customer: 'DoD Contractors / Commercial',
         blurb: 'Automated data collection and advanced metrics platform. Led full redesign from Windows desktop to web-based ASP.NET application.',
         description: 'TychoMetrics was an automated data collection and reporting platform applying advanced metrics across disparate data sources. Jamie built the original Windows desktop version in Visual C++/MFC, then led its full redesign as a web-based .NET application — significantly expanding reach and maintainability.',
         tech: ['Visual C++', 'MFC', 'Versant OODB', 'C#', 'ASP.NET', 'COM', 'IIS', 'ADO.NET', 'Perl', 'SQL Server', 'Oracle'],
