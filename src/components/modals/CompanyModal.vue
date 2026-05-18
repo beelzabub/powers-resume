@@ -9,8 +9,9 @@
         <Transition :name="direction === 'next' ? 'slide-left' : 'slide-right'" mode="out-in">
           <div :key="company.id" class="modal-inner">
 
-            <div class="modal-counter">
-              {{ idx + 1 }} / {{ total }}
+            <div class="modal-topbar">
+              <span class="modal-eyebrow">Company</span>
+              <span class="modal-counter">{{ idx + 1 }} / {{ total }}</span>
             </div>
 
             <div class="modal-header">
@@ -64,7 +65,9 @@ defineEmits(['close', 'open-project', 'prev', 'next'])
 
 <style scoped>
 .modal-inner  { display: flex; flex-direction: column; gap: 0; }
-.modal-counter { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 1rem; }
+.modal-topbar  { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+.modal-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+.modal-counter { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); }
 
 .nav-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);

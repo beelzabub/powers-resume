@@ -10,7 +10,10 @@
           <div :key="project.id" class="modal-inner">
 
             <div class="pm-topbar">
-              <button class="modal-back" @click="$emit('close')">← {{ company?.company }}</button>
+              <div class="pm-topbar-left">
+                <span class="modal-eyebrow">Project</span>
+                <button class="modal-back" @click="$emit('close')">← {{ company?.company }}</button>
+              </div>
               <div class="pm-counter">{{ globalIdx + 1 }} / {{ totalProjects }}</div>
             </div>
 
@@ -71,7 +74,9 @@ defineEmits(['close', 'prev', 'next'])
 <style scoped>
 .modal-inner  { display: flex; flex-direction: column; }
 
-.pm-topbar    { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
+.pm-topbar      { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); margin-bottom: 1.2rem; }
+.pm-topbar-left { display: flex; flex-direction: column; gap: 0.3rem; }
+.modal-eyebrow  { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
 .modal-back   { background: none; border: none; font-family: var(--mono); font-size: 0.62rem; color: var(--c, var(--accent)); cursor: pointer; padding: 0; letter-spacing: 0.08em; transition: opacity 0.15s; }
 .modal-back:hover { opacity: 0.65; }
 .pm-counter   { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); }

@@ -9,6 +9,10 @@
         <div class="car-modal-track">
           <Transition :name="direction === 'next' ? 'slide-left' : 'slide-right'" mode="out-in">
             <div :key="idx" class="car-modal-slide">
+                <div class="car-modal-topbar">
+                  <span class="car-modal-eyebrow">{{ ['GRADUATE','UNDERGRAD'].includes(items[idx].badge) ? 'Education' : 'Certification' }}</span>
+                  <span class="car-modal-counter">{{ idx + 1 }} / {{ items.length }}</span>
+                </div>
               <div class="car-modal-header">
                 <div class="car-modal-icon">{{ items[idx].icon }}</div>
                 <div>
@@ -68,6 +72,9 @@ defineEmits(['close', 'prev', 'next', 'jump'])
     0 0 60px rgba(0,0,0,0.4),
     0 0 120px color-mix(in srgb, var(--c, #00c8f0) 12%, transparent);
 }
+.car-modal-topbar  { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); margin-bottom: 0.2rem; }
+.car-modal-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c); }
+.car-modal-counter { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); }
 .car-modal-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
   width: 38px; height: 38px; border-radius: 50%;
