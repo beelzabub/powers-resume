@@ -3,14 +3,23 @@
     <CompanyModal
       :company="activeCompany"
       :project="activeProject"
+      :idx="activeCompanyIdx"
+      :total="experience.length"
+      :direction="companyDirection"
       @close="closeCompany"
       @open-project="openProject"
+      @prev="companyPrev"
+      @next="companyNext"
     />
     <ProjectModal
       :project="activeProject"
       :company="activeCompany"
+      :direction="projectDirection"
+      :global-idx="activeProjectGlobalIdx"
+      :total-projects="allProjects.length"
       @close="closeProject"
-      @open-project="openProject"
+      @prev="projectPrev"
+      @next="projectNext"
     />
     <SkillModal
       :skill="activeSkill"
@@ -52,13 +61,17 @@ import ProjectModal       from './components/modals/ProjectModal.vue'
 import SkillModal         from './components/modals/SkillModal.vue'
 import CredCarousel       from './components/modals/CredCarousel.vue'
 
-import { credsAndEdu }  from './data/resume.js'
-import { useModals }    from './composables/useModals.js'
+import { credsAndEdu } from './data/resume.js'
+import { useModals }   from './composables/useModals.js'
 
 const {
-  activeCompany, activeProject, activeSkill, activeSkillIdx,
-  carOpen, carIdx, carDirection, allSkills,
-  openCompany, closeCompany, openProject, closeProject,
+  activeCompany, activeCompanyIdx, companyDirection,
+  activeProject, activeProjectGlobalIdx, projectDirection,
+  activeSkill, activeSkillIdx,
+  carOpen, carIdx, carDirection,
+  allSkills, allProjects, experience,
+  openCompany, closeCompany, companyPrev, companyNext,
+  openProject, closeProject, projectPrev, projectNext,
   openSkill, skillPrev, skillNext,
   openCarousel, carPrev, carNext, jumpTo,
 } = useModals()
@@ -71,6 +84,9 @@ const {
 .panel-right { flex: 1; overflow-y: auto; padding: 2rem 2rem 2rem 2.5rem; display: flex; flex-direction: column; gap: 2.5rem; }
 .panel-right::-webkit-scrollbar       { width: 3px; }
 .panel-right::-webkit-scrollbar-thumb { background: var(--border); }
+
+/* Give arrows room to breathe outside modal edges */
+.modal { overflow: visible !important; }
 
 @media (max-width: 768px) {
   .page        { flex-direction: column; height: auto; }

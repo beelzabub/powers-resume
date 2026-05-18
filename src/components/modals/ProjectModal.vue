@@ -3,74 +3,83 @@
     <div v-if="project" class="modal-overlay" @click.self="$emit('close')">
       <div class="modal" :style="{ '--c': company?.color }">
         <button class="modal-close" @click="$emit('close')">✕</button>
-        <button class="modal-back" @click="$emit('close')">← {{ company?.company }}</button>
+        <button class="nav-arrow nav-prev" @click="$emit('prev')">‹</button>
+        <button class="nav-arrow nav-next" @click="$emit('next')">›</button>
 
-        <div class="pm-header">
-          <div class="pm-customer">{{ project.customer }}</div>
-          <h2 class="pm-name">{{ project.name }}</h2>
-          <p class="pm-desc">{{ project.description }}</p>
-        </div>
+        <Transition :name="direction === 'next' ? 'slide-left' : 'slide-right'" mode="out-in">
+          <div :key="project.id" class="modal-inner">
 
-        <div class="pm-outcome-banner">
-          <div class="pm-outcome-icon">✓</div>
-          <div>
-            <div class="pm-outcome-label">OUTCOME</div>
-            <div class="pm-outcome-text">{{ project.outcome }}</div>
-          </div>
-        </div>
+            <div class="pm-topbar">
+              <button class="modal-back" @click="$emit('close')">← {{ company?.company }}</button>
+              <div class="pm-counter">{{ globalIdx + 1 }} / {{ totalProjects }}</div>
+            </div>
 
-        <div class="pm-body">
-          <div class="pm-col">
-            <div class="pm-section-label">Tech Stack</div>
-            <div class="pm-tech-grid">
-              <div v-for="t in project.tech" :key="t" class="pm-tech-item">
-                <span class="pm-tech-dot"></span>{{ t }}
+            <div class="pm-header">
+              <div class="pm-company-badge" :style="{ '--c': company?.color }">
+                {{ company?.logo }} {{ company?.company }}
+              </div>
+              <div class="pm-customer">{{ project.customer }}</div>
+              <h2 class="pm-name">{{ project.name }}</h2>
+              <p class="pm-desc">{{ project.description }}</p>
+            </div>
+
+            <div class="pm-outcome-banner">
+              <div class="pm-outcome-icon">✓</div>
+              <div>
+                <div class="pm-outcome-label">OUTCOME</div>
+                <div class="pm-outcome-text">{{ project.outcome }}</div>
               </div>
             </div>
-          </div>
-          <div class="pm-col">
-            <div class="pm-section-label">Key Contributions</div>
-            <div class="pm-bullets">
-              <div v-for="b in project.bullets" :key="b" class="pm-bullet">
-                <span class="pm-b-arrow">▸</span>{{ b }}
+
+            <div class="pm-body">
+              <div class="pm-col">
+                <div class="pm-section-label">Tech Stack</div>
+                <div class="pm-tech-grid">
+                  <div v-for="t in project.tech" :key="t" class="pm-tech-item">
+                    <span class="pm-tech-dot"></span>{{ t }}
+                  </div>
+                </div>
+              </div>
+              <div class="pm-col">
+                <div class="pm-section-label">Key Contributions</div>
+                <div class="pm-bullets">
+                  <div v-for="b in project.bullets" :key="b" class="pm-bullet">
+                    <span class="pm-b-arrow">▸</span>{{ b }}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div v-if="otherProjects.length" class="pm-other">
-          <div class="pm-section-label">Other projects at {{ company?.company }}</div>
-          <div class="pm-other-list">
-            <button
-              v-for="p in otherProjects"
-              :key="p.id"
-              class="pm-other-btn"
-              @click="$emit('open-project', p)"
-            >{{ p.name }} →</button>
           </div>
-        </div>
+        </Transition>
       </div>
     </div>
   </Transition>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
-const props = defineProps({ project: Object, company: Object })
-defineEmits(['close', 'open-project'])
-
-const otherProjects = computed(() =>
-  props.company?.projects.filter(p => p.id !== props.project?.id) ?? []
-)
+defineProps({
+  project: Object,
+  company: Object,
+  direction: String,
+  globalIdx: Number,
+  totalProjects: Number,
+})
+defineEmits(['close', 'prev', 'next'])
 </script>
 
 <style scoped>
-.modal-back        { background: none; border: none; font-family: var(--mono); font-size: 0.62rem; color: var(--c, var(--accent)); cursor: pointer; margin-bottom: 1.2rem; display: block; padding: 0; letter-spacing: 0.08em; }
-.modal-back:hover  { opacity: 0.65; }
+.modal-inner  { display: flex; flex-direction: column; }
+
+.pm-topbar    { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
+.modal-back   { background: none; border: none; font-family: var(--mono); font-size: 0.62rem; color: var(--c, var(--accent)); cursor: pointer; padding: 0; letter-spacing: 0.08em; transition: opacity 0.15s; }
+.modal-back:hover { opacity: 0.65; }
+.pm-counter   { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); }
+
+.pm-company-badge { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--c); background: rgba(0,0,0,0.2); border: 1px solid var(--c); padding: 3px 10px; display: inline-flex; align-items: center; gap: 0.4rem; border-radius: 2px; margin-bottom: 0.5rem; }
 
 .pm-header    { margin-bottom: 1.1rem; }
-.pm-customer  { font-family: var(--mono); font-size: 0.57rem; color: var(--c); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.25rem; }
+.pm-customer  { font-family: var(--mono); font-size: 0.57rem; color: var(--dim); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.25rem; }
 .pm-name      { font-family: var(--display); font-size: 3.2rem; line-height: 0.95; color: var(--text); margin-bottom: 0.7rem; }
 .pm-desc      { font-size: 0.84rem; color: var(--dim); line-height: 1.75; max-width: 680px; }
 
@@ -88,10 +97,22 @@ const otherProjects = computed(() =>
 .pm-bullet        { display: flex; gap: 0.55rem; font-size: 0.77rem; color: var(--dim); line-height: 1.6; }
 .pm-b-arrow       { color: var(--c); flex-shrink: 0; font-size: 0.71rem; padding-top: 2px; }
 
-.pm-other         { border-top: 1px solid var(--border); padding-top: 1rem; }
-.pm-other-list    { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.55rem; }
-.pm-other-btn     { font-family: var(--mono); font-size: 0.62rem; background: none; border: 1px solid var(--border); color: var(--dim); padding: 5px 11px; cursor: pointer; transition: all 0.15s; }
-.pm-other-btn:hover { border-color: var(--c); color: var(--c); }
+.nav-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--dim); font-size: 1.4rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; z-index: 10; line-height: 1;
+  backdrop-filter: blur(4px);
+}
+.nav-arrow:hover { background: var(--c); border-color: var(--c); color: var(--bg); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 40%, transparent); transform: translateY(-50%) scale(1.08); }
+.nav-prev { left: -48px; }
+.nav-next { right: -48px; }
 
-@media (max-width: 768px) { .pm-body { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .pm-body { grid-template-columns: 1fr; }
+  .nav-prev { left: 0.4rem; }
+  .nav-next { right: 0.4rem; }
+}
 </style>
