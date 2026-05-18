@@ -18,9 +18,6 @@
             </div>
 
             <div class="pm-header">
-              <div class="pm-company-badge" :style="{ '--c': company?.color }">
-                {{ company?.logo }} {{ company?.company }}
-              </div>
               <div class="pm-customer">{{ project.customer }}</div>
               <h2 class="pm-name"><span v-if="project.icon" class="pm-icon">{{ project.icon }}</span>{{ project.name }}</h2>
               <p class="pm-desc">{{ project.description }}</p>
@@ -80,8 +77,6 @@ defineEmits(['close', 'prev', 'next'])
 .modal-back   { background: none; border: none; font-family: var(--mono); font-size: 0.62rem; color: var(--c, var(--accent)); cursor: pointer; padding: 0; letter-spacing: 0.08em; transition: opacity 0.15s; }
 .modal-back:hover { opacity: 0.65; }
 .pm-counter   { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); }
-
-.pm-company-badge { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--c); background: rgba(0,0,0,0.2); border: 1px solid var(--c); padding: 3px 10px; display: inline-flex; align-items: center; gap: 0.4rem; border-radius: 2px; margin-bottom: 0.5rem; }
 
 .pm-header    { margin-bottom: 1.1rem; }
 .pm-customer  { font-family: var(--mono); font-size: 0.57rem; color: var(--dim); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.25rem; }
