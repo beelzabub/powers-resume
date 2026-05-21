@@ -1,5 +1,4 @@
-import { ref, computed } from 'vue'
-import { onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { skillGroups, experience } from '../data/resume.js'
 
 const allSkills   = skillGroups.flatMap(g => g.items)

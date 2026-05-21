@@ -59,8 +59,6 @@ defineEmits(['close', 'prev', 'next'])
 .skill-modal-inner   { display: flex; flex-direction: column; gap: 1.2rem; }
 .skill-modal-topbar  { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); margin-bottom: 0.2rem; }
 .skill-modal-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-.skill-modal-topbar  { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); margin-bottom: 0.2rem; }
-.skill-modal-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
 .skill-modal-counter { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); }
 .skill-modal-name    { font-family: var(--display); font-size: 2.4rem; line-height: 1; color: var(--text); padding-right: 2rem; }
 .skill-modal-desc    { font-size: 0.84rem; color: var(--dim); line-height: 1.75; }
