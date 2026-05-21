@@ -1,63 +1,69 @@
 <template>
   <Transition name="modal">
     <div v-if="project" class="modal-overlay" @click.self="$emit('close')">
-      <div class="modal" :style="{ '--c': company?.color }">
-        <button class="modal-close" @click="$emit('close')">✕</button>
+      <div class="modal-shell">
         <button class="nav-arrow nav-prev" @click="$emit('prev')">‹</button>
         <button class="nav-arrow nav-next" @click="$emit('next')">›</button>
 
-        <Transition :name="direction === 'next' ? 'slide-left' : 'slide-right'" mode="out-in">
-          <div :key="project.id" class="modal-inner">
+        <div class="modal" :style="{ '--c': company?.color }"
+             @touchstart.passive="touchStart" @touchend.passive="touchEnd">
+          <button class="modal-close" @click="$emit('close')">✕</button>
 
-            <div class="pm-topbar">
-              <div class="pm-topbar-left">
-                <span class="modal-eyebrow">Project</span>
-                <button class="modal-back" @click="$emit('close')">← {{ company?.company }}</button>
+          <Transition :name="direction === 'next' ? 'slide-left' : 'slide-right'" mode="out-in">
+            <div :key="project.id" class="modal-inner">
+
+              <div class="pm-topbar">
+                <div class="pm-topbar-left">
+                  <span class="modal-eyebrow">Project</span>
+                  <button class="modal-back" @click="$emit('close')">← {{ company?.company }}</button>
+                </div>
+                <div class="pm-counter">{{ globalIdx + 1 }} / {{ totalProjects }}</div>
               </div>
-              <div class="pm-counter">{{ globalIdx + 1 }} / {{ totalProjects }}</div>
-            </div>
 
-            <div class="pm-header">
-              <div class="pm-customer">{{ project.customer }}</div>
-              <h2 class="pm-name"><span v-if="project.icon" class="pm-icon">{{ project.icon }}</span>{{ project.name }}</h2>
-              <p class="pm-desc">{{ project.description }}</p>
-            </div>
-
-            <div class="pm-outcome-banner">
-              <div class="pm-outcome-icon">✓</div>
-              <div>
-                <div class="pm-outcome-label">OUTCOME</div>
-                <div class="pm-outcome-text">{{ project.outcome }}</div>
+              <div class="pm-header">
+                <div class="pm-customer">{{ project.customer }}</div>
+                <h2 class="pm-name"><span v-if="project.icon" class="pm-icon">{{ project.icon }}</span>{{ project.name }}</h2>
+                <p class="pm-desc">{{ project.description }}</p>
               </div>
-            </div>
 
-            <div class="pm-body">
-              <div class="pm-col">
-                <div class="pm-section-label">Tech Stack</div>
-                <div class="pm-tech-grid">
-                  <div v-for="t in project.tech" :key="t" class="pm-tech-item">
-                    <span class="pm-tech-dot"></span>{{ t }}
+              <div class="pm-outcome-banner">
+                <div class="pm-outcome-icon">✓</div>
+                <div>
+                  <div class="pm-outcome-label">OUTCOME</div>
+                  <div class="pm-outcome-text">{{ project.outcome }}</div>
+                </div>
+              </div>
+
+              <div class="pm-body">
+                <div class="pm-col">
+                  <div class="pm-section-label">Tech Stack</div>
+                  <div class="pm-tech-grid">
+                    <div v-for="t in project.tech" :key="t" class="pm-tech-item">
+                      <span class="pm-tech-dot"></span>{{ t }}
+                    </div>
+                  </div>
+                </div>
+                <div class="pm-col">
+                  <div class="pm-section-label">Key Contributions</div>
+                  <div class="pm-bullets">
+                    <div v-for="b in project.bullets" :key="b" class="pm-bullet">
+                      <span class="pm-b-arrow">▸</span>{{ b }}
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="pm-col">
-                <div class="pm-section-label">Key Contributions</div>
-                <div class="pm-bullets">
-                  <div v-for="b in project.bullets" :key="b" class="pm-bullet">
-                    <span class="pm-b-arrow">▸</span>{{ b }}
-                  </div>
-                </div>
-              </div>
-            </div>
 
-          </div>
-        </Transition>
+            </div>
+          </Transition>
+        </div>
       </div>
     </div>
   </Transition>
 </template>
 
 <script setup>
+import { useSwipe } from '../../composables/useSwipe.js'
+
 defineProps({
   project: Object,
   company: Object,
@@ -65,10 +71,21 @@ defineProps({
   globalIdx: Number,
   totalProjects: Number,
 })
-defineEmits(['close', 'prev', 'next'])
+const emit = defineEmits(['close', 'prev', 'next'])
+
+const { touchStart, touchEnd } = useSwipe({
+  onLeft:  () => emit('next'),
+  onRight: () => emit('prev'),
+})
 </script>
 
 <style scoped>
+.modal-shell {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+}
+
 .modal-inner  { display: flex; flex-direction: column; }
 
 .pm-topbar      { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); margin-bottom: 1.2rem; }
@@ -107,13 +124,19 @@ defineEmits(['close', 'prev', 'next'])
   transition: all 0.2s; z-index: 10; line-height: 1;
   backdrop-filter: blur(4px);
 }
-.nav-arrow:hover { background: var(--c); border-color: var(--c); color: var(--bg); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 40%, transparent); transform: translateY(-50%) scale(1.08); }
+.nav-arrow:hover  { background: var(--c); border-color: var(--c); color: var(--bg); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 40%, transparent); transform: translateY(-50%) scale(1.08); }
+.nav-arrow:active { background: var(--c); border-color: var(--c); color: var(--bg); }
 .nav-prev { left: -48px; }
 .nav-next { right: -48px; }
 
-@media (max-width: 768px) {
-  .pm-body { grid-template-columns: 1fr; }
+@media (max-width: 980px) {
   .nav-prev { left: 0.4rem; }
   .nav-next { right: 0.4rem; }
+}
+
+@media (max-width: 768px) {
+  .pm-body { grid-template-columns: 1fr; }
+  .pm-name { font-size: 2.2rem; }
+  .nav-arrow { width: 40px; height: 40px; font-size: 1.6rem; }
 }
 </style>

@@ -85,8 +85,6 @@ const {
 .panel-right::-webkit-scrollbar       { width: 3px; }
 .panel-right::-webkit-scrollbar-thumb { background: var(--border); }
 
-/* Give arrows room to breathe outside modal edges */
-.modal { overflow: visible !important; }
 
 @media (max-width: 768px) {
   .page        { flex-direction: column; height: auto; }

@@ -1,69 +1,88 @@
 <template>
   <Transition name="modal">
     <div v-if="company && !project" class="modal-overlay" @click.self="$emit('close')">
-      <div class="modal" :style="{ '--c': company.color }">
-        <button class="modal-close" @click="$emit('close')">✕</button>
+      <div class="modal-shell">
         <button class="nav-arrow nav-prev" @click="$emit('prev')">‹</button>
         <button class="nav-arrow nav-next" @click="$emit('next')">›</button>
 
-        <Transition :name="direction === 'next' ? 'slide-left' : 'slide-right'" mode="out-in">
-          <div :key="company.id" class="modal-inner">
+        <div class="modal" :style="{ '--c': company.color }"
+             @touchstart.passive="touchStart" @touchend.passive="touchEnd">
+          <button class="modal-close" @click="$emit('close')">✕</button>
 
-            <div class="modal-topbar">
-              <span class="modal-eyebrow">Company</span>
-              <span class="modal-counter">{{ idx + 1 }} / {{ total }}</span>
-            </div>
+          <Transition :name="direction === 'next' ? 'slide-left' : 'slide-right'" mode="out-in">
+            <div :key="company.id" class="modal-inner">
 
-            <div class="modal-header">
-              <div class="modal-logo">{{ company.logo }}</div>
-              <div>
-                <div class="modal-period">{{ company.period }}</div>
-                <h2 class="modal-company-name">{{ company.company }}</h2>
-                <div class="modal-role">{{ company.title }}</div>
-                <p class="modal-context">{{ company.context }}</p>
+              <div class="modal-topbar">
+                <span class="modal-eyebrow">Company</span>
+                <span class="modal-counter">{{ idx + 1 }} / {{ total }}</span>
               </div>
-            </div>
 
-            <div class="modal-stats">
-              <div v-for="s in company.stats" :key="s.label" class="modal-stat">
-                <div class="modal-stat-val">{{ s.value }}</div>
-                <div class="modal-stat-label">{{ s.label }}</div>
-              </div>
-            </div>
-
-            <div class="modal-section-label">Projects — click to drill down</div>
-            <div class="project-cards">
-              <div
-                v-for="p in company.projects"
-                :key="p.id"
-                class="project-card"
-                @click="$emit('open-project', p)"
-              >
-                <div class="pc-top">
-                  <div class="pc-name"><span v-if="p.icon" class="pc-icon">{{ p.icon }}</span>{{ p.name }}</div>
-                  <div class="pc-customer">{{ p.customer }}</div>
+              <div class="modal-header">
+                <div class="modal-logo">{{ company.logo }}</div>
+                <div class="modal-header-text">
+                  <div class="modal-period">{{ company.period }}</div>
+                  <h2 class="modal-company-name">{{ company.company }}</h2>
+                  <div class="modal-role">{{ company.title }}</div>
+                  <p class="modal-context">{{ company.context }}</p>
                 </div>
-                <p class="pc-desc">{{ p.blurb }}</p>
-                <div class="pc-tech">
-                  <span v-for="t in p.tech.slice(0,5)" :key="t" class="tech-pill">{{ t }}</span>
-                </div>
-                <div class="pc-outcome">▸ {{ p.outcome }}</div>
               </div>
-            </div>
 
-          </div>
-        </Transition>
+              <div class="modal-stats">
+                <div v-for="s in company.stats" :key="s.label" class="modal-stat">
+                  <div class="modal-stat-val">{{ s.value }}</div>
+                  <div class="modal-stat-label">{{ s.label }}</div>
+                </div>
+              </div>
+
+              <div class="modal-section-label">Projects — tap to drill down</div>
+              <div class="project-cards">
+                <div
+                  v-for="p in company.projects"
+                  :key="p.id"
+                  class="project-card"
+                  @click="$emit('open-project', p)"
+                >
+                  <div class="pc-top">
+                    <div class="pc-name"><span v-if="p.icon" class="pc-icon">{{ p.icon }}</span>{{ p.name }}</div>
+                    <div class="pc-customer">{{ p.customer }}</div>
+                  </div>
+                  <p class="pc-desc">{{ p.blurb }}</p>
+                  <div class="pc-tech">
+                    <span v-for="t in p.tech.slice(0,5)" :key="t" class="tech-pill">{{ t }}</span>
+                  </div>
+                  <div class="pc-outcome">▸ {{ p.outcome }}</div>
+                </div>
+              </div>
+
+            </div>
+          </Transition>
+        </div>
       </div>
     </div>
   </Transition>
 </template>
 
 <script setup>
+import { useSwipe } from '../../composables/useSwipe.js'
+
 defineProps({ company: Object, project: Object, idx: Number, total: Number, direction: String })
-defineEmits(['close', 'open-project', 'prev', 'next'])
+const emit = defineEmits(['close', 'open-project', 'prev', 'next'])
+
+const { touchStart, touchEnd } = useSwipe({
+  onLeft:  () => emit('next'),
+  onRight: () => emit('prev'),
+})
 </script>
 
 <style scoped>
+/* Shell provides the positioning context for nav arrows so the modal
+   itself can keep overflow-y: auto and scroll normally on mobile. */
+.modal-shell {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+}
+
 .modal-inner  { display: flex; flex-direction: column; gap: 0; }
 .modal-topbar  { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
 .modal-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
@@ -78,7 +97,8 @@ defineEmits(['close', 'open-project', 'prev', 'next'])
   transition: all 0.2s; z-index: 10; line-height: 1;
   backdrop-filter: blur(4px);
 }
-.nav-arrow:hover { background: var(--c); border-color: var(--c); color: var(--bg); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 40%, transparent); transform: translateY(-50%) scale(1.08); }
+.nav-arrow:hover  { background: var(--c); border-color: var(--c); color: var(--bg); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 40%, transparent); transform: translateY(-50%) scale(1.08); }
+.nav-arrow:active { background: var(--c); border-color: var(--c); color: var(--bg); }
 .nav-prev { left: -48px; }
 .nav-next { right: -48px; }
 
@@ -96,9 +116,9 @@ defineEmits(['close', 'open-project', 'prev', 'next'])
 
 .modal-section-label { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c); margin-bottom: 0.7rem; }
 
-.project-cards     { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-.project-card      { background: var(--bg); padding: 1.2rem; cursor: pointer; display: flex; flex-direction: column; gap: 0.65rem; border-left: 2px solid transparent; transition: all 0.15s; }
-.project-card:hover { background: var(--surface); border-left-color: var(--c); }
+.project-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.project-card  { background: var(--bg); padding: 1.2rem; cursor: pointer; display: flex; flex-direction: column; gap: 0.65rem; border-left: 2px solid transparent; transition: all 0.15s; -webkit-tap-highlight-color: transparent; }
+.project-card:hover, .project-card:active { background: var(--surface); border-left-color: var(--c); }
 
 .pc-top      { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
 .pc-icon     { margin-right: 0.4rem; }
@@ -108,9 +128,17 @@ defineEmits(['close', 'open-project', 'prev', 'next'])
 .pc-tech     { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .pc-outcome  { font-family: var(--mono); font-size: 0.61rem; color: #4eff9a; margin-top: auto; }
 
-@media (max-width: 768px) {
-  .modal-stats { grid-template-columns: repeat(2,1fr); }
+/* Move arrows inside modal bounds once viewport can't fit them outside */
+@media (max-width: 980px) {
   .nav-prev { left: 0.4rem; }
   .nav-next { right: 0.4rem; }
+}
+
+@media (max-width: 768px) {
+  .modal-stats { grid-template-columns: repeat(2,1fr); }
+  .modal-header { gap: 0.8rem; }
+  .modal-company-name { font-size: 2rem; }
+  .project-cards { grid-template-columns: 1fr; }
+  .nav-arrow { width: 40px; height: 40px; font-size: 1.6rem; }
 }
 </style>

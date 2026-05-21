@@ -1,7 +1,8 @@
 <template>
   <Transition name="modal">
     <div v-if="open" class="modal-overlay" @click.self="$emit('close')">
-      <div class="car-modal" :style="{ '--c': items[idx].color }">
+      <div class="car-modal" :style="{ '--c': items[idx].color }"
+           @touchstart.passive="touchStart" @touchend.passive="touchEnd">
         <button class="modal-close" @click="$emit('close')">✕</button>
         <button class="car-modal-arrow car-modal-prev" @click="$emit('prev')">‹</button>
         <button class="car-modal-arrow car-modal-next" @click="$emit('next')">›</button>
@@ -9,10 +10,10 @@
         <div class="car-modal-track">
           <Transition :name="direction === 'next' ? 'slide-left' : 'slide-right'" mode="out-in">
             <div :key="idx" class="car-modal-slide">
-                <div class="car-modal-topbar">
-                  <span class="car-modal-eyebrow">{{ ['GRADUATE','UNDERGRAD'].includes(items[idx].badge) ? 'Education' : 'Certification' }}</span>
-                  <span class="car-modal-counter">{{ idx + 1 }} / {{ items.length }}</span>
-                </div>
+              <div class="car-modal-topbar">
+                <span class="car-modal-eyebrow">{{ ['GRADUATE','UNDERGRAD'].includes(items[idx].badge) ? 'Education' : 'Certification' }}</span>
+                <span class="car-modal-counter">{{ idx + 1 }} / {{ items.length }}</span>
+              </div>
               <div class="car-modal-header">
                 <div class="car-modal-icon">{{ items[idx].icon }}</div>
                 <div>
@@ -51,8 +52,15 @@
 </template>
 
 <script setup>
+import { useSwipe } from '../../composables/useSwipe.js'
+
 defineProps({ open: Boolean, items: Array, idx: Number, direction: String })
-defineEmits(['close', 'prev', 'next', 'jump'])
+const emit = defineEmits(['close', 'prev', 'next', 'jump'])
+
+const { touchStart, touchEnd } = useSwipe({
+  onLeft:  () => emit('next'),
+  onRight: () => emit('prev'),
+})
 </script>
 
 <style scoped>
@@ -84,7 +92,8 @@ defineEmits(['close', 'prev', 'next', 'jump'])
   transition: all 0.2s; z-index: 2; line-height: 1;
   backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
-.car-modal-arrow:hover { background: var(--c); border-color: var(--c); color: var(--bg); box-shadow: 0 0 16px color-mix(in srgb, var(--c) 40%, transparent); transform: translateY(-50%) scale(1.08); }
+.car-modal-arrow:hover  { background: var(--c); border-color: var(--c); color: var(--bg); box-shadow: 0 0 16px color-mix(in srgb, var(--c) 40%, transparent); transform: translateY(-50%) scale(1.08); }
+.car-modal-arrow:active { background: var(--c); border-color: var(--c); color: var(--bg); }
 .car-modal-prev { left: 0.75rem; }
 .car-modal-next { right: 0.75rem; }
 
@@ -104,4 +113,11 @@ defineEmits(['close', 'prev', 'next', 'jump'])
 
 .car-verify-link { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: #4eff9a; align-self: flex-start; padding: 5px 10px; border: 1px solid rgba(78,255,154,0.3); border-radius: 3px; transition: all 0.15s; margin-top: 0.2rem; }
 .car-verify-link:hover { background: rgba(78,255,154,0.1); border-color: #4eff9a; }
+
+@media (max-width: 768px) {
+  .car-modal { padding: 2rem 3rem; }
+  .car-modal-name { font-size: 1.7rem; }
+  .car-modal-arrow { width: 40px; height: 40px; font-size: 1.6rem; }
+  .car-dot { width: 9px; height: 9px; }
+}
 </style>

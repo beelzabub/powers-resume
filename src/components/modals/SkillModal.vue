@@ -1,18 +1,18 @@
 <template>
   <Transition name="modal">
     <div v-if="skill" class="modal-overlay" @click.self="$emit('close')">
-      <div class="skill-modal">
+      <div class="skill-modal" @touchstart.passive="touchStart" @touchend.passive="touchEnd">
         <button class="modal-close" @click="$emit('close')">✕</button>
         <button class="skill-nav-arrow skill-nav-prev" @click="$emit('prev')">‹</button>
         <button class="skill-nav-arrow skill-nav-next" @click="$emit('next')">›</button>
 
         <Transition name="slide-left" mode="out-in">
           <div :key="skill.name" class="skill-modal-inner">
-              <div class="skill-modal-topbar">
-                <span class="skill-modal-eyebrow">Technical Skill</span>
-                <span class="skill-modal-counter">{{ idx + 1 }} / {{ total }}</span>
-              </div>
-              <div class="skill-modal-name">{{ skill.name }}</div>
+            <div class="skill-modal-topbar">
+              <span class="skill-modal-eyebrow">Technical Skill</span>
+              <span class="skill-modal-counter">{{ idx + 1 }} / {{ total }}</span>
+            </div>
+            <div class="skill-modal-name">{{ skill.name }}</div>
             <p class="skill-modal-desc">{{ skill.desc }}</p>
             <div class="skill-modal-section">
               <div class="skill-modal-label">Companies</div>
@@ -35,8 +35,15 @@
 </template>
 
 <script setup>
+import { useSwipe } from '../../composables/useSwipe.js'
+
 defineProps({ skill: Object, idx: Number, total: Number })
-defineEmits(['close', 'prev', 'next'])
+const emit = defineEmits(['close', 'prev', 'next'])
+
+const { touchStart, touchEnd } = useSwipe({
+  onLeft:  () => emit('next'),
+  onRight: () => emit('prev'),
+})
 </script>
 
 <style scoped>
@@ -77,7 +84,13 @@ defineEmits(['close', 'prev', 'next'])
   transition: all 0.2s; z-index: 2; line-height: 1;
   backdrop-filter: blur(4px);
 }
-.skill-nav-arrow:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); box-shadow: 0 0 14px rgba(0,200,240,0.4); transform: translateY(-50%) scale(1.08); }
+.skill-nav-arrow:hover  { background: var(--accent); border-color: var(--accent); color: var(--bg); box-shadow: 0 0 14px rgba(0,200,240,0.4); transform: translateY(-50%) scale(1.08); }
+.skill-nav-arrow:active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 .skill-nav-prev { left: 0.6rem; }
 .skill-nav-next { right: 0.6rem; }
+
+@media (max-width: 768px) {
+  .skill-modal { padding: 2rem 3rem 1.8rem; }
+  .skill-nav-arrow { width: 40px; height: 40px; font-size: 1.6rem; }
+}
 </style>

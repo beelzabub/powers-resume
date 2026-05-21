@@ -39,7 +39,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--body); font
   border: 1px solid var(--border);
   border-top: 3px solid var(--c, var(--accent));
   width: 100%; max-width: 880px; max-height: 88vh;
-  overflow-y: auto; position: relative; padding: 2rem;
+  overflow-y: auto; overscroll-behavior: contain; position: relative; padding: 2rem;
 }
 .modal::-webkit-scrollbar { width: 3px; }
 .modal::-webkit-scrollbar-thumb { background: var(--border); }
