@@ -11,10 +11,10 @@ export const experience = [
     company: 'AI-Augmented Engineering', title: 'Agentic Development · Independent Practice',
     period: '2026 – Present',
     tagline: 'Directing AI coding agents to architect and ship production systems — 27 years of judgment, multiplied',
-    context: "In 2026, alongside earning AWS Professional certifications, Jamie moved aggressively into AI-augmented engineering — using agentic coding tools (Claude Code) as a force multiplier on top of 27 years of software architecture and DevSecOps experience. The approach is deliberately disciplined: rather than letting AI generate unsupervised code, Jamie directs agents through a structured, issue-driven SDLC — defining the architecture, decomposing work into issues and merge requests, and reviewing every change before it merges. The result is production-grade software shipped in days and weeks instead of months, demonstrated across three real applications spanning Cloudflare edge infrastructure, Python data tooling, and modern web frontends.",
+    context: "In 2026, alongside earning AWS Professional certifications, Jamie moved into AI-augmented engineering — using agentic coding tools (Claude Code) as a force multiplier on top of 27 years of software architecture and DevSecOps experience. The approach is deliberately disciplined: rather than letting AI generate unsupervised code, Jamie directs agents through a structured, issue-driven SDLC — defining the architecture, decomposing work into issues and merge requests, and reviewing every change before it merges. The result is production-grade software shipped in days and weeks instead of months, demonstrated across three real applications spanning Cloudflare edge infrastructure, AWS-deployed Python services (ECS/EKS via CDK), and modern web frontends.",
     stats: [
       { value: '3', label: 'Apps Shipped' },
-      { value: '535+', label: 'Commits' },
+      { value: '650+', label: 'Commits' },
       { value: '190+', label: 'Merge Requests' },
       { value: 'Claude', label: 'Primary Agent' },
     ],
@@ -35,16 +35,16 @@ export const experience = [
       },
       {
         id: 'safe-sim', icon: '📊', name: 'SAFe Portfolio Simulator', customer: 'Independent / Agile Tooling',
-        blurb: 'A ~9,700-line Python platform that programmatically bootstraps and analyzes Scaled Agile (SAFe) portfolios on GitLab — epics, WSJF prioritization, flow metrics, and auto-generated interactive reports.',
-        description: "The SAFe Portfolio Simulator is a Python automation platform that bootstraps and manages realistic Scaled Agile Framework (SAFe) portfolios against the GitLab API — generating epics, issues, labels, milestones, and value-stream hierarchies, then computing WSJF prioritization and flow metrics and publishing interactive Quarto and Marimo/WASM reports. Built over roughly seven weeks by directing AI agents through 334 commits and ~100 merge requests in a fully issue-driven workflow, it mirrors enterprise Agile delivery discipline end to end.",
-        tech: ['Python', 'GitLab API', 'Quarto', 'Marimo', 'FastAPI', 'Plotly', 'GitLab CI', 'WSJF / Flow Metrics', 'Claude Code'],
-        outcome: '~9.7K lines of Python · 334 commits · ~100 merge requests · interactive Quarto/Marimo reporting',
+        blurb: 'A ~30K-line Python platform that bootstraps and analyzes Scaled Agile (SAFe) portfolios on GitLab — WSJF, flow metrics, and interactive dashboards — fully containerized for one-command deployment to AWS ECS or EKS via CDK.',
+        description: "The SAFe Portfolio Simulator is a Python automation platform that bootstraps and manages realistic Scaled Agile Framework (SAFe) portfolios against the GitLab API — generating epics, issues, labels, milestones, and value-stream hierarchies, then computing WSJF prioritization and flow metrics and publishing interactive Quarto and Marimo/WASM reports — with a Vue web console (over a FastAPI service) for launching jobs and browsing results. It is fully containerized and ships with AWS CDK infrastructure that deploys the identical workload to either Amazon ECS (Fargate) or Amazon EKS — provisioning ECR, EFS persistent storage, an ALB/CloudFront edge, and Amazon Managed Grafana. Built over ~9 weeks by directing AI agents through 453 commits and ~100 merge requests in a fully issue-driven workflow.",
+        tech: ['Python', 'AWS CDK', 'Amazon ECS (Fargate)', 'Amazon EKS', 'Docker', 'Helm', 'Amazon ECR', 'GitLab API', 'FastAPI', 'Quarto', 'Marimo', 'GitLab CI', 'Claude Code'],
+        outcome: '~30K LOC Python (app + tests + IaC) · 453 commits · ~100 merge requests · dual AWS ECS/EKS deployment via CDK',
         bullets: [
-          'Directed AI agents to build a ~9,700-line Python GitLab-automation platform over ~7 weeks (334 commits, ~100 merge requests)',
+          'Directed AI agents to build a ~30,000-line Python SAFe-automation platform over ~9 weeks (453 commits, ~100 merge requests)',
           'Automated SAFe portfolio bootstrap — epics, issues, labels, milestones, and value-stream hierarchies — via the GitLab REST API',
-          'Implemented WSJF prioritization and flow-metrics analytics with interactive Quarto and Marimo/WASM report generation',
-          'Stood up a FastAPI backend skeleton and a Grafana proof-of-concept for live flow-metrics dashboards',
-          'Ran a fully issue-driven SDLC with GitLab CI, mirroring enterprise Agile delivery practices at scale',
+          'Implemented WSJF prioritization and flow-metrics analytics as interactive Quarto and Marimo/WASM reports, with a Vue web console over a FastAPI backend for running jobs and browsing results',
+          'Authored ~1,000 lines of AWS CDK provisioning dual deployment paths — Amazon ECS (Fargate) and Amazon EKS — with ECR, EFS, ALB/CloudFront, and Amazon Managed Grafana',
+          'Containerized the platform (Docker + Helm chart) for one-command redeploy to either ECS or EKS — directly exercising the AWS DevOps/CloudOps certifications and CKA Kubernetes track',
         ]
       },
       {
@@ -268,7 +268,7 @@ export const skillGroups = [
     title: 'AI-Augmented Engineering',
     items: [
       { name: 'Claude Code', desc: "Anthropic's agentic command-line coding tool and Jamie's primary AI development environment. Used to architect, build, test, and ship production applications by directing the agent through disciplined, issue-driven workflows with human review on every change.", companies: ['AI-Augmented Engineering'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator', 'This Portfolio Site'], link: 'https://www.claude.com/product/claude-code' },
-      { name: 'Agentic Workflows', desc: "Directing AI coding agents through a structured SDLC — decomposing work into issues, branches, and merge requests while the engineer owns architecture and reviews every change. Used to ship three production apps with 535+ commits and 190+ merge requests in 2026.", companies: ['AI-Augmented Engineering'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator'], link: 'https://www.anthropic.com/engineering/claude-code-best-practices' },
+      { name: 'Agentic Workflows', desc: "Directing AI coding agents through a structured SDLC — decomposing work into issues, branches, and merge requests while the engineer owns architecture and reviews every change. Used to ship three production apps with 650+ commits and 190+ merge requests in 2026.", companies: ['AI-Augmented Engineering'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator'], link: 'https://www.anthropic.com/engineering/claude-code-best-practices' },
       { name: 'AI-Driven DevSecOps', desc: "Applying 27 years of DevSecOps discipline to AI-generated code — CI/CD quality gates, automated testing, mandatory code review, and security practices that hold agent-built software to production and compliance standards.", companies: ['AI-Augmented Engineering'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator'], link: 'https://www.anthropic.com/engineering' },
       { name: 'Prompt Engineering', desc: "Designing precise, context-rich instructions and feedback loops that get reliable, high-quality output from large language models — the core skill behind directing agents to produce correct, maintainable code at speed.", companies: ['AI-Augmented Engineering'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator', 'This Portfolio Site'], link: 'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview' },
       { name: 'Model Context Protocol (MCP)', desc: "Open standard for connecting AI agents to external tools, APIs, and data sources. Enables agents to operate real systems — version control, cloud platforms, and project tracking — as part of an automated engineering workflow.", companies: ['AI-Augmented Engineering'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator'], link: 'https://modelcontextprotocol.io' },
@@ -363,6 +363,13 @@ export const credsAndEdu = [
     issuer: 'Amazon Web Services', date: 'Feb 2026',
     why: 'The Cloud Practitioner is the structured entry point into the AWS certification path — covering core services, pricing models, security fundamentals, and cloud architecture concepts. For a 24-year DoD software veteran pivoting to cloud-native development, earning this alongside Security+ and CloudOps in a single month signals a deliberate, disciplined upskilling sprint — not a casual checkbox.',
     tags: ['AWS Foundation', 'Cloud Economics', 'Core Services', 'Architecture Basics'],
+  },
+  {
+    id: 'cka', icon: '☸', badge: 'IN PROGRESS', color: '#326ce5',
+    name: 'Certified Kubernetes Administrator (CKA)',
+    issuer: 'The Linux Foundation / CNCF', date: 'In Progress',
+    why: "The CKA is the industry-standard, hands-on proof of Kubernetes operational competency — a performance-based exam requiring candidates to install, configure, and troubleshoot live clusters under time pressure, not answer multiple choice. Jamie is actively pursuing it to formalize the Kubernetes and Amazon EKS work already shipped in the SAFe Portfolio Simulator (dual ECS/EKS deployment via AWS CDK, Helm charts, and EFS-backed persistence). It is the natural next step after the AWS DevOps Engineer Professional and CloudOps certifications — extending cloud mastery from AWS-native services into vendor-neutral container orchestration.",
+    tags: ['In Progress', 'Kubernetes', 'Amazon EKS', 'Hands-On Exam', 'CNCF'],
   },
   {
     id: 'secplus', icon: '🔒', badge: 'DoD 8570', color: '#ff6b35',
