@@ -7,6 +7,61 @@ export const quickStats = [
 
 export const experience = [
   {
+    id: 'ai', logo: '✦', color: '#10a37f',
+    company: 'Independent AI-Augmented Builds', title: 'Selected 2026 Projects · Solo',
+    period: '2026',
+    tagline: 'Directing AI coding agents to architect and ship production systems — with senior engineering judgment on every change',
+    context: "In 2026, alongside earning AWS Professional certifications, Jamie moved into AI-augmented engineering — using agentic coding tools (Claude Code) as a force multiplier on top of decades of software architecture and DevSecOps experience. The approach is deliberately disciplined: rather than letting AI generate unsupervised code, Jamie directs agents through a structured, issue-driven SDLC — defining the architecture, decomposing work into issues and merge requests, and reviewing every change before it merges. The result is production-grade software shipped in days and weeks instead of months, demonstrated across three real applications spanning Cloudflare edge infrastructure, AWS-deployed Python services (ECS/EKS via CDK), and modern web frontends.",
+    stats: [
+      { value: '3', label: 'Apps Shipped' },
+      { value: '650+', label: 'Commits' },
+      { value: '190+', label: 'Merge Requests' },
+      { value: 'Claude', label: 'Primary Agent' },
+    ],
+    projects: [
+      {
+        id: 'channel-surf-tv', icon: '🏄', name: 'Channel Surf TV', customer: 'Independent Product',
+        blurb: 'Full-stack worldwide surf-spot atlas on the Cloudflare edge — architected and shipped to production in ~4 days by directing AI agents through a disciplined issue→branch→merge-request workflow.',
+        description: "Channel Surf TV is a production Cloudflare-native web application — Astro frontend, Cloudflare Workers API, D1 (SQLite) database, and R2 media delivery — featuring a worldwide surf-spot atlas with interactive Leaflet maps, an infinite-scroll spot feed, OSM and Wikidata bulk-import pipelines, and an Instagram Graph API content feed. Jamie built it solo in roughly four days by directing Claude Code through 95 issues and ~90 merge requests, applying decades of architecture and DevSecOps judgment to steer the agent, review every change, and keep the codebase production-grade.",
+        tech: ['Astro', 'Cloudflare Workers', 'Cloudflare D1', 'Cloudflare R2', 'TypeScript', 'Leaflet', 'SQLite', 'Wrangler', 'Claude Code', 'Agentic Workflows'],
+        outcome: 'Cloudflare-native worldwide surf atlas, edge-deployed · built in ~4 days · 201 commits · ~90 MRs · 95 issues · 13.5K LOC app + 34 D1 migrations',
+        bullets: [
+          'Directed AI coding agents to build a full Cloudflare-native stack (Astro, Workers, D1, R2) from zero to production in roughly four days',
+          'Drove a disciplined issue→branch→merge-request workflow — 95 issues, ~90 merge requests, 201 commits — with human review on every change',
+          'Architected a D1 (SQLite) schema across 34 migrations (schema + seed), populating a worldwide surf-spot atlas from OpenStreetMap and Wikidata bulk-import pipelines',
+          'Built interactive Leaflet maps, an infinite-scroll spot feed, R2-backed media delivery, and an Instagram Graph API content feed',
+          'Applied decades of architectural and DevSecOps discipline to steer the agent, catch regressions, and hold code to production standards',
+        ]
+      },
+      {
+        id: 'safe-sim', icon: '📊', name: 'SAFe Portfolio Simulator', customer: 'Independent / Agile Tooling',
+        blurb: 'A ~30K-line Python platform that bootstraps and analyzes Scaled Agile (SAFe) portfolios on GitLab — WSJF, flow metrics, and interactive dashboards — fully containerized for one-command deployment to AWS ECS or EKS via CDK.',
+        description: "The SAFe Portfolio Simulator is a Python automation platform that bootstraps and manages realistic Scaled Agile Framework (SAFe) portfolios against the GitLab API — generating epics, issues, labels, milestones, and value-stream hierarchies, then computing WSJF prioritization and flow metrics and publishing interactive Quarto and Marimo/WASM reports — with a Vue web console (over a FastAPI service) for launching jobs and browsing results. It is fully containerized and ships with AWS CDK infrastructure that deploys the identical workload to either Amazon ECS (Fargate) or Amazon EKS — provisioning ECR, EFS persistent storage, an ALB/CloudFront edge, and Amazon Managed Grafana. Built over ~9 weeks by directing AI agents through 453 commits and ~100 merge requests in a fully issue-driven workflow.",
+        tech: ['Python', 'AWS CDK', 'Amazon ECS (Fargate)', 'Amazon EKS', 'Docker', 'Helm', 'Amazon ECR', 'GitLab API', 'FastAPI', 'Quarto', 'Marimo', 'GitLab CI', 'Claude Code'],
+        outcome: 'Deployable to AWS ECS or EKS via CDK · ~30K LOC Python (app + tests + IaC) · 453 commits · ~100 merge requests',
+        bullets: [
+          'Directed AI agents to build a ~30,000-line Python SAFe-automation platform over ~9 weeks (453 commits, ~100 merge requests)',
+          'Automated SAFe portfolio bootstrap — epics, issues, labels, milestones, and value-stream hierarchies — via the GitLab REST API',
+          'Implemented WSJF prioritization and flow-metrics analytics as interactive Quarto and Marimo/WASM reports, with a Vue web console over a FastAPI backend for running jobs and browsing results',
+          'Authored ~1,000 lines of AWS CDK provisioning dual deployment paths — Amazon ECS (Fargate) and Amazon EKS — with ECR, EFS, ALB/CloudFront, and Amazon Managed Grafana',
+          'Containerized the platform (Docker + Helm chart) for one-command redeploy to either ECS or EKS — directly exercising the AWS DevOps/CloudOps certifications and CKA Kubernetes track',
+        ]
+      },
+      {
+        id: 'portfolio', icon: '💻', name: 'This Portfolio Site', customer: 'Independent Product',
+        blurb: "The interactive resume you're reading — a Vue 3 single-page app built with AI assistance and continuously deployed to a custom domain on a global edge CDN.",
+        description: "This site itself is a Vue 3 + Vite single-page portfolio with animated modal navigation, swipe gestures, and a fully data-driven content model. It was designed and built with AI assistance, then wired for continuous deployment via GitHub Actions to GitHub Pages behind a custom apex domain (jamiepowers.org) with automatic TLS — including the Route 53 DNS and custom-domain delegation.",
+        tech: ['Vue 3', 'Vite', 'JavaScript', 'GitHub Actions', 'GitHub Pages', 'Route 53', 'Claude Code'],
+        outcome: 'Live at jamiepowers.org · CI/CD auto-deploy on push · custom apex domain with enforced HTTPS',
+        bullets: [
+          'Built a Vue 3 + Vite interactive portfolio with modal navigation, swipe gestures, and a data-driven content model — with AI assistance',
+          'Automated deployment via GitHub Actions to GitHub Pages with a custom apex domain and enforced HTTPS',
+          'Configured Route 53 DNS, GitHub Pages custom-domain delegation, and end-to-end TLS',
+        ]
+      }
+    ]
+  },
+  {
     id: 'saic', logo: '☁', color: '#0066cc',
     company: 'SAIC', title: 'Cloud Infrastructure Engineer',
     period: 'April 2026 – Present',
@@ -210,12 +265,22 @@ export const experience = [
 
 export const skillGroups = [
   {
+    title: 'AI-Augmented Engineering',
+    items: [
+      { name: 'Claude Code', desc: "Anthropic's agentic command-line coding tool and Jamie's primary AI development environment. Used to architect, build, test, and ship production applications by directing the agent through disciplined, issue-driven workflows with human review on every change.", companies: ['Independent AI-Augmented Builds'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator', 'This Portfolio Site'], link: 'https://www.claude.com/product/claude-code' },
+      { name: 'Agentic Workflows', desc: "Directing AI coding agents through a structured SDLC — decomposing work into issues, branches, and merge requests while the engineer owns architecture and reviews every change. Used to ship three production apps with 650+ commits and 190+ merge requests in 2026.", companies: ['Independent AI-Augmented Builds'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator'], link: 'https://www.anthropic.com/engineering/claude-code-best-practices' },
+      { name: 'AI-Driven DevSecOps', desc: "Applying decades of DevSecOps discipline to AI-generated code — CI/CD quality gates, automated testing, mandatory code review, and security practices that hold agent-built software to production and compliance standards.", companies: ['Independent AI-Augmented Builds'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator'], link: 'https://www.anthropic.com/engineering' },
+      { name: 'Prompt Engineering', desc: "Designing precise, context-rich instructions and feedback loops that get reliable, high-quality output from large language models — the core skill behind directing agents to produce correct, maintainable code at speed.", companies: ['Independent AI-Augmented Builds'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator', 'This Portfolio Site'], link: 'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview' },
+    ]
+  },
+  {
     title: 'Languages',
     items: [
       { name: 'Python', desc: "Primary scripting and backend language for DoD systems. Used for automation, microservices, data processing, and CI/CD scripting across GALT and BACN programs.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['FINN Program', 'SkyTower II', 'BIB', 'DevSecOps Org Build'], link: 'https://www.python.org' },
       { name: 'Java', desc: "Enterprise backend language used for web services, data processing, and cross-platform DoD applications including BACN and the Joint Effects Model.", companies: ['Northrop Grumman'], projects: ['BIB', 'Joint Effects Model'], link: 'https://dev.java' },
       { name: 'JavaScript', desc: "Full-stack web language used across all DoD web UIs — spanning Backbone, React/Redux, and Vue3. Present on every program from JEM through GALT.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['FINN Program', 'BIB', 'Joint Effects Model'], link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
       { name: 'Vue3', desc: "Modern progressive JavaScript framework used for reactive DoD web interfaces at GALT. Composition API with TypeScript-friendly architecture and pub/sub integration.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://vuejs.org' },
+      { name: 'TypeScript', desc: "Typed superset of JavaScript used across the Cloudflare Workers API and Astro frontend of Channel Surf TV — bringing compile-time safety and maintainability to AI-built full-stack code.", companies: ['Independent AI-Augmented Builds'], projects: ['Channel Surf TV'], link: 'https://www.typescriptlang.org' },
       { name: 'React', desc: "Component-based UI library used for the BACN situational awareness platform with Redux state management and CesiumJS 3D geospatial visualization.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://react.dev' },
       { name: 'Redux', desc: "Predictable state container used alongside React for managing complex real-time battlefield data in the BACN Information Broker application.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://redux.js.org' },
       { name: 'C', desc: "Low-level systems language for submarine communications hardware integration and UNIX inter-process communications via Berkeley sockets and SNMP on HPUX.", companies: ['Predicate Logic Inc.'], projects: ['SLVR Submarine Integration'], link: 'https://en.wikipedia.org/wiki/C_(programming_language)' },
@@ -296,6 +361,13 @@ export const credsAndEdu = [
     issuer: 'Amazon Web Services', date: 'Feb 2026',
     why: 'The Cloud Practitioner is the structured entry point into the AWS certification path — covering core services, pricing models, security fundamentals, and cloud architecture concepts. For a 24-year DoD software veteran pivoting to cloud-native development, earning this alongside Security+ and CloudOps in a single month signals a deliberate, disciplined upskilling sprint — not a casual checkbox.',
     tags: ['AWS Foundation', 'Cloud Economics', 'Core Services', 'Architecture Basics'],
+  },
+  {
+    id: 'cka', icon: '☸', badge: 'IN PROGRESS', color: '#326ce5',
+    name: 'Certified Kubernetes Administrator (CKA)',
+    issuer: 'The Linux Foundation / CNCF', date: 'In Progress',
+    why: "The CKA is the industry-standard, hands-on proof of Kubernetes operational competency — a performance-based exam requiring candidates to install, configure, and troubleshoot live clusters under time pressure, not answer multiple choice. Jamie is actively pursuing it to formalize the Kubernetes and Amazon EKS work already shipped in the SAFe Portfolio Simulator (dual ECS/EKS deployment via AWS CDK, Helm charts, and EFS-backed persistence). It is the natural next step after the AWS DevOps Engineer Professional and CloudOps certifications — extending cloud mastery from AWS-native services into vendor-neutral container orchestration.",
+    tags: ['In Progress', 'Kubernetes', 'Amazon EKS', 'Hands-On Exam', 'CNCF'],
   },
   {
     id: 'secplus', icon: '🔒', badge: 'DoD 8570', color: '#ff6b35',
