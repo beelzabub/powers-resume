@@ -4,7 +4,7 @@
       <div class="clearance-badge">TS/SCI CLEARED ●</div>
       <h1 class="name">Jamie<br>Powers</h1>
       <div class="title-line">Software Engineering Leader</div>
-      <p class="summary">24+ years delivering secure, scalable software for DoD customers across Navy, Air Force, and Marine Corps — from hands-on coding to leading 50-engineer orgs and winning $250M+ in contracts.</p>
+      <p class="summary">27+ years delivering secure, scalable software for DoD customers across Navy, Air Force, and Marine Corps — from hands-on coding to leading 50-engineer orgs and winning $250M+ in contracts. Now multiplying that depth with AI-augmented engineering — directing agentic coding tools to architect and ship production systems in days, not months.</p>
 
       <div class="quick-stats">
         <div v-for="s in quickStats" :key="s.label" class="qs">
