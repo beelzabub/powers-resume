@@ -47,10 +47,11 @@ defineEmits(['open-carousel'])
 
 .cred-cards {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 1px; background: var(--border); border: 1px solid var(--border);
+  gap: 0.9rem;
 }
 .cred-grid-card {
   display: flex; cursor: pointer; background: var(--bg2);
+  border: 1px solid var(--border);
   transition: background 0.2s;
   animation: fadeUp 0.4s ease both;
   animation-delay: calc(var(--i, 0) * 0.06s);
