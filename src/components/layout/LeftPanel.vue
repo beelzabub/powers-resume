@@ -19,7 +19,7 @@
         <a class="contact-item" href="tel:4424047185">📞 442-404-7185</a>
         <a class="contact-item link-linkedin"  href="https://www.linkedin.com/in/jamie-powers-94348a7/" target="_blank" rel="noopener">💼 LinkedIn Profile</a>
         <a class="contact-item link-clearance" href="https://www.clearancejobs.com/profile" target="_blank" rel="noopener">🔐 ClearanceJobs Profile</a>
-        <a class="contact-item link-resume"    href="https://beelzabub.github.io/powers-resume/" target="_blank" rel="noopener">📄 Resume</a>
+        <a class="contact-item link-resume"    href="https://jamiepowers.org/" target="_blank" rel="noopener">📄 Resume</a>
       </div>
     </div>
   </aside>
