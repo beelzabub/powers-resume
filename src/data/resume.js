@@ -10,24 +10,24 @@ export const experience = [
     id: 'ai', logo: '✦', color: '#10a37f',
     company: 'Independent AI-Augmented Builds', title: 'Selected 2026 Projects · Solo',
     period: '2026',
-    tagline: 'Directing AI coding agents to architect and ship production systems — with senior engineering judgment on every change',
-    context: "In 2026, alongside earning AWS Professional certifications, Jamie moved into AI-augmented engineering — using agentic coding tools (Claude Code) as a force multiplier on top of decades of software architecture and DevSecOps experience. The approach is deliberately disciplined: rather than letting AI generate unsupervised code, Jamie directs agents through a structured, issue-driven SDLC — defining the architecture, decomposing work into issues and merge requests, and reviewing every change before it merges. The result is production-grade software shipped in days and weeks instead of months, demonstrated across three real applications spanning Cloudflare edge infrastructure, AWS-deployed Python services (ECS/EKS via CDK), and modern web frontends.",
+    tagline: 'Directing — and extending — AI coding agents to architect and ship production systems, with senior engineering judgment on every change',
+    context: "In 2026, alongside earning AWS Professional certifications, Jamie moved into AI-augmented engineering — using agentic coding tools (Claude Code) as a force multiplier on top of decades of software architecture and DevSecOps experience. The approach is deliberately disciplined: rather than letting AI generate unsupervised code, Jamie directs agents through a structured, issue-driven SDLC — defining the architecture, decomposing work into issues and merge requests, and reviewing every change before it merges. Beyond directing agents, Jamie extends them — building custom Claude Code skills, slash commands, hooks, and CI-gateable quality-gate tooling — and orchestrates them in parallel via git-worktree workflows and Model Context Protocol (MCP) integrations. The result is production-grade software shipped in days and weeks instead of months, across five projects spanning a Cloudflare edge application, a ~30K-line AWS-deployed Python platform (ECS/EKS/S3 via CDK), a Terraform/Ansible/Argo CD Kubernetes GitOps platform, and a personal agentic-developer toolkit — over 1,000 commits and 300+ reviewed merge requests.",
     stats: [
-      { value: '3', label: 'Apps Shipped' },
-      { value: '650+', label: 'Commits' },
-      { value: '190+', label: 'Merge Requests' },
+      { value: '5', label: 'Projects' },
+      { value: '1,000+', label: 'Commits' },
+      { value: '300+', label: 'Merge Requests' },
       { value: 'Claude', label: 'Primary Agent' },
     ],
     projects: [
       {
         id: 'channel-surf-tv', icon: '🏄', name: 'Channel Surf TV', customer: 'Independent Product',
-        blurb: 'Full-stack worldwide surf-spot atlas on the Cloudflare edge — architected and shipped to production in ~4 days by directing AI agents through a disciplined issue→branch→merge-request workflow.',
-        description: "Channel Surf TV is a production Cloudflare-native web application — Astro frontend, Cloudflare Workers API, D1 (SQLite) database, and R2 media delivery — featuring a worldwide surf-spot atlas with interactive Leaflet maps, an infinite-scroll spot feed, OSM and Wikidata bulk-import pipelines, and an Instagram Graph API content feed. Jamie built it solo in roughly four days by directing Claude Code through 95 issues and ~90 merge requests, applying decades of architecture and DevSecOps judgment to steer the agent, review every change, and keep the codebase production-grade.",
+        blurb: 'Full-stack worldwide surf-spot atlas on the Cloudflare edge — architected and shipped to production in ~4 days by directing AI agents through a disciplined issue→branch→merge-request workflow, then iterated over ~3 weeks.',
+        description: "Channel Surf TV is a production Cloudflare-native web application — Astro frontend, Cloudflare Workers API, D1 (SQLite) database, and R2 media delivery — featuring a worldwide surf-spot atlas with interactive Leaflet maps, an infinite-scroll spot feed, OSM and Wikidata bulk-import pipelines, and an Instagram Graph API content feed. Jamie stood up the production stack solo in roughly four days by directing Claude Code — including parallel agents working separate issues in isolated git worktrees — then iterated it over ~3 weeks to 249 commits and 105 merge requests, applying decades of architecture and DevSecOps judgment to steer the agents, review every change, and keep the codebase production-grade.",
         tech: ['Astro', 'Cloudflare Workers', 'Cloudflare D1', 'Cloudflare R2', 'TypeScript', 'Leaflet', 'SQLite', 'Wrangler', 'Claude Code', 'Agentic Workflows'],
-        outcome: 'Cloudflare-native worldwide surf atlas, edge-deployed · built in ~4 days · 201 commits · ~90 MRs · 95 issues · 13.5K LOC app + 34 D1 migrations',
+        outcome: 'Cloudflare-native worldwide surf atlas, edge-deployed · production in ~4 days · 249 commits & 105 MRs over ~3 weeks · 13.5K LOC app + 34 D1 migrations',
         bullets: [
           'Directed AI coding agents to build a full Cloudflare-native stack (Astro, Workers, D1, R2) from zero to production in roughly four days',
-          'Drove a disciplined issue→branch→merge-request workflow — 95 issues, ~90 merge requests, 201 commits — with human review on every change',
+          'Drove a disciplined issue→branch→merge-request workflow — 249 commits across 105 reviewed merge requests — with human review on every change',
           'Architected a D1 (SQLite) schema across 34 migrations (schema + seed), populating a worldwide surf-spot atlas from OpenStreetMap and Wikidata bulk-import pipelines',
           'Built interactive Leaflet maps, an infinite-scroll spot feed, R2-backed media delivery, and an Instagram Graph API content feed',
           'Applied decades of architectural and DevSecOps discipline to steer the agent, catch regressions, and hold code to production standards',
@@ -35,16 +35,45 @@ export const experience = [
       },
       {
         id: 'safe-sim', icon: '📊', name: 'SAFe Portfolio Simulator', customer: 'Independent / Agile Tooling',
-        blurb: 'A ~30K-line Python platform that bootstraps and analyzes Scaled Agile (SAFe) portfolios on GitLab — WSJF, flow metrics, and interactive dashboards — fully containerized for one-command deployment to AWS ECS or EKS via CDK.',
-        description: "The SAFe Portfolio Simulator is a Python automation platform that bootstraps and manages realistic Scaled Agile Framework (SAFe) portfolios against the GitLab API — generating epics, issues, labels, milestones, and value-stream hierarchies, then computing WSJF prioritization and flow metrics and publishing interactive Quarto and Marimo/WASM reports — with a Vue web console (over a FastAPI service) for launching jobs and browsing results. It is fully containerized and ships with AWS CDK infrastructure that deploys the identical workload to either Amazon ECS (Fargate) or Amazon EKS — provisioning ECR, EFS persistent storage, an ALB/CloudFront edge, and Amazon Managed Grafana. Built over ~9 weeks by directing AI agents through 453 commits and ~100 merge requests in a fully issue-driven workflow.",
-        tech: ['Python', 'AWS CDK', 'Amazon ECS (Fargate)', 'Amazon EKS', 'Docker', 'Helm', 'Amazon ECR', 'GitLab API', 'FastAPI', 'Quarto', 'Marimo', 'GitLab CI', 'Claude Code'],
-        outcome: 'Deployable to AWS ECS or EKS via CDK · ~30K LOC Python (app + tests + IaC) · 453 commits · ~100 merge requests',
+        blurb: 'A ~30K-line Python platform that bootstraps and analyzes Scaled Agile (SAFe) portfolios on GitLab — WSJF, flow metrics, interactive dashboards, and auto-generated sprint-review decks — fully containerized for one-command deployment to AWS ECS, EKS, or S3/CloudFront via CDK.',
+        description: "The SAFe Portfolio Simulator is a Python automation platform that bootstraps and manages realistic Scaled Agile Framework (SAFe) portfolios against the GitLab API — generating epics, issues, labels, milestones, and value-stream hierarchies, then computing WSJF prioritization and flow metrics and publishing interactive Quarto and Marimo/WASM reports — with a Vue 3 web console over a FastAPI service (with WebSocket job streaming) for launching jobs, watching them live, and browsing results. It auto-generates sprint-review PowerPoint decks (python-pptx) from Playwright screenshots, and ships with AWS CDK infrastructure that deploys the identical workload to Amazon ECS (Fargate), Amazon EKS, or an S3/CloudFront static site — provisioning ECR, EFS persistent storage, an ALB/CloudFront edge, and Amazon Managed Grafana. Built over ~3 months by directing AI agents through 754 commits and 194 merge requests in a fully issue-driven workflow.",
+        tech: ['Python', 'AWS CDK', 'Amazon ECS (Fargate)', 'Amazon EKS', 'S3/CloudFront', 'Docker', 'Helm', 'Amazon ECR', 'GitLab API', 'FastAPI', 'WebSockets', 'Vue 3', 'Playwright', 'Quarto', 'Marimo', 'GitLab CI', 'Claude Code'],
+        outcome: 'Deployable to AWS ECS, EKS, or S3/CloudFront via CDK · ~30K LOC Python (app + tests + IaC) · 754 commits · 194 merge requests',
         bullets: [
-          'Directed AI agents to build a ~30,000-line Python SAFe-automation platform over ~9 weeks (453 commits, ~100 merge requests)',
+          'Directed AI agents to build a ~30,000-line Python SAFe-automation platform over ~3 months (754 commits, 194 merge requests)',
           'Automated SAFe portfolio bootstrap — epics, issues, labels, milestones, and value-stream hierarchies — via the GitLab REST API',
-          'Implemented WSJF prioritization and flow-metrics analytics as interactive Quarto and Marimo/WASM reports, with a Vue web console over a FastAPI backend for running jobs and browsing results',
-          'Authored ~1,000 lines of AWS CDK provisioning dual deployment paths — Amazon ECS (Fargate) and Amazon EKS — with ECR, EFS, ALB/CloudFront, and Amazon Managed Grafana',
-          'Containerized the platform (Docker + Helm chart) for one-command redeploy to either ECS or EKS — directly exercising the AWS DevOps/CloudOps certifications and CKA Kubernetes track',
+          'Implemented WSJF prioritization and flow-metrics analytics as interactive Quarto and Marimo/WASM reports, with a Vue 3 web console over a FastAPI backend (WebSocket job streaming) for running jobs live and browsing results',
+          'Added an auto-generated sprint-review PowerPoint deck pipeline (python-pptx) driven from Playwright screenshots of the live console',
+          'Authored AWS CDK provisioning three deployment targets — Amazon ECS (Fargate), Amazon EKS, and S3/CloudFront — with ECR, EFS, ALB/CloudFront, and Amazon Managed Grafana',
+          'Containerized the platform (Docker + Helm, Kaniko-built images in GitLab CI) for one-command redeploy — directly exercising the AWS DevOps/CloudOps certifications and CKA Kubernetes track',
+        ]
+      },
+      {
+        id: 'gitops', icon: '☸', name: 'Kubernetes GitOps Platform', customer: 'Independent / Platform Engineering',
+        blurb: 'An Argo CD GitOps platform that stands up a full Rancher / Keycloak / cert-manager / ingress-nginx stack on two Kubernetes clusters — local minikube and an ephemeral kubeadm cluster on AWS EC2 — from a single `make up`.',
+        description: "A from-scratch Kubernetes GitOps platform built by directing AI agents through an issue-driven, epic-sequenced workflow. Terraform provisions the AWS foundation (VPC, three arm64/Graviton EC2 nodes, Route 53, S3-backed state); Ansible roles run kubeadm cluster init with the Cilium CNI; Argo CD ApplicationSets then deploy a Rancher, Keycloak, cert-manager, and ingress-nginx stack via pinned Helm wrapper charts to both a local minikube cluster and the ephemeral AWS cluster. A self-documenting Makefile drives the full cluster lifecycle (`make up` / `make down`) plus a smoke test. The AI workflow itself integrated the Model Context Protocol (Atlassian Rovo) so the agent could read program context from Confluence and Jira. Built on an open-source platform baseline (Joseph Jung's nce-platform-gitops), with vendored charts replaced by pinned wrapper charts.",
+        tech: ['Terraform', 'Ansible', 'Kubernetes (kubeadm)', 'Cilium', 'Argo CD', 'Helm', 'AWS EC2', 'minikube', 'Keycloak', 'cert-manager', 'MCP (Atlassian Rovo)', 'Claude Code'],
+        outcome: 'One-command dual-cluster GitOps platform (minikube + AWS EC2) · Terraform + Ansible + Argo CD · 26 commits · 6 MRs',
+        bullets: [
+          'Built a dual-cluster Kubernetes GitOps platform (local minikube + ephemeral kubeadm-on-EC2) driven entirely by Argo CD ApplicationSets and pinned Helm wrapper charts',
+          'Authored Terraform (arm64/Graviton EC2, Route 53, S3-backed state) and Ansible roles (kubeadm init + Cilium CNI) for repeatable, one-command cluster lifecycle',
+          'Deployed a Rancher / Keycloak / cert-manager / ingress-nginx stack as GitOps applications with a self-documenting Makefile and smoke test',
+          'Integrated the Model Context Protocol (Atlassian Rovo) into the agent workflow so Claude could pull program context directly from Confluence and Jira',
+          'Directly exercises the SAIC cloud-infrastructure toolchain (Terraform, Helm, Ansible, Kubernetes, Zero Trust) and the in-progress CKA certification',
+        ]
+      },
+      {
+        id: 'toolkit', icon: '🧰', name: 'Agentic Dev Toolkit', customer: 'Independent / Developer Tooling',
+        blurb: 'A personal, version-controlled toolkit that extends Claude Code itself — custom skills, slash commands, and hooks, plus a CI-gateable code-health quality-gate system — turning the AI agent into a disciplined, repeatable engineering platform.',
+        description: "Rather than only using an AI coding agent, Jamie built tooling that extends one. This is a git-versioned repository of custom Claude Code skills, slash commands, and hooks, symlinked into the live agent config and kept in sync across machines by a three-part self-syncing infrastructure (a SessionStart git-pull hook, a shell launch wrapper, and a shared symlink-reconcile helper). Its centerpiece is `code-health`, a portable quality-gate standard: 16 tested Node.js scripts measuring eight metric families — LOC growth, per-file complexity, churn×complexity hotspots, duplication (jscpd), test/coverage health, dependency health, dependency-cruiser conformance, and two-way OpenAPI drift — behind a CI-gateable check that fails the build on breaches. Other original tooling includes a multi-session work-state handoff protocol, a git-history session-clustering hours estimator, and a local (no-API-cost) video-transcription pipeline. Custom work only — the repo also vendors third-party Cloudflare skill packs purely for cross-machine sync.",
+        tech: ['Claude Code', 'Node.js', 'Bash', 'Git (hooks/symlinks)', 'MCP', 'GitLab CLI (glab)', 'GitHub CLI (gh)', 'OpenAPI', 'dependency-cruiser', 'jscpd'],
+        outcome: 'Custom agent skills/commands/hooks + a CI-gateable code-health quality-gate system · self-syncing across machines',
+        bullets: [
+          'Built custom Claude Code skills, slash commands, and hooks that extend the agent into a repeatable, disciplined engineering platform',
+          'Authored `code-health` — 16 tested Node.js scripts across 8 metric families (incl. churn×complexity hotspots and two-way OpenAPI drift) behind a CI-gateable quality gate',
+          'Engineered a three-part self-syncing infrastructure (SessionStart pull hook + launch wrapper + symlink-reconcile helper) that keeps versioned agent config from drifting across machines',
+          'Added a multi-session work-state handoff protocol, a session-clustering hours estimator, and a local no-API-cost video-transcription pipeline',
+          'Applies decades of DevSecOps discipline as tooling — turning quality gates and code review into automation that holds AI-built code to production standards',
         ]
       },
       {
@@ -271,6 +300,9 @@ export const skillGroups = [
       { name: 'Agentic Workflows', desc: "Directing AI coding agents through a structured SDLC — decomposing work into issues, branches, and merge requests while the engineer owns architecture and reviews every change. Used to ship three production apps with 650+ commits and 190+ merge requests in 2026.", companies: ['Independent AI-Augmented Builds'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator'], link: 'https://www.anthropic.com/engineering/claude-code-best-practices' },
       { name: 'AI-Driven DevSecOps', desc: "Applying decades of DevSecOps discipline to AI-generated code — CI/CD quality gates, automated testing, mandatory code review, and security practices that hold agent-built software to production and compliance standards.", companies: ['Independent AI-Augmented Builds'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator'], link: 'https://www.anthropic.com/engineering' },
       { name: 'Prompt Engineering', desc: "Designing precise, context-rich instructions and feedback loops that get reliable, high-quality output from large language models — the core skill behind directing agents to produce correct, maintainable code at speed.", companies: ['Independent AI-Augmented Builds'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator', 'This Portfolio Site'], link: 'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview' },
+      { name: 'Multi-Agent Orchestration', desc: "Running multiple AI coding agents in parallel against separate issues in isolated git worktrees — decomposing work so several features are developed simultaneously without collision, then integrated through review. Used to accelerate Channel Surf TV and the SAFe Portfolio Simulator.", companies: ['Independent AI-Augmented Builds'], projects: ['Channel Surf TV', 'SAFe Portfolio Simulator'], link: 'https://www.anthropic.com/engineering/claude-code-best-practices' },
+      { name: 'Custom Agent Tooling', desc: "Building tooling that extends the AI agent itself — custom Claude Code skills, slash commands, and hooks, a self-syncing config infrastructure, and a CI-gateable code-health quality-gate system. Moves the work from using an agent to engineering a repeatable platform around one.", companies: ['Independent AI-Augmented Builds'], projects: ['Agentic Dev Toolkit'], link: 'https://docs.anthropic.com/en/docs/claude-code/overview' },
+      { name: 'MCP Integration', desc: "Wiring the Model Context Protocol into agent workflows so Claude can read and act on external systems — e.g. pulling program context from Confluence and Jira (Atlassian Rovo) while building the Kubernetes GitOps platform.", companies: ['Independent AI-Augmented Builds'], projects: ['Kubernetes GitOps Platform'], link: 'https://modelcontextprotocol.io' },
     ]
   },
   {
@@ -359,7 +391,7 @@ export const credsAndEdu = [
     verify: 'https://cp.certmetrics.com/amazon/en/public/verify/credential/c264415e14d04d7f81861cd6f9c950f2',
     name: 'AWS Cloud Practitioner',
     issuer: 'Amazon Web Services', date: 'Feb 2026',
-    why: 'The Cloud Practitioner is the structured entry point into the AWS certification path — covering core services, pricing models, security fundamentals, and cloud architecture concepts. For a 24-year DoD software veteran pivoting to cloud-native development, earning this alongside Security+ and CloudOps in a single month signals a deliberate, disciplined upskilling sprint — not a casual checkbox.',
+    why: 'The Cloud Practitioner is the structured entry point into the AWS certification path — covering core services, pricing models, security fundamentals, and cloud architecture concepts. For a 27-year DoD software veteran pivoting to cloud-native development, earning this alongside Security+ and CloudOps in a single month signals a deliberate, disciplined upskilling sprint — not a casual checkbox.',
     tags: ['AWS Foundation', 'Cloud Economics', 'Core Services', 'Architecture Basics'],
   },
   {
