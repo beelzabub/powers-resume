@@ -107,6 +107,8 @@ jamie-powers-portfolio/
 
 All content is in `src/data/resume.js`. Edit that file and push — no code changes needed for content updates.
 
+The recruiter PDF served at `/Jamie-Powers-Resume.pdf` lives in `public/Jamie-Powers-Resume.pdf`. Replace that file (and the copies in `C:\Users\Jamie Powers\Documents\WorkDocuments\Resume`) when the resume is refreshed. The site offers one download — the general leadership PDF. Tailored DevOps and Software variants stay in WorkDocuments for recruiter-specific sends.
+
 To add a new project under a company:
 ```js
 {

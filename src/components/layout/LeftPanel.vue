@@ -19,7 +19,11 @@
         <a class="contact-item" href="tel:4424047185">📞 442-404-7185</a>
         <a class="contact-item link-linkedin"  href="https://www.linkedin.com/in/jamie-powers-94348a7/" target="_blank" rel="noopener">💼 LinkedIn Profile</a>
         <a class="contact-item link-clearance" href="https://www.clearancejobs.com/profile" target="_blank" rel="noopener">🔐 ClearanceJobs Profile</a>
-        <a class="contact-item link-resume"    href="https://jamiepowers.org/" target="_blank" rel="noopener">📄 Resume</a>
+        <a
+          class="download-resume"
+          href="/Jamie-Powers-Resume.pdf"
+          download="Jamie-Powers-Resume.pdf"
+        >⬇ Download resume (PDF)</a>
       </div>
     </div>
   </aside>
@@ -66,7 +70,27 @@ import { quickStats } from '../../data/resume.js'
 a.contact-item:hover { color: var(--accent); }
 .link-linkedin  { color: #0a9af7; }
 .link-clearance { color: #4eff9a; }
-.link-resume    { color: var(--dim); }
+
+.download-resume {
+  margin-top: 0.55rem;
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--bg);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.55rem 0.7rem;
+  text-align: center;
+  border-radius: 2px;
+  transition: background 0.15s, color 0.15s;
+}
+.download-resume:hover {
+  background: transparent;
+  color: var(--accent);
+}
 
 @media (max-width: 768px) {
   .panel-left { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
