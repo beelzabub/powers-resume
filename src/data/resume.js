@@ -2,7 +2,7 @@ export const quickStats = [
   { value: '27+', label: 'Years' },
   { value: '$250M+', label: 'Contracts' },
   { value: '50', label: 'Eng Team' },
-  { value: 'TS/SCI', label: 'Clearance' },
+  { value: '3', label: 'AWS Certs' },
 ]
 
 export const experience = [
@@ -99,26 +99,26 @@ export const experience = [
     id: 'saic', logo: '☁', color: '#0066cc',
     company: 'SAIC', title: 'Cloud Infrastructure Engineer',
     period: 'April 2026 – Present',
-    tagline: 'AWS cloud infrastructure for DoD/Navy PEO C4I and NAVWAR programs in a DevSecOps software factory',
-    context: "SAIC (Science Applications International Corporation) is one of the largest defense IT contractors in the US, delivering technology solutions across the DoD, intelligence community, and federal agencies. Jamie joined SAIC's San Diego team as a Cloud Infrastructure Engineer supporting Navy PEO C4I and NAVWAR programs — bringing deep DoD systems experience and AWS certifications (DevOps Engineer Pro, CloudOps, CCP) to bear on cloud-native infrastructure delivery for Agile DevSecOps software teams.",
+    tagline: 'AWS cloud infrastructure for DoD/Navy programs in a DevSecOps software factory',
+    context: "SAIC (Science Applications International Corporation) is one of the largest defense IT contractors in the US, delivering technology solutions across the DoD, intelligence community, and federal agencies. Jamie joined SAIC's San Diego team as a Cloud Infrastructure Engineer supporting Navy programs — bringing deep DoD systems experience and AWS certifications (DevOps Engineer Pro, CloudOps, CCP) to bear on cloud-native infrastructure delivery for Agile DevSecOps software teams.",
     stats: [
       { value: 'AWS', label: 'Platform' },
-      { value: 'TS/SCI', label: 'Clearance' },
-      { value: 'PEO C4I', label: 'Customer' },
+      { value: 'Navy', label: 'Customer' },
+      { value: 'K8s', label: 'Orchestration' },
       { value: 'SAFe', label: 'Methodology' },
     ],
     projects: [
       {
-        id: 'saic-cloud', icon: '☁', name: 'AWS Cloud Infrastructure', customer: 'DoD / Navy PEO C4I / NAVWAR',
-        blurb: 'Design and deploy AWS cloud infrastructure supporting Navy C4I systems modernization within a classified DevSecOps software factory.',
-        description: "Supporting Navy PEO C4I and NAVWAR programs, Jamie designs and deploys AWS cloud infrastructure enabling DoD software development teams to build, test, and operate cloud-native applications. The role involves Infrastructure as Code (Terraform, Helm, Ansible), Kubernetes container orchestration, Zero Trust security architecture, and hybrid cloud/on-premise connectivity — all within a classified SAFe Agile DevSecOps environment at SAIC's San Diego location.",
+        id: 'saic-cloud', icon: '☁', name: 'AWS Cloud Infrastructure', customer: 'DoD / Navy',
+        blurb: 'Design and deploy AWS cloud infrastructure supporting Navy C4I systems modernization within a secure DevSecOps software factory.',
+        description: "Supporting Navy programs, Jamie designs and deploys AWS cloud infrastructure enabling DoD software development teams to build, test, and operate cloud-native applications. The role involves Infrastructure as Code (Terraform, Helm, Ansible), Kubernetes container orchestration, Zero Trust security architecture, and hybrid cloud/on-premise connectivity — all within a secure SAFe Agile DevSecOps environment at SAIC's San Diego location.",
         tech: ['AWS', 'Terraform', 'Helm', 'Ansible', 'Kubernetes', 'Docker', 'Python', 'Zero Trust', 'SAFe Agile'],
-        outcome: 'Supporting Navy C4I systems modernization for PEO C4I / NAVWAR',
+        outcome: 'Supporting Navy C4I systems modernization',
         bullets: [
           'Design and deploy AWS cloud infrastructure for DoD Agile software teams using Infrastructure as Code (Terraform, Helm, Ansible)',
-          'Provision and manage Kubernetes container environments within a classified DevSecOps software factory',
+          'Provision and manage Kubernetes container environments within a secure DevSecOps software factory',
           'Support hybrid cloud/on-premise connectivity aligned to Zero Trust architecture and DoD C-ATO requirements',
-          'Collaborate within SAFe Agile teams to deliver cloud-native solutions supporting Navy PEO C4I / NAVWAR C4I modernization',
+          'Collaborate within SAFe Agile teams to deliver cloud-native solutions supporting Navy C4I modernization',
         ]
       }
     ]
@@ -330,8 +330,8 @@ export const skillGroups = [
   {
     title: 'DevSecOps',
     items: [
-      { name: 'Terraform', desc: "Infrastructure as Code tool for declaratively provisioning and managing AWS cloud resources. Used at SAIC for Navy PEO C4I / NAVWAR environments and to stand up the independent Kubernetes GitOps platform (VPC, Graviton EC2, Route 53, S3 state, workstations).", companies: ['SAIC', 'Independent AI-Augmented Builds'], projects: ['AWS Cloud Infrastructure', 'Kubernetes GitOps Platform'], link: 'https://www.terraform.io' },
-      { name: 'Kubernetes', desc: "Container orchestration platform for deploying, scaling, and managing containerized workloads. Used at SAIC within a classified DevSecOps software factory, on Amazon EKS for the SAFe Simulator, and as a from-scratch kubeadm cluster on the GitOps platform.", companies: ['SAIC', 'Independent AI-Augmented Builds'], projects: ['AWS Cloud Infrastructure', 'SAFe Portfolio Simulator', 'Kubernetes GitOps Platform'], link: 'https://kubernetes.io' },
+      { name: 'Terraform', desc: "Infrastructure as Code tool for declaratively provisioning and managing AWS cloud resources. Used at SAIC for Navy program environments and to stand up the independent Kubernetes GitOps platform (VPC, Graviton EC2, Route 53, S3 state, workstations).", companies: ['SAIC', 'Independent AI-Augmented Builds'], projects: ['AWS Cloud Infrastructure', 'Kubernetes GitOps Platform'], link: 'https://www.terraform.io' },
+      { name: 'Kubernetes', desc: "Container orchestration platform for deploying, scaling, and managing containerized workloads. Used at SAIC within a secure DevSecOps software factory, on Amazon EKS for the SAFe Simulator, and as a from-scratch kubeadm cluster on the GitOps platform.", companies: ['SAIC', 'Independent AI-Augmented Builds'], projects: ['AWS Cloud Infrastructure', 'SAFe Portfolio Simulator', 'Kubernetes GitOps Platform'], link: 'https://kubernetes.io' },
       { name: 'Helm', desc: "Kubernetes package manager for templating and deploying complex cloud-native applications. Used at SAIC alongside Terraform and Ansible, and as pinned wrapper charts driven by Argo CD ApplicationSets on the GitOps platform.", companies: ['SAIC', 'Independent AI-Augmented Builds'], projects: ['AWS Cloud Infrastructure', 'Kubernetes GitOps Platform', 'SAFe Portfolio Simulator'], link: 'https://helm.sh' },
       { name: 'Jenkins CI/CD', desc: "Automated build, test, and deployment pipelines. Built GALT entire Jenkins infrastructure from scratch including STIG-compliant deployment gates and approval workflows.", companies: ['GALT Aerospace', 'Northrop Grumman'], projects: ['DevSecOps Org Build', 'FINN Program', 'BIB'], link: 'https://www.jenkins.io' },
       { name: 'Docker', desc: "Container platform for packaging and deploying microservices and platform workloads — GALT airborne pub/sub services and the SAFe Simulator image built in GitLab CI with Kaniko.", companies: ['Independent AI-Augmented Builds', 'GALT Aerospace'], projects: ['SAFe Portfolio Simulator', 'FINN Program', 'SkyTower II', 'DevSecOps Org Build'], link: 'https://www.docker.com' },
@@ -367,7 +367,7 @@ export const skillGroups = [
       { name: 'Node.js', desc: "JavaScript runtime used for backend services and build tooling in the BACN Information Broker alongside Webpack and Yarn for asset bundling.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://nodejs.org' },
       { name: 'ElasticSearch', desc: "Distributed search and analytics engine providing real-time tactical data querying for the BACN situational awareness platform across large operational datasets.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://www.elastic.co/elasticsearch' },
       { name: 'Redis', desc: "In-memory data store used as the pub/sub message broker for GALT microservices architecture, enabling real-time status updates across airborne systems.", companies: ['GALT Aerospace'], projects: ['FINN Program', 'SkyTower II'], link: 'https://redis.io' },
-      { name: 'AWS', desc: "Amazon Web Services cloud platform. Jamie holds AWS DevOps Engineer Pro, CloudOps Engineer, and Cloud Practitioner certifications (all earned early 2026) and designs AWS infrastructure at SAIC for Navy PEO C4I / NAVWAR — and independently via CDK (ECS/EKS/CloudFront) and Terraform/EC2/SSM on the GitOps platform.", companies: ['SAIC', 'Independent AI-Augmented Builds'], projects: ['AWS Cloud Infrastructure', 'SAFe Portfolio Simulator', 'Kubernetes GitOps Platform'], link: 'https://aws.amazon.com' },
+      { name: 'AWS', desc: "Amazon Web Services cloud platform. Jamie holds AWS DevOps Engineer Pro, CloudOps Engineer, and Cloud Practitioner certifications (all earned early 2026) and designs AWS infrastructure at SAIC for Navy programs — and independently via CDK (ECS/EKS/CloudFront) and Terraform/EC2/SSM on the GitOps platform.", companies: ['SAIC', 'Independent AI-Augmented Builds'], projects: ['AWS Cloud Infrastructure', 'SAFe Portfolio Simulator', 'Kubernetes GitOps Platform'], link: 'https://aws.amazon.com' },
       { name: 'JIRA', desc: "Agile project management and issue tracking used to manage sprints, backlogs, and program-level tracking across all programs from Northrop Grumman forward.", companies: ['Northrop Grumman', 'GALT Aerospace'], projects: ['BIB', 'Joint Effects Model', 'GCCS-J / GCCS-M Integration', 'FINN Program', 'SkyTower II', 'DevSecOps Org Build'], link: 'https://www.atlassian.com/software/jira' },
       { name: 'Webpack', desc: "JavaScript module bundler used to build and optimize the BACN Information Broker frontend application for production deployment on RedHat Linux.", companies: ['Northrop Grumman'], projects: ['BIB'], link: 'https://webpack.js.org' },
     ]
@@ -411,7 +411,7 @@ export const credsAndEdu = [
     verify: 'https://cp.certmetrics.com/CompTIA/en/public/verify/credential/71e3f9eb23c8468bb9918b23a0b1a915',
     name: 'CompTIA Security+',
     issuer: 'CompTIA', date: 'Feb 2026',
-    why: 'Security+ is mandated by DoD Directive 8570/8140 as the baseline cybersecurity credential for IAT Level II roles — covering anyone with privileged access to DoD systems, including all defense contractors. For a TS/SCI-cleared engineer shipping code into DISA STIG-compliant DoD environments, this is the formal seal on what Jamie has been practicing operationally for over a decade. This is not just a cert — it is the DoD required proof of cybersecurity competency.',
+    why: 'Security+ is mandated by DoD Directive 8570/8140 as the baseline cybersecurity credential for IAT Level II roles — covering anyone with privileged access to DoD systems, including all defense contractors. For an engineer shipping code into DISA STIG-compliant DoD environments, this is the formal seal on what Jamie has been practicing operationally for over a decade. This is not just a cert — it is the DoD required proof of cybersecurity competency.',
     tags: ['DoD 8570/8140 Required', 'IAT Level II', 'STIG Compliance', 'Vendor-Neutral'],
   },
   {
